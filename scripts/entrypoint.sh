@@ -98,23 +98,18 @@ if [ -n "${ANTHROPIC_BASE_URL:-}" ]; then
     echo "[init] API Base URL: ${ANTHROPIC_BASE_URL}"
 fi
 
-# ----- Step 5: Start CloudCLI Server -----
-echo "[init] Starting CloudCLI web server..."
+# ----- Step 5: Fix permissions for agent user -----
+echo "[init] Setting ownership on persistent directories..."
+chown -R agent:agent /persistent 2>/dev/null || true
+chown -R agent:agent /home/agent 2>/dev/null || true
+
+# ----- Step 6: Start CloudCLI Server (drop privileges) -----
+echo "[init] Starting CloudCLI web server as 'agent' user..."
 echo "============================================"
 
-# Graceful shutdown handler
-cleanup() {
-    echo ""
-    echo "[shutdown] Received shutdown signal. Cleaning up..."
-    # Kill child processes
-    kill -- -$$ 2>/dev/null || true
-    echo "[shutdown] Goodbye."
-    exit 0
-}
-trap cleanup SIGTERM SIGINT SIGQUIT
-
-# Start CloudCLI
-# The server serves the React frontend and manages Claude Code CLI via PTY
+# Drop from root to agent user using gosu, then exec CloudCLI
+# This ensures the CloudCLI process (and all Claude Code CLI children)
+# run as non-root, while iptables rules set above persist.
 cd /app/cloudcli
 
-exec node server.js
+exec gosu agent node server.js

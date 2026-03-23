@@ -111,6 +111,8 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     curl \
     # Git (needed by Claude Code)
     git \
+    # Privilege drop utility
+    gosu \
     && rm -rf /var/lib/apt/lists/*
 
 # Install Node.js 20.x runtime (no build tools needed)

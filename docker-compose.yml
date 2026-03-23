@@ -29,12 +29,15 @@ services:
       - ALL
     cap_add:
       - NET_ADMIN  # Required for iptables firewall setup; used only at startup
+      - SETUID     # Required for gosu privilege drop in entrypoint
+      - SETGID     # Required for gosu privilege drop in entrypoint
     security_opt:
       - no-new-privileges:true
 
     # --- Resource Limits ---
     mem_limit: ${MEMORY_LIMIT:-8g}
     cpus: ${CPU_LIMIT:-4}
+    pids_limit: 512
 
     # --- Filesystem ---
     # Read-only root filesystem with specific writable areas
