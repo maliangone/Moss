@@ -59,8 +59,10 @@ services:
     volumes:
       # Persistent storage for user workspaces, skills, and shared config
       - persistent-data:/persistent:rw
-      # CloudCLI database (session state, credentials)
+      # CloudCLI database (session state, user accounts)
       - cloudcli-data:/app/cloudcli/data:rw
+      # Claude Code user data (skills, sessions, project configs)
+      - claude-data:/home/agent/.claude:rw
 
     # --- Network ---
     # Only expose to localhost; nginx provides external access
@@ -116,6 +118,10 @@ volumes:
   persistent-data:
     driver: local
 
-  # CloudCLI internal database
+  # CloudCLI internal database (user accounts, session metadata)
   cloudcli-data:
+    driver: local
+
+  # Claude Code data (skills, sessions, project configs)
+  claude-data:
     driver: local

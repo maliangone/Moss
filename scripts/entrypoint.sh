@@ -98,10 +98,21 @@ if [ -n "${ANTHROPIC_BASE_URL:-}" ]; then
     echo "[init] API Base URL: ${ANTHROPIC_BASE_URL}"
 fi
 
-# ----- Step 5: Fix permissions for agent user -----
+# ----- Step 5: Fix permissions and initialize Claude Code data -----
 echo "[init] Setting ownership on persistent directories..."
 chown -R agent:agent /persistent 2>/dev/null || true
 chown -R agent:agent /home/agent 2>/dev/null || true
+
+# Initialize .claude directory structure (volume may be empty on first boot)
+mkdir -p /home/agent/.claude/skills
+mkdir -p /home/agent/.claude/projects
+chown -R agent:agent /home/agent/.claude
+
+# Deploy Claude Code settings into the persistent .claude directory
+if [ ! -f /home/agent/.claude/settings.json ] && [ -f "${CONFIG_SRC}/settings.json" ]; then
+    cp "${CONFIG_SRC}/settings.json" /home/agent/.claude/settings.json
+    echo "[init] Installed Claude Code settings.json to ~/.claude/"
+fi
 
 # ----- Step 6: Start CloudCLI Server (drop privileges) -----
 echo "[init] Starting CloudCLI web server as 'agent' user..."
