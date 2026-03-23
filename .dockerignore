@@ -4,5 +4,5 @@ docs/
 *.zip
 nginx/certs/
 nginx/htpasswd
-*.md
-!config/CLAUDE.md
+README.md
+docs/*.md

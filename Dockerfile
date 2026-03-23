@@ -132,6 +132,13 @@ COPY --from=cloudcli-build /build /app/cloudcli
 COPY scripts/ /app/scripts/
 COPY config/ /app/config/
 
+# Copy Moss plugins
+COPY plugins/ /app/cloudcli/plugins/
+
+# Install plugin dependencies
+RUN cd /app/cloudcli/plugins/moss-toolbox && npm install --production 2>/dev/null || true
+RUN cd /app/cloudcli/plugins/moss-admin && npm install --production 2>/dev/null || true
+
 # Make scripts executable
 RUN chmod +x /app/scripts/*.sh
 

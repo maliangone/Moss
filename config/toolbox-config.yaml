@@ -1,0 +1,251 @@
+# =============================================================================
+# Moss AI Agent Platform — Toolbox Configuration
+#
+# Maps Claude Code skills/commands to user-visible UI elements.
+# Maintained by admin. Users never see this file.
+#
+# Each item maps a technical skill to a display name, icon, description,
+# trigger mode, and department visibility.
+# =============================================================================
+
+categories:
+  - id: data-analysis
+    name: "数据分析"
+    icon: "📊"
+    order: 1
+    items:
+      - skill: "data-analysis"
+        display_name: "数据探索（EDA）"
+        icon: "📊"
+        description: "自动统计摘要、分布可视化、异常值检测"
+        trigger: "auto+manual"
+        departments: ["*"]
+        suggest_keywords: ["分析", "数据", "统计", "汇总", "分布", "EDA", "探索"]
+        prompt_template: "请对上传的数据进行全面的探索性分析（EDA），包括数据概览、统计摘要、分布分析和异常值检测。"
+
+      - skill: "data-compare"
+        display_name: "对比分析"
+        icon: "🔄"
+        description: "A/B对比、同比环比、多组数据对比"
+        trigger: "manual"
+        departments: ["*"]
+        suggest_keywords: ["对比", "比较", "vs", "同比", "环比", "差异"]
+        prompt_template: "请对数据进行对比分析。"
+
+      - skill: "data-correlation"
+        display_name: "相关性分析"
+        icon: "🔗"
+        description: "变量间关系检测、相关矩阵、回归分析"
+        trigger: "manual"
+        departments: ["*"]
+        suggest_keywords: ["相关", "关系", "回归", "影响因素"]
+        prompt_template: "请分析数据中各变量之间的相关性。"
+
+      - skill: "data-cleaning"
+        display_name: "数据清洗与合并"
+        icon: "🧹"
+        description: "修复格式、去重、处理缺失值、多表合并"
+        trigger: "auto+manual"
+        departments: ["*"]
+        suggest_keywords: ["清洗", "去重", "缺失", "合并", "格式"]
+        prompt_template: "请清洗这份数据，处理缺失值、重复项和格式问题。"
+
+  - id: prediction
+    name: "预测与建模"
+    icon: "📈"
+    order: 2
+    items:
+      - skill: "ml-forecast"
+        display_name: "趋势预测"
+        icon: "📈"
+        description: "基于历史数据预测未来趋势（时间序列）"
+        trigger: "manual"
+        departments: ["*"]
+        suggest_keywords: ["预测", "趋势", "下个月", "下季度", "forecast", "未来"]
+        prompt_template: "请基于历史数据建立预测模型，预测未来趋势。使用AutoGluon进行建模。"
+
+      - skill: "ml-classification"
+        display_name: "分类预测"
+        icon: "🎯"
+        description: "客户流失预测、通过/不通过分类"
+        trigger: "manual"
+        departments: ["*"]
+        suggest_keywords: ["分类", "判断", "流失", "是否", "预测"]
+        prompt_template: "请建立分类模型进行预测分析。"
+
+      - skill: "anomaly-detection"
+        display_name: "异常检测"
+        icon: "🔍"
+        description: "自动发现数据中的异常点和异常模式"
+        trigger: "manual"
+        departments: ["*"]
+        suggest_keywords: ["异常", "离群", "outlier", "异常值"]
+        prompt_template: "请检测数据中的异常值和异常模式。"
+
+  - id: reports
+    name: "报告与可视化"
+    icon: "📋"
+    order: 3
+    items:
+      - skill: "report-gen"
+        display_name: "生成分析报告"
+        icon: "📋"
+        description: "将分析结果整理成带图表的完整报告"
+        trigger: "manual"
+        departments: ["*"]
+        suggest_keywords: ["报告", "报表", "汇报", "总结"]
+        prompt_template: "请将分析结果整理成一份完整的分析报告，包含图表和关键发现。"
+
+      - skill: "pptx"
+        display_name: "生成PPT"
+        icon: "📊"
+        description: "自动生成演示文稿"
+        trigger: "manual"
+        departments: ["*"]
+        suggest_keywords: ["PPT", "演示", "幻灯片", "汇报"]
+        prompt_template: "/pptx"
+
+      - skill: "xlsx"
+        display_name: "生成Excel报表"
+        icon: "📗"
+        description: "生成带公式和图表的Excel文件"
+        trigger: "manual"
+        departments: ["*"]
+        suggest_keywords: ["Excel", "表格", "报表", "导出"]
+        prompt_template: "/xlsx"
+
+      - skill: "docx"
+        display_name: "生成Word文档"
+        icon: "📄"
+        description: "生成格式化的Word文档"
+        trigger: "manual"
+        departments: ["*"]
+        suggest_keywords: ["Word", "文档", "doc"]
+        prompt_template: "/docx"
+
+  - id: document
+    name: "文档处理"
+    icon: "🔧"
+    order: 4
+    items:
+      - skill: "pdf"
+        display_name: "PDF提取与分析"
+        icon: "📄"
+        description: "从PDF中提取表格、文字和图片"
+        trigger: "auto+manual"
+        departments: ["*"]
+        suggest_keywords: ["PDF", "提取", "识别"]
+        prompt_template: "/pdf"
+
+      - skill: "batch-files"
+        display_name: "批量文件处理"
+        icon: "📁"
+        description: "批量转换、重命名、整理文件"
+        trigger: "manual"
+        departments: ["*"]
+        suggest_keywords: ["批量", "转换", "重命名"]
+        prompt_template: "请批量处理这些文件。"
+
+      - skill: "translate"
+        display_name: "文档翻译"
+        icon: "🌐"
+        description: "中英文档互译"
+        trigger: "manual"
+        departments: ["*"]
+        suggest_keywords: ["翻译", "translate", "英文", "中文"]
+        prompt_template: "请翻译这份文档。"
+
+  - id: industry
+    name: "行业专用"
+    icon: "🏭"
+    order: 5
+    items:
+      - skill: "aoi-analysis"
+        display_name: "质量检测数据分析"
+        icon: "🔬"
+        description: "AOI/SPC缺陷数据分析与趋势"
+        trigger: "auto+manual"
+        departments: ["production", "quality"]
+        suggest_keywords: ["AOI", "SPC", "缺陷", "良率", "不良", "质量"]
+        prompt_template: "请分析质量检测数据，包括缺陷分布、良率趋势和SPC控制图。"
+
+      - skill: "supply-chain"
+        display_name: "供应链分析"
+        icon: "🚛"
+        description: "库存优化、交期分析、供应商评估"
+        trigger: "manual"
+        departments: ["operations", "production"]
+        suggest_keywords: ["供应链", "库存", "交期", "供应商"]
+        prompt_template: "请分析供应链数据。"
+
+      - skill: "production-scheduling"
+        display_name: "生产排程优化"
+        icon: "⚙️"
+        description: "产线效率分析、排程优化建议"
+        trigger: "manual"
+        departments: ["production", "operations"]
+        suggest_keywords: ["排程", "产线", "效率", "OEE"]
+        prompt_template: "请分析生产排程数据并提出优化建议。"
+
+# Smart suggestion trigger rules
+# These define when suggestion cards appear above the chat input
+suggestion_rules:
+  - trigger: "file_upload"
+    file_types: [".xlsx", ".csv", ".xls", ".tsv"]
+    suggestions:
+      - { icon: "📊", label: "分析数据", skill: "data-analysis" }
+      - { icon: "🧹", label: "清洗数据", skill: "data-cleaning" }
+      - { icon: "📋", label: "生成报告", skill: "report-gen" }
+
+  - trigger: "file_upload"
+    file_types: [".pdf"]
+    suggestions:
+      - { icon: "📄", label: "提取PDF内容", skill: "pdf" }
+      - { icon: "📊", label: "分析PDF表格", skill: "data-analysis" }
+
+  - trigger: "keywords"
+    keywords: ["预测", "趋势", "下个月", "下季度", "forecast"]
+    suggestions:
+      - { icon: "📈", label: "趋势预测", skill: "ml-forecast" }
+      - { icon: "🔮", label: "回归分析", skill: "data-correlation" }
+
+  - trigger: "keywords"
+    keywords: ["对比", "比较", "vs", "差异"]
+    suggestions:
+      - { icon: "🔄", label: "A/B对比分析", skill: "data-compare" }
+      - { icon: "📊", label: "同比环比", skill: "data-compare" }
+
+  - trigger: "keywords"
+    keywords: ["报告", "PPT", "汇报", "演示"]
+    suggestions:
+      - { icon: "📋", label: "生成分析报告", skill: "report-gen" }
+      - { icon: "📊", label: "生成PPT", skill: "pptx" }
+      - { icon: "📄", label: "生成Word", skill: "docx" }
+
+  - trigger: "analysis_complete"
+    suggestions:
+      - { icon: "💾", label: "导出Excel", skill: "xlsx" }
+      - { icon: "📋", label: "生成报告", skill: "report-gen" }
+      - { icon: "📊", label: "生成PPT", skill: "pptx" }
+
+# Welcome page quick actions
+welcome_actions:
+  - icon: "📊"
+    title: "分析数据"
+    description: "上传Excel/CSV，获得洞察"
+    prompt: "请帮我分析上传的数据文件，包括数据概览、统计摘要、分布分析和关键发现。"
+
+  - icon: "📈"
+    title: "预测趋势"
+    description: "基于历史数据预测未来走势"
+    prompt: "请基于我提供的历史数据，建立预测模型，预测未来趋势。"
+
+  - icon: "📋"
+    title: "生成报告"
+    description: "将分析结果变成报告或PPT"
+    prompt: "请将分析结果整理成一份完整的分析报告。"
+
+  - icon: "🔧"
+    title: "处理文档"
+    description: "PDF提取/翻译/批量处理"
+    prompt: "请帮我处理上传的文档。"

@@ -57,6 +57,12 @@ if [ ! -f "${SHARED_DIR}/config/toolbox-config.yaml" ] && [ -f "${CONFIG_SRC}/to
     echo "[init] Installed toolbox-config.yaml"
 fi
 
+# Skill creation policy
+if [ ! -f "${SHARED_DIR}/config/skill-policy.yaml" ] && [ -f "${CONFIG_SRC}/skill-policy.yaml" ]; then
+    cp "${CONFIG_SRC}/skill-policy.yaml" "${SHARED_DIR}/config/skill-policy.yaml"
+    echo "[init] Installed skill-policy.yaml"
+fi
+
 # ----- Step 4: Verify Environment -----
 echo "[init] Verifying environment..."
 

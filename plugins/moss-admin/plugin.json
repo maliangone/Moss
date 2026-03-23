@@ -1,0 +1,13 @@
+{
+  "name": "moss-admin",
+  "displayName": "Moss 管理后台",
+  "version": "1.0.0",
+  "description": "Enterprise AI Agent Platform — Admin dashboard for skill management, user provisioning, usage monitoring, and security policies",
+  "author": "Moss AI Platform",
+  "icon": "⚙️",
+  "type": "react",
+  "slot": "tab",
+  "entry": "src/index.jsx",
+  "server": "src/server.js",
+  "permissions": ["read", "write"]
+}

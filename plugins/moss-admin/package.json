@@ -1,0 +1,11 @@
+{
+  "name": "moss-admin",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Moss AI Agent Platform — Admin dashboard plugin for CloudCLI",
+  "main": "src/server.js",
+  "dependencies": {
+    "express": "^4.18.2",
+    "js-yaml": "^4.1.0"
+  }
+}
