@@ -1,0 +1,8 @@
+.git
+.env
+docs/
+*.zip
+nginx/certs/
+nginx/htpasswd
+*.md
+!config/CLAUDE.md

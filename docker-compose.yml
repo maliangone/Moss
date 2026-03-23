@@ -1,0 +1,118 @@
+# =============================================================================
+# Moss AI Agent Platform — Docker Compose
+#
+# Services:
+#   moss   - Main AI agent container (Claude Code CLI + CloudCLI + Python)
+#   nginx  - Reverse proxy with TLS + basic auth
+#
+# Usage:
+#   cp .env.example .env            # Configure API keys
+#   ./scripts/generate-certs.sh     # Generate self-signed TLS certs
+#   docker compose build            # Build the image
+#   docker compose up -d            # Start services
+#   docker compose logs -f moss     # Watch logs
+# =============================================================================
+
+services:
+  # ===== Main AI Agent Container =====
+  moss:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: moss-agent
+    restart: unless-stopped
+
+    # --- Security ---
+    # Run as non-root user (UID 1000)
+    user: "0:0"  # Start as root for iptables, entrypoint drops to agent user
+    cap_drop:
+      - ALL
+    cap_add:
+      - NET_ADMIN  # Required for iptables firewall setup; used only at startup
+    security_opt:
+      - no-new-privileges:true
+
+    # --- Resource Limits ---
+    mem_limit: ${MEMORY_LIMIT:-8g}
+    cpus: ${CPU_LIMIT:-4}
+
+    # --- Filesystem ---
+    # Read-only root filesystem with specific writable areas
+    read_only: true
+    tmpfs:
+      - /tmp:rw,noexec,nosuid,size=2g
+      - /home/agent/.npm:rw,size=256m
+
+    # --- Environment ---
+    environment:
+      - ANTHROPIC_API_KEY=${ANTHROPIC_API_KEY}
+      - ANTHROPIC_BASE_URL=${ANTHROPIC_BASE_URL:-}
+      - SERVER_PORT=${SERVER_PORT:-3001}
+      - HOST=${HOST:-0.0.0.0}
+      - CONTEXT_WINDOW=${CONTEXT_WINDOW:-160000}
+      - HOME=/home/agent
+
+    # --- Volumes ---
+    volumes:
+      # Persistent storage for user workspaces, skills, and shared config
+      - persistent-data:/persistent:rw
+      # CloudCLI database (session state, credentials)
+      - cloudcli-data:/app/cloudcli/data:rw
+
+    # --- Network ---
+    # Only expose to localhost; nginx provides external access
+    ports:
+      - "127.0.0.1:3001:3001"
+    networks:
+      - moss-net
+
+    # --- Health Check ---
+    healthcheck:
+      test: ["CMD", "curl", "-sf", "http://localhost:3001/"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 30s
+
+  # ===== Nginx Reverse Proxy =====
+  nginx:
+    image: nginx:alpine
+    container_name: moss-nginx
+    restart: unless-stopped
+
+    ports:
+      - "443:443"
+      - "80:80"
+
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./nginx/htpasswd:/etc/nginx/htpasswd:ro
+      - ./nginx/certs:/etc/nginx/certs:ro
+
+    depends_on:
+      moss:
+        condition: service_healthy
+
+    networks:
+      - moss-net
+
+    healthcheck:
+      test: ["CMD", "curl", "-sfk", "https://localhost/health"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+
+# ===== Networks =====
+networks:
+  moss-net:
+    driver: bridge
+
+# ===== Volumes =====
+volumes:
+  # User workspaces, personal skills, shared enterprise skills
+  persistent-data:
+    driver: local
+
+  # CloudCLI internal database
+  cloudcli-data:
+    driver: local
