@@ -56,7 +56,7 @@ export default function SettingsSidebar({ activeTab, onChange }: SettingsSidebar
             className="flex w-full items-center gap-3 rounded-lg px-3 py-2.5 text-left text-sm font-medium text-muted-foreground transition-colors duration-150 hover:bg-destructive/10 hover:text-destructive active:bg-destructive/10"
           >
             <LogOut className="h-4 w-4 flex-shrink-0" />
-            Sign Out
+            {t('navigation.logout', { ns: 'common' })}
           </button>
         </div>
       </aside>
