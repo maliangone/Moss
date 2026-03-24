@@ -233,7 +233,7 @@
     "startSession": "開始新的 Claude 工作階段",
     "resumeSession": "繼續工作階段：{{displayName}}...",
     "runCommand": "在 {{projectName}} 中執行 {{command}}",
-    "startCli": "在 {{projectName}} 中啟動 Claude CLI",
+    "startCli": "在 {{projectName}} 中啟動 AI 工作階段",
     "defaultCommand": "指令"
   },
   "claudeStatus": {

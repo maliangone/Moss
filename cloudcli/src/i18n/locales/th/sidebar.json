@@ -12,12 +12,12 @@
     "all": "ทั้งหมด",
     "untitledSession": "เซสชันไม่มีชื่อ",
     "newSession": "เซสชันใหม่",
-    "codexSession": "เซสชัน Codex",
-    "fetchingProjects": "กำลังดึงข้อมูลโปรเจกต์และเซสชัน Claude ของคุณ",
+    "codexSession": "เซสชัน AI",
+    "fetchingProjects": "กำลังดึงข้อมูลพื้นที่ทำงานของคุณ",
     "projects": "โปรเจกต์",
     "noMatchingProjects": "ไม่พบโปรเจกต์ที่ตรงกัน",
     "tryDifferentSearch": "ลองปรับคำค้นหาของคุณ",
-    "runClaudeCli": "รัน Claude CLI ในไดเรกทอรีโปรเจกต์เพื่อเริ่มต้น"
+    "runClaudeCli": "สร้างพื้นที่ทำงานเพื่อเริ่มต้น"
   },
   "app": {
     "title": "Moss AI",

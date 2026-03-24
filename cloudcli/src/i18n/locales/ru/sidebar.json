@@ -12,16 +12,16 @@
     "all": "Все",
     "untitledSession": "Безымянный сеанс",
     "newSession": "Новый сеанс",
-    "codexSession": "Сеанс Codex",
-    "fetchingProjects": "Получение ваших проектов и сеансов Claude",
+    "codexSession": "Сеанс AI",
+    "fetchingProjects": "Получение ваших рабочих областей",
     "projects": "проекты",
     "noMatchingProjects": "Нет подходящих проектов",
     "tryDifferentSearch": "Попробуйте изменить поисковый запрос",
-    "runClaudeCli": "Запустите Claude CLI в каталоге проекта для начала работы"
+    "runClaudeCli": "Создайте рабочую область для начала работы"
   },
   "app": {
-    "title": "Claude Code UI",
-    "subtitle": "Интерфейс AI помощника для программирования"
+    "title": "Moss AI",
+    "subtitle": "Корпоративный AI-ассистент"
   },
   "sessions": {
     "title": "Сеансы",

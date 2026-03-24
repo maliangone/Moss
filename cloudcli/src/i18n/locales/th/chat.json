@@ -233,7 +233,7 @@
     "startSession": "เริ่มเซสชัน Claude ใหม่",
     "resumeSession": "ดำเนินการเซสชัน: {{displayName}}...",
     "runCommand": "รัน {{command}} ใน {{projectName}}",
-    "startCli": "กำลังเริ่ม Claude CLI ใน {{projectName}}",
+    "startCli": "กำลังเริ่ม AI เซสชันใน {{projectName}}",
     "defaultCommand": "คำสั่ง"
   },
   "claudeStatus": {

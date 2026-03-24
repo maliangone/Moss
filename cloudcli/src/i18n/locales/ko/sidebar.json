@@ -12,16 +12,16 @@
     "all": "전체",
     "untitledSession": "제목 없는 세션",
     "newSession": "새 세션",
-    "codexSession": "Codex 세션",
-    "fetchingProjects": "Claude 프로젝트와 세션을 가져오는 중",
+    "codexSession": "AI 세션",
+    "fetchingProjects": "작업 공간을 가져오는 중",
     "projects": "프로젝트",
     "noMatchingProjects": "일치하는 프로젝트 없음",
     "tryDifferentSearch": "검색어를 변경해보세요",
-    "runClaudeCli": "프로젝트 디렉토리에서 Claude CLI를 실행하여 시작하세요"
+    "runClaudeCli": "시작하려면 작업 공간을 만드세요"
   },
   "app": {
-    "title": "Claude Code UI",
-    "subtitle": "AI 코딩 어시스턴트 UI"
+    "title": "Moss AI",
+    "subtitle": "기업용 AI 어시스턴트"
   },
   "sessions": {
     "title": "세션",

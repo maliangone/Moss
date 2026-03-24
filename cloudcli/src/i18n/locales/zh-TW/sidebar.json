@@ -12,12 +12,12 @@
     "all": "全部",
     "untitledSession": "未命名工作階段",
     "newSession": "新工作階段",
-    "codexSession": "Codex 工作階段",
-    "fetchingProjects": "正在擷取您的 Claude 專案和工作階段",
+    "codexSession": "AI 工作階段",
+    "fetchingProjects": "正在擷取您的工作區",
     "projects": "個專案",
     "noMatchingProjects": "找不到相符的專案",
     "tryDifferentSearch": "請嘗試調整您的搜尋詞",
-    "runClaudeCli": "在專案目錄中執行 Claude CLI 以開始"
+    "runClaudeCli": "建立工作區以開始"
   },
   "app": {
     "title": "Moss AI",

@@ -12,16 +12,16 @@
     "all": "Alle",
     "untitledSession": "Unbenannte Sitzung",
     "newSession": "Neue Sitzung",
-    "codexSession": "Codex-Sitzung",
-    "fetchingProjects": "Deine Claude-Projekte und -Sitzungen werden abgerufen",
+    "codexSession": "KI-Sitzung",
+    "fetchingProjects": "Arbeitsbereiche werden abgerufen",
     "projects": "Projekte",
     "noMatchingProjects": "Keine passenden Projekte",
     "tryDifferentSearch": "Versuch, den Suchbegriff anzupassen",
-    "runClaudeCli": "Führ Claude CLI in einem Projektverzeichnis aus, um zu beginnen"
+    "runClaudeCli": "Erstell einen Arbeitsbereich, um zu beginnen"
   },
   "app": {
-    "title": "Claude Code UI",
-    "subtitle": "KI-Programmierassistent-Oberfläche"
+    "title": "Moss AI",
+    "subtitle": "Unternehmens-KI-Assistent"
   },
   "sessions": {
     "title": "Sitzungen",

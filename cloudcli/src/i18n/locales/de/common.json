@@ -84,10 +84,10 @@
     "openInEditor": "Im Editor öffnen"
   },
   "mainContent": {
-    "loading": "Claude Code UI wird geladen",
+    "loading": "Moss AI wird geladen",
     "settingUpWorkspace": "Arbeitsbereich wird eingerichtet...",
     "chooseProject": "Projekt auswählen",
-    "selectProjectDescription": "Wähl ein Projekt aus der Seitenleiste, um mit Claude zu programmieren. Jedes Projekt enthält deine Chat-Sitzungen und den Dateiverlauf.",
+    "selectProjectDescription": "Wähl einen Arbeitsbereich aus der Seitenleiste, um zu beginnen. Jeder Arbeitsbereich enthält deine Unterhaltungen und Dateien.",
     "tip": "Tipp",
     "createProjectMobile": "Tipp oben auf die Menüschaltfläche, um auf Projekte zuzugreifen",
     "createProjectDesktop": "Erstell ein neues Projekt, indem du auf das Ordnersymbol in der Seitenleiste klickst",

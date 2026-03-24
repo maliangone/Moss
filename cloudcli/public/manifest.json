@@ -1,7 +1,7 @@
 {
-  "name": "CloudCLI UI",
-  "short_name": "CloudCLI UI",
-  "description": "CloudCLI UI web application",
+  "name": "Moss AI",
+  "short_name": "Moss AI",
+  "description": "Moss AI enterprise agent platform",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#ffffff",
