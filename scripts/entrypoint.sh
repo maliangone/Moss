@@ -114,6 +114,19 @@ if [ ! -f /home/agent/.claude/settings.json ] && [ -f "${CONFIG_SRC}/settings.js
     echo "[init] Installed Claude Code settings.json to ~/.claude/"
 fi
 
+# ----- Step 5b: Install Moss plugins into CloudCLI plugin directory -----
+CLOUDCLI_PLUGINS_DIR="/home/agent/.claude-code-ui/plugins"
+mkdir -p "${CLOUDCLI_PLUGINS_DIR}"
+for plugin_dir in /app/cloudcli/plugins/moss-*/; do
+    plugin_name="$(basename "$plugin_dir")"
+    target="${CLOUDCLI_PLUGINS_DIR}/${plugin_name}"
+    if [ ! -d "$target" ]; then
+        cp -r "$plugin_dir" "$target"
+        echo "[init] Installed plugin: ${plugin_name}"
+    fi
+done
+chown -R agent:agent /home/agent/.claude-code-ui
+
 # ----- Step 6: Schedule session cleanup (runs hourly in background) -----
 if command -v find &> /dev/null; then
     echo "[init] Starting session cleanup background job (hourly)..."

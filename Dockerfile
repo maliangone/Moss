@@ -76,20 +76,17 @@ RUN pip install --no-cache-dir \
 FROM node:20-slim AS cloudcli-build
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
-    git \
-    ca-certificates \
     python3 \
     make \
     g++ \
     && rm -rf /var/lib/apt/lists/*
 
-# Clone CloudCLI (siteboon/claudecodeui)
+# Copy internalized CloudCLI source (no external git dependency)
 WORKDIR /build
-RUN git clone --depth 1 https://github.com/siteboon/claudecodeui.git .
+COPY cloudcli/ .
 
 # Install dependencies and build
 RUN npm install
-# Build CloudCLI if build script exists; skip gracefully for repos without one
 RUN if grep -q '"build"' package.json 2>/dev/null; then npm run build; fi
 
 

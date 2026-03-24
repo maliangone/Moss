@@ -66,6 +66,8 @@ services:
       - cloudcli-data:/app/cloudcli/data:rw
       # Claude Code user data (skills, sessions, project configs)
       - claude-data:/home/agent/.claude:rw
+      # CloudCLI plugin data (installed plugins, plugin config)
+      - cloudcli-plugins:/home/agent/.claude-code-ui:rw
 
     # --- Network ---
     # Only expose to localhost; nginx provides external access
@@ -127,4 +129,8 @@ volumes:
 
   # Claude Code data (skills, sessions, project configs)
   claude-data:
+    driver: local
+
+  # CloudCLI plugin data (Moss plugins, plugin state)
+  cloudcli-plugins:
     driver: local
