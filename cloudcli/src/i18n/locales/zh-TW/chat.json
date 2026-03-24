@@ -1,0 +1,272 @@
+{
+  "codeBlock": {
+    "copy": "複製",
+    "copied": "已複製",
+    "copyCode": "複製程式碼"
+  },
+  "copyMessage": {
+    "copy": "複製訊息",
+    "copied": "訊息已複製",
+    "selectFormat": "選擇複製格式",
+    "copyAsMarkdown": "以 Markdown 格式複製",
+    "copyAsText": "以純文字複製"
+  },
+  "messageTypes": {
+    "user": "U",
+    "error": "錯誤",
+    "tool": "工具",
+    "claude": "Claude",
+    "cursor": "Cursor",
+    "codex": "Codex",
+    "gemini": "Gemini"
+  },
+  "tools": {
+    "settings": "工具設定",
+    "error": "工具錯誤",
+    "result": "工具結果",
+    "viewParams": "查看輸入參數",
+    "viewRawParams": "查看原始參數",
+    "viewDiff": "查看編輯差異：",
+    "creatingFile": "正在建立新檔案：",
+    "updatingTodo": "正在更新待辦清單",
+    "read": "讀取",
+    "readFile": "讀取檔案",
+    "updateTodo": "更新待辦清單",
+    "readTodo": "讀取待辦清單",
+    "searchResults": "個結果"
+  },
+  "search": {
+    "found": "找到 {{count}} 個{{type}}",
+    "file": "檔案",
+    "files": "檔案",
+    "pattern": "模式：",
+    "in": "位於："
+  },
+  "fileOperations": {
+    "updated": "檔案更新成功",
+    "created": "檔案建立成功",
+    "written": "檔案寫入成功",
+    "diff": "差異",
+    "newFile": "新檔案",
+    "viewContent": "查看檔案內容",
+    "viewFullOutput": "查看完整輸出（{{count}} 個字元）",
+    "contentDisplayed": "檔案內容顯示在上方的差異視圖中"
+  },
+  "interactive": {
+    "title": "互動提示",
+    "waiting": "在 CLI 中等待您的回應",
+    "instruction": "請在 Claude 正在執行的終端機中選擇選項。",
+    "selectedOption": "✓ Claude 選擇了選項 {{number}}",
+    "instructionDetail": "在 CLI 中，您可以使用方向鍵或輸入數字以互動方式選擇此選項。"
+  },
+  "thinking": {
+    "title": "思考中...",
+    "emoji": "💭 思考中..."
+  },
+  "json": {
+    "response": "JSON 回應"
+  },
+  "permissions": {
+    "grant": "授予 {{tool}} 權限",
+    "added": "已新增權限",
+    "addTo": "將 {{entry}} 新增至允許的工具。",
+    "retry": "權限已儲存。重試請求以使用該工具。",
+    "error": "無法更新權限，請重試。",
+    "openSettings": "開啟設定"
+  },
+  "todo": {
+    "updated": "待辦清單已成功更新",
+    "current": "目前待辦清單"
+  },
+  "plan": {
+    "viewPlan": "📋 查看實作計劃",
+    "title": "實作計劃"
+  },
+  "usageLimit": {
+    "resetAt": "已達到 Claude 使用上限。您的限制將於 **{{time}} {{timezone}}** - {{date}} 重置"
+  },
+  "codex": {
+    "permissionMode": "權限模式",
+    "modes": {
+      "default": "預設模式",
+      "acceptEdits": "接受編輯",
+      "bypassPermissions": "略過權限",
+      "plan": "計劃模式"
+    },
+    "descriptions": {
+      "default": "只有受信任的指令（ls、cat、grep、git status 等）會自動執行。其他指令將被略過。可寫入工作區。",
+      "acceptEdits": "所有指令在工作區內自動執行。沙盒執行的完全自動模式。",
+      "bypassPermissions": "不受限制的完全系統存取。所有指令自動執行，具有完整磁碟和網路存取權。請謹慎使用。",
+      "plan": "計劃模式 — 不執行任何指令"
+    },
+    "technicalDetails": "技術細節"
+  },
+  "gemini": {
+    "permissionMode": "Gemini 權限模式",
+    "description": "控制 Gemini CLI 如何處理操作審批。",
+    "modes": {
+      "default": {
+        "title": "標準（要求審批）",
+        "description": "Gemini 在執行指令、寫入檔案和擷取網路資源前會提示審批。"
+      },
+      "autoEdit": {
+        "title": "自動編輯（略過檔案審批）",
+        "description": "Gemini 將自動核准檔案編輯和網路擷取，但仍會提示 shell 指令。"
+      },
+      "yolo": {
+        "title": "YOLO（略過所有權限）",
+        "description": "Gemini 將執行所有操作而不要求審批。請謹慎操作。"
+      }
+    }
+  },
+  "input": {
+    "placeholder": "有什麼問題嗎 — 資料分析、報告、預測...",
+    "placeholderDefault": "有什麼問題嗎 — 資料分析、報告、預測...",
+    "disabled": "輸入已停用",
+    "attachFiles": "附加檔案",
+    "attachImages": "附加圖片",
+    "send": "傳送",
+    "stop": "停止",
+    "hintText": {
+      "ctrlEnter": "Ctrl+Enter 傳送 • Shift+Enter 換行",
+      "enter": "Enter 傳送 • Shift+Enter 換行"
+    },
+    "clickToChangeMode": "點擊以變更權限模式（或在輸入框按 Tab）",
+    "showAllCommands": "顯示所有指令",
+    "clearInput": "清除輸入",
+    "scrollToBottom": "捲動至底部"
+  },
+  "thinkingMode": {
+    "selector": {
+      "title": "思考模式",
+      "description": "延伸思考讓 Claude 有更多時間評估替代方案",
+      "active": "已啟用",
+      "tip": "較高的思考模式需要更多時間，但能提供更深入的分析"
+    },
+    "modes": {
+      "none": {
+        "name": "標準",
+        "description": "一般 Claude 回應",
+        "prefix": ""
+      },
+      "think": {
+        "name": "思考",
+        "description": "基本延伸思考",
+        "prefix": "think"
+      },
+      "thinkHard": {
+        "name": "深度思考",
+        "description": "更深入的評估",
+        "prefix": "think hard"
+      },
+      "thinkHarder": {
+        "name": "更深度思考",
+        "description": "深入分析與替代方案",
+        "prefix": "think harder"
+      },
+      "ultrathink": {
+        "name": "超級思考",
+        "description": "最大思考預算",
+        "prefix": "ultrathink"
+      }
+    },
+    "buttonTitle": "思考模式：{{mode}}"
+  },
+  "providerSelection": {
+    "title": "Moss AI",
+    "description": "企業 AI 助理",
+    "selectModel": "選擇模型",
+    "providerInfo": {
+      "anthropic": "由 Anthropic",
+      "openai": "由 OpenAI",
+      "cursorEditor": "AI 程式碼編輯器",
+      "google": "由 Google"
+    },
+    "readyPrompt": {
+      "claude": "已準備好使用 Claude 搭配 {{model}}。請在下方輸入您的訊息。",
+      "cursor": "已準備好使用 Cursor 搭配 {{model}}。請在下方輸入您的訊息。",
+      "codex": "已準備好使用 Codex 搭配 {{model}}。請在下方輸入您的訊息。",
+      "gemini": "已準備好使用 Gemini 搭配 {{model}}。請在下方輸入您的訊息。",
+      "default": "請在上方選擇提供者以開始"
+    }
+  },
+  "session": {
+    "continue": {
+      "title": "繼續您的對話",
+      "description": "詢問有關您資料的問題、請求分析或取得報告協助"
+    },
+    "loading": {
+      "olderMessages": "正在載入較早的訊息...",
+      "sessionMessages": "正在載入工作階段訊息..."
+    },
+    "messages": {
+      "showingOf": "顯示 {{shown}} / {{total}} 條訊息",
+      "scrollToLoad": "向上捲動以載入更多",
+      "showingLast": "顯示最新 {{count}} 條訊息（共 {{total}} 條）",
+      "loadEarlier": "載入較早的訊息",
+      "loadAll": "載入所有訊息",
+      "loadingAll": "正在載入所有訊息...",
+      "allLoaded": "所有訊息已載入",
+      "perfWarning": "所有訊息已載入 — 捲動可能較慢。點擊「捲動至底部」以恢復效能。"
+    }
+  },
+  "shell": {
+    "selectProject": {
+      "title": "選擇專案",
+      "description": "選擇一個專案以在該目錄中開啟互動式 shell"
+    },
+    "status": {
+      "newSession": "新工作階段",
+      "initializing": "初始化中...",
+      "restarting": "重新啟動中..."
+    },
+    "actions": {
+      "disconnect": "中斷連線",
+      "disconnectTitle": "中斷 shell 連線",
+      "restart": "重新啟動",
+      "restartTitle": "重新啟動 Shell（先中斷連線）",
+      "connect": "在 Shell 中繼續",
+      "connectTitle": "連接到 shell"
+    },
+    "loading": "正在載入終端機...",
+    "connecting": "正在連接到 shell...",
+    "startSession": "開始新的 Claude 工作階段",
+    "resumeSession": "繼續工作階段：{{displayName}}...",
+    "runCommand": "在 {{projectName}} 中執行 {{command}}",
+    "startCli": "在 {{projectName}} 中啟動 Claude CLI",
+    "defaultCommand": "指令"
+  },
+  "claudeStatus": {
+    "actions": {
+      "thinking": "思考中",
+      "processing": "處理中",
+      "analyzing": "分析中",
+      "working": "工作中",
+      "computing": "運算中",
+      "reasoning": "推理中"
+    },
+    "state": {
+      "live": "執行中",
+      "paused": "已暫停"
+    },
+    "elapsed": {
+      "seconds": "{{count}} 秒",
+      "minutesSeconds": "{{minutes}} 分 {{seconds}} 秒",
+      "label": "已過 {{time}}",
+      "startingNow": "正在啟動"
+    },
+    "controls": {
+      "stopGeneration": "停止生成",
+      "pressEscToStop": "隨時按 Esc 停止"
+    },
+    "providers": {
+      "assistant": "助理"
+    }
+  },
+  "projectSelection": {
+    "startChatWithProvider": "選擇一個專案以開始與 {{provider}} 對話"
+  },
+  "tasks": {
+    "nextTaskPrompt": "開始下一個任務"
+  }
+}

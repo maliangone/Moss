@@ -67,6 +67,24 @@ import deCodeEditor from './locales/de/codeEditor.json';
 // eslint-disable-next-line import-x/order
 import deTasks from './locales/de/tasks.json';
 
+import zhTWCommon from './locales/zh-TW/common.json';
+import zhTWSettings from './locales/zh-TW/settings.json';
+import zhTWAuth from './locales/zh-TW/auth.json';
+import zhTWSidebar from './locales/zh-TW/sidebar.json';
+import zhTWChat from './locales/zh-TW/chat.json';
+import zhTWCodeEditor from './locales/zh-TW/codeEditor.json';
+// eslint-disable-next-line import-x/order
+import zhTWTasks from './locales/zh-TW/tasks.json';
+
+import thCommon from './locales/th/common.json';
+import thSettings from './locales/th/settings.json';
+import thAuth from './locales/th/auth.json';
+import thSidebar from './locales/th/sidebar.json';
+import thChat from './locales/th/chat.json';
+import thCodeEditor from './locales/th/codeEditor.json';
+// eslint-disable-next-line import-x/order
+import thTasks from './locales/th/tasks.json';
+
 // Import supported languages configuration
 import { languages } from './languages.js';
 
@@ -142,6 +160,24 @@ i18n
         chat: deChat,
         codeEditor: deCodeEditor,
         tasks: deTasks,
+      },
+      'zh-TW': {
+        common: zhTWCommon,
+        settings: zhTWSettings,
+        auth: zhTWAuth,
+        sidebar: zhTWSidebar,
+        chat: zhTWChat,
+        codeEditor: zhTWCodeEditor,
+        tasks: zhTWTasks,
+      },
+      th: {
+        common: thCommon,
+        settings: thSettings,
+        auth: thAuth,
+        sidebar: thSidebar,
+        chat: thChat,
+        codeEditor: thCodeEditor,
+        tasks: thTasks,
       },
     },
 

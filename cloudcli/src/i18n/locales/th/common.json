@@ -1,0 +1,268 @@
+{
+  "buttons": {
+    "save": "บันทึก",
+    "cancel": "ยกเลิก",
+    "delete": "ลบ",
+    "create": "สร้าง",
+    "edit": "แก้ไข",
+    "close": "ปิด",
+    "confirm": "ยืนยัน",
+    "submit": "ส่ง",
+    "retry": "ลองใหม่",
+    "refresh": "รีเฟรช",
+    "search": "ค้นหา",
+    "clear": "ล้าง",
+    "copy": "คัดลอก",
+    "download": "ดาวน์โหลด",
+    "upload": "อัปโหลด",
+    "browse": "เรียกดู"
+  },
+  "tabs": {
+    "chat": "แชท",
+    "shell": "Shell",
+    "files": "ไฟล์",
+    "git": "การควบคุมซอร์สโค้ด",
+    "tasks": "งาน"
+  },
+  "status": {
+    "loading": "กำลังโหลด...",
+    "success": "สำเร็จ",
+    "error": "ข้อผิดพลาด",
+    "failed": "ล้มเหลว",
+    "pending": "รอดำเนินการ",
+    "completed": "เสร็จสิ้น",
+    "inProgress": "กำลังดำเนินการ"
+  },
+  "messages": {
+    "savedSuccessfully": "บันทึกสำเร็จ",
+    "deletedSuccessfully": "ลบสำเร็จ",
+    "updatedSuccessfully": "อัปเดตสำเร็จ",
+    "operationFailed": "การดำเนินการล้มเหลว",
+    "networkError": "เกิดข้อผิดพลาดของเครือข่าย กรุณาตรวจสอบการเชื่อมต่อของคุณ",
+    "unauthorized": "ไม่ได้รับอนุญาต กรุณาเข้าสู่ระบบ",
+    "notFound": "ไม่พบ",
+    "invalidInput": "อินพุตไม่ถูกต้อง",
+    "requiredField": "ช่องนี้จำเป็นต้องกรอก",
+    "unknownError": "เกิดข้อผิดพลาดที่ไม่รู้จัก"
+  },
+  "navigation": {
+    "settings": "การตั้งค่า",
+    "home": "หน้าหลัก",
+    "back": "ย้อนกลับ",
+    "next": "ถัดไป",
+    "previous": "ก่อนหน้า",
+    "logout": "ออกจากระบบ"
+  },
+  "common": {
+    "language": "ภาษา",
+    "theme": "ธีม",
+    "darkMode": "โหมดมืด",
+    "lightMode": "โหมดสว่าง",
+    "name": "ชื่อ",
+    "description": "คำอธิบาย",
+    "enabled": "เปิดใช้งาน",
+    "disabled": "ปิดใช้งาน",
+    "optional": "ไม่บังคับ",
+    "version": "เวอร์ชัน",
+    "select": "เลือก",
+    "selectAll": "เลือกทั้งหมด",
+    "deselectAll": "ยกเลิกการเลือกทั้งหมด"
+  },
+  "time": {
+    "justNow": "เมื่อสักครู่",
+    "minutesAgo": "{{count}} นาทีที่แล้ว",
+    "hoursAgo": "{{count}} ชั่วโมงที่แล้ว",
+    "daysAgo": "{{count}} วันที่แล้ว",
+    "yesterday": "เมื่อวานนี้"
+  },
+  "fileOperations": {
+    "newFile": "ไฟล์ใหม่",
+    "newFolder": "โฟลเดอร์ใหม่",
+    "rename": "เปลี่ยนชื่อ",
+    "move": "ย้าย",
+    "copyPath": "คัดลอกพาธ",
+    "openInEditor": "เปิดในโปรแกรมแก้ไข"
+  },
+  "mainContent": {
+    "loading": "กำลังโหลด Moss AI",
+    "settingUpWorkspace": "กำลังตั้งค่าพื้นที่ทำงานของคุณ...",
+    "chooseProject": "เลือกพื้นที่ทำงานของคุณ",
+    "selectProjectDescription": "เลือกพื้นที่ทำงานจากแถบด้านข้างเพื่อเริ่มต้น แต่ละพื้นที่ทำงานมีการสนทนาและไฟล์ของคุณ",
+    "tip": "เคล็ดลับ",
+    "createProjectMobile": "แตะปุ่มเมนูด้านบนเพื่อเข้าถึงโปรเจกต์",
+    "createProjectDesktop": "สร้างโปรเจกต์ใหม่โดยคลิกไอคอนโฟลเดอร์ในแถบด้านข้าง",
+    "newSession": "เซสชันใหม่",
+    "untitledSession": "เซสชันไม่มีชื่อ",
+    "projectFiles": "ไฟล์โปรเจกต์"
+  },
+  "fileTree": {
+    "loading": "กำลังโหลดไฟล์...",
+    "files": "ไฟล์",
+    "simpleView": "มุมมองแบบง่าย",
+    "compactView": "มุมมองแบบกะทัดรัด",
+    "detailedView": "มุมมองแบบละเอียด",
+    "searchPlaceholder": "ค้นหาไฟล์และโฟลเดอร์...",
+    "clearSearch": "ล้างการค้นหา",
+    "name": "ชื่อ",
+    "size": "ขนาด",
+    "modified": "แก้ไขล่าสุด",
+    "permissions": "สิทธิ์",
+    "noFilesFound": "ไม่พบไฟล์",
+    "checkProjectPath": "ตรวจสอบว่าพาธโปรเจกต์สามารถเข้าถึงได้",
+    "noMatchesFound": "ไม่พบรายการที่ตรงกัน",
+    "tryDifferentSearch": "ลองค้นหาด้วยคำอื่นหรือล้างการค้นหา",
+    "justNow": "เมื่อสักครู่",
+    "minAgo": "{{count}} นาทีที่แล้ว",
+    "hoursAgo": "{{count}} ชั่วโมงที่แล้ว",
+    "daysAgo": "{{count}} วันที่แล้ว",
+    "newFile": "ไฟล์ใหม่ (Cmd+N)",
+    "newFolder": "โฟลเดอร์ใหม่ (Cmd+Shift+N)",
+    "refresh": "รีเฟรช",
+    "collapseAll": "ยุบทั้งหมด",
+    "context": {
+      "rename": "เปลี่ยนชื่อ",
+      "delete": "ลบ",
+      "copyPath": "คัดลอกพาธ",
+      "download": "ดาวน์โหลด",
+      "newFile": "ไฟล์ใหม่",
+      "newFolder": "โฟลเดอร์ใหม่",
+      "refresh": "รีเฟรช",
+      "menuLabel": "เมนูบริบทไฟล์",
+      "loading": "กำลังโหลด..."
+    }
+  },
+  "projectWizard": {
+    "title": "สร้างโปรเจกต์ใหม่",
+    "steps": {
+      "type": "ประเภท",
+      "configure": "กำหนดค่า",
+      "confirm": "ยืนยัน"
+    },
+    "step1": {
+      "question": "คุณมีพื้นที่ทำงานอยู่แล้วหรือต้องการสร้างใหม่?",
+      "existing": {
+        "title": "พื้นที่ทำงานที่มีอยู่",
+        "description": "ฉันมีพื้นที่ทำงานบนเซิร์ฟเวอร์แล้วและต้องการเพิ่มลงในรายการโปรเจกต์"
+      },
+      "new": {
+        "title": "พื้นที่ทำงานใหม่",
+        "description": "สร้างพื้นที่ทำงานใหม่ โดยเลือกโคลนจาก GitHub repository ได้"
+      }
+    },
+    "step2": {
+      "existingPath": "พาธพื้นที่ทำงาน",
+      "newPath": "พาธพื้นที่ทำงาน",
+      "existingPlaceholder": "/path/to/existing/workspace",
+      "newPlaceholder": "/path/to/new/workspace",
+      "existingHelp": "พาธเต็มของไดเรกทอรีพื้นที่ทำงานที่มีอยู่ของคุณ",
+      "newHelp": "พาธเต็มของไดเรกทอรีพื้นที่ทำงานของคุณ",
+      "githubUrl": "GitHub URL (ไม่บังคับ)",
+      "githubPlaceholder": "https://github.com/username/repository",
+      "githubHelp": "ไม่บังคับ: ระบุ GitHub URL เพื่อโคลน repository",
+      "githubAuth": "การยืนยันตัวตน GitHub (ไม่บังคับ)",
+      "githubAuthHelp": "จำเป็นเฉพาะสำหรับ repository ส่วนตัว Repository สาธารณะสามารถโคลนได้โดยไม่ต้องยืนยันตัวตน",
+      "loadingTokens": "กำลังโหลดโทเค็นที่บันทึกไว้...",
+      "storedToken": "โทเค็นที่บันทึกไว้",
+      "newToken": "โทเค็นใหม่",
+      "nonePublic": "ไม่มี (สาธารณะ)",
+      "selectToken": "เลือกโทเค็น",
+      "selectTokenPlaceholder": "-- เลือกโทเค็น --",
+      "tokenPlaceholder": "ghp_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+      "tokenHelp": "โทเค็นนี้จะใช้เฉพาะสำหรับการดำเนินการนี้เท่านั้น",
+      "publicRepoInfo": "Repository สาธารณะไม่ต้องการการยืนยันตัวตน คุณสามารถข้ามการระบุโทเค็นได้หากโคลน repo สาธารณะ",
+      "noTokensHelp": "ไม่มีโทเค็นที่บันทึกไว้ คุณสามารถเพิ่มโทเค็นใน ตั้งค่า → API Keys เพื่อใช้ซ้ำได้ง่ายขึ้น",
+      "optionalTokenPublic": "GitHub Token (ไม่บังคับสำหรับ repo สาธารณะ)",
+      "tokenPublicPlaceholder": "ghp_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx (ว่างไว้สำหรับ repo สาธารณะ)"
+    },
+    "step3": {
+      "reviewConfig": "ตรวจสอบการกำหนดค่าของคุณ",
+      "workspaceType": "ประเภทพื้นที่ทำงาน:",
+      "existingWorkspace": "พื้นที่ทำงานที่มีอยู่",
+      "newWorkspace": "พื้นที่ทำงานใหม่",
+      "path": "พาธ:",
+      "cloneFrom": "โคลนจาก:",
+      "authentication": "การยืนยันตัวตน:",
+      "usingStoredToken": "ใช้โทเค็นที่บันทึกไว้:",
+      "usingProvidedToken": "ใช้โทเค็นที่ระบุ",
+      "noAuthentication": "ไม่มีการยืนยันตัวตน",
+      "sshKey": "SSH Key",
+      "existingInfo": "พื้นที่ทำงานจะถูกเพิ่มในรายการโปรเจกต์และพร้อมใช้งานสำหรับเซสชัน Claude/Cursor",
+      "newWithClone": "Repository จะถูกโคลนจากโฟลเดอร์นี้",
+      "newEmpty": "พื้นที่ทำงานจะถูกเพิ่มในรายการโปรเจกต์และพร้อมใช้งานสำหรับเซสชัน Claude/Cursor",
+      "cloningRepository": "กำลังโคลน repository..."
+    },
+    "buttons": {
+      "cancel": "ยกเลิก",
+      "back": "ย้อนกลับ",
+      "next": "ถัดไป",
+      "createProject": "สร้างโปรเจกต์",
+      "creating": "กำลังสร้าง...",
+      "cloning": "กำลังโคลน..."
+    },
+    "errors": {
+      "selectType": "กรุณาเลือกว่าคุณมีพื้นที่ทำงานที่มีอยู่หรือต้องการสร้างใหม่",
+      "providePath": "กรุณาระบุพาธพื้นที่ทำงาน",
+      "failedToCreate": "สร้างพื้นที่ทำงานล้มเหลว",
+      "failedToCreateFolder": "สร้างโฟลเดอร์ล้มเหลว"
+    }
+  },
+  "notifications": {
+    "genericTool": "เครื่องมือ",
+    "codes": {
+      "generic": {
+        "info": {
+          "title": "การแจ้งเตือน"
+        }
+      },
+      "permission": {
+        "required": {
+          "title": "ต้องดำเนินการ",
+          "body": "{{toolName}} กำลังรอการตัดสินใจของคุณ"
+        }
+      },
+      "run": {
+        "stopped": {
+          "title": "หยุดการทำงาน",
+          "body": "เหตุผล: {{reason}}"
+        },
+        "failed": {
+          "title": "การทำงานล้มเหลว"
+        }
+      },
+      "agent": {
+        "notification": {
+          "title": "การแจ้งเตือน Agent"
+        }
+      }
+    }
+  },
+  "versionUpdate": {
+    "title": "มีอัปเดตใหม่",
+    "newVersionReady": "เวอร์ชันใหม่พร้อมใช้งาน",
+    "currentVersion": "เวอร์ชันปัจจุบัน",
+    "latestVersion": "เวอร์ชันล่าสุด",
+    "whatsNew": "มีอะไรใหม่:",
+    "viewFullRelease": "ดูรายละเอียดการอัปเดตทั้งหมด",
+    "updateProgress": "ความคืบหน้าการอัปเดต:",
+    "manualUpgrade": "อัปเกรดด้วยตนเอง:",
+    "npmUpgradeCommand": "npm install -g @siteboon/claude-code-ui@latest",
+    "manualUpgradeHint": "หรือคลิก \"อัปเดตทันที\" เพื่อรันการอัปเดตอัตโนมัติ",
+    "updateCompleted": "อัปเดตสำเร็จ!",
+    "restartServer": "กรุณารีสตาร์ทเซิร์ฟเวอร์เพื่อใช้การเปลี่ยนแปลง",
+    "updateFailed": "การอัปเดตล้มเหลว",
+    "buttons": {
+      "close": "ปิด",
+      "later": "ภายหลัง",
+      "copyCommand": "คัดลอกคำสั่ง",
+      "updateNow": "อัปเดตทันที",
+      "updating": "กำลังอัปเดต..."
+    },
+    "ariaLabels": {
+      "closeModal": "ปิดหน้าต่างอัปเกรดเวอร์ชัน",
+      "showSidebar": "แสดงแถบด้านข้าง",
+      "settings": "การตั้งค่า",
+      "updateAvailable": "มีอัปเดตใหม่",
+      "closeSidebar": "ปิดแถบด้านข้าง"
+    }
+  }
+}

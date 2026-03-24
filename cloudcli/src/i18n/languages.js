@@ -39,6 +39,16 @@ export const languages = [
     label: 'German',
     nativeName: 'Deutsch',
   },
+  {
+    value: 'zh-TW',
+    label: 'Traditional Chinese',
+    nativeName: '繁體中文',
+  },
+  {
+    value: 'th',
+    label: 'Thai',
+    nativeName: 'ภาษาไทย',
+  },
 ];
 
 /**

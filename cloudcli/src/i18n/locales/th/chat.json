@@ -1,0 +1,272 @@
+{
+  "codeBlock": {
+    "copy": "คัดลอก",
+    "copied": "คัดลอกแล้ว",
+    "copyCode": "คัดลอกโค้ด"
+  },
+  "copyMessage": {
+    "copy": "คัดลอกข้อความ",
+    "copied": "คัดลอกข้อความแล้ว",
+    "selectFormat": "เลือกรูปแบบการคัดลอก",
+    "copyAsMarkdown": "คัดลอกเป็น Markdown",
+    "copyAsText": "คัดลอกเป็นข้อความ"
+  },
+  "messageTypes": {
+    "user": "U",
+    "error": "ข้อผิดพลาด",
+    "tool": "เครื่องมือ",
+    "claude": "Claude",
+    "cursor": "Cursor",
+    "codex": "Codex",
+    "gemini": "Gemini"
+  },
+  "tools": {
+    "settings": "การตั้งค่าเครื่องมือ",
+    "error": "ข้อผิดพลาดของเครื่องมือ",
+    "result": "ผลลัพธ์ของเครื่องมือ",
+    "viewParams": "ดูพารามิเตอร์อินพุต",
+    "viewRawParams": "ดูพารามิเตอร์ดิบ",
+    "viewDiff": "ดูความแตกต่างของการแก้ไขสำหรับ",
+    "creatingFile": "กำลังสร้างไฟล์ใหม่:",
+    "updatingTodo": "กำลังอัปเดตรายการสิ่งที่ต้องทำ",
+    "read": "อ่าน",
+    "readFile": "อ่านไฟล์",
+    "updateTodo": "อัปเดตรายการสิ่งที่ต้องทำ",
+    "readTodo": "อ่านรายการสิ่งที่ต้องทำ",
+    "searchResults": "ผลลัพธ์"
+  },
+  "search": {
+    "found": "พบ {{count}} {{type}}",
+    "file": "ไฟล์",
+    "files": "ไฟล์",
+    "pattern": "รูปแบบ:",
+    "in": "ใน:"
+  },
+  "fileOperations": {
+    "updated": "อัปเดตไฟล์สำเร็จ",
+    "created": "สร้างไฟล์สำเร็จ",
+    "written": "เขียนไฟล์สำเร็จ",
+    "diff": "ความแตกต่าง",
+    "newFile": "ไฟล์ใหม่",
+    "viewContent": "ดูเนื้อหาไฟล์",
+    "viewFullOutput": "ดูเอาต์พุตทั้งหมด ({{count}} ตัวอักษร)",
+    "contentDisplayed": "เนื้อหาไฟล์แสดงในมุมมองความแตกต่างด้านบน"
+  },
+  "interactive": {
+    "title": "พรอมต์โต้ตอบ",
+    "waiting": "รอการตอบสนองของคุณใน CLI",
+    "instruction": "กรุณาเลือกตัวเลือกในเทอร์มินัลที่ Claude กำลังทำงานอยู่",
+    "selectedOption": "✓ Claude เลือกตัวเลือก {{number}}",
+    "instructionDetail": "ใน CLI คุณสามารถเลือกตัวเลือกนี้แบบโต้ตอบได้โดยใช้ปุ่มลูกศรหรือพิมพ์หมายเลข"
+  },
+  "thinking": {
+    "title": "กำลังคิด...",
+    "emoji": "💭 กำลังคิด..."
+  },
+  "json": {
+    "response": "การตอบสนอง JSON"
+  },
+  "permissions": {
+    "grant": "ให้สิทธิ์สำหรับ {{tool}}",
+    "added": "เพิ่มสิทธิ์แล้ว",
+    "addTo": "เพิ่ม {{entry}} ในเครื่องมือที่อนุญาต",
+    "retry": "บันทึกสิทธิ์แล้ว ลองส่งคำขออีกครั้งเพื่อใช้เครื่องมือ",
+    "error": "ไม่สามารถอัปเดตสิทธิ์ได้ กรุณาลองใหม่อีกครั้ง",
+    "openSettings": "เปิดการตั้งค่า"
+  },
+  "todo": {
+    "updated": "อัปเดตรายการสิ่งที่ต้องทำสำเร็จ",
+    "current": "รายการสิ่งที่ต้องทำปัจจุบัน"
+  },
+  "plan": {
+    "viewPlan": "📋 ดูแผนการดำเนินการ",
+    "title": "แผนการดำเนินการ"
+  },
+  "usageLimit": {
+    "resetAt": "ถึงขีดจำกัดการใช้งาน Claude แล้ว ขีดจำกัดของคุณจะรีเซ็ตที่ **{{time}} {{timezone}}** - {{date}}"
+  },
+  "codex": {
+    "permissionMode": "โหมดสิทธิ์",
+    "modes": {
+      "default": "โหมดเริ่มต้น",
+      "acceptEdits": "ยอมรับการแก้ไข",
+      "bypassPermissions": "ข้ามสิทธิ์",
+      "plan": "โหมดวางแผน"
+    },
+    "descriptions": {
+      "default": "เฉพาะคำสั่งที่เชื่อถือได้ (ls, cat, grep, git status ฯลฯ) เท่านั้นที่ทำงานอัตโนมัติ คำสั่งอื่นจะถูกข้าม สามารถเขียนลงในพื้นที่ทำงานได้",
+      "acceptEdits": "คำสั่งทั้งหมดทำงานอัตโนมัติภายในพื้นที่ทำงาน โหมดอัตโนมัติเต็มรูปแบบพร้อมการทำงานในแซนด์บอกซ์",
+      "bypassPermissions": "การเข้าถึงระบบทั้งหมดโดยไม่มีข้อจำกัด คำสั่งทั้งหมดทำงานอัตโนมัติพร้อมการเข้าถึงดิสก์และเครือข่ายเต็มรูปแบบ ใช้ด้วยความระมัดระวัง",
+      "plan": "โหมดวางแผน - ไม่มีการรันคำสั่งใดๆ"
+    },
+    "technicalDetails": "รายละเอียดทางเทคนิค"
+  },
+  "gemini": {
+    "permissionMode": "โหมดสิทธิ์ Gemini",
+    "description": "ควบคุมวิธีที่ Gemini CLI จัดการการอนุมัติการดำเนินการ",
+    "modes": {
+      "default": {
+        "title": "มาตรฐาน (ขออนุมัติ)",
+        "description": "Gemini จะขออนุมัติก่อนรันคำสั่ง เขียนไฟล์ และดึงข้อมูลเว็บ"
+      },
+      "autoEdit": {
+        "title": "แก้ไขอัตโนมัติ (ข้ามการอนุมัติไฟล์)",
+        "description": "Gemini จะอนุมัติการแก้ไขไฟล์และดึงข้อมูลเว็บโดยอัตโนมัติ แต่ยังคงขออนุมัติสำหรับคำสั่ง shell"
+      },
+      "yolo": {
+        "title": "YOLO (ข้ามสิทธิ์ทั้งหมด)",
+        "description": "Gemini จะรันทุกการดำเนินการโดยไม่ขออนุมัติ กรุณาใช้ด้วยความระมัดระวัง"
+      }
+    }
+  },
+  "input": {
+    "placeholder": "ถามฉันได้เลย — การวิเคราะห์ข้อมูล รายงาน การพยากรณ์...",
+    "placeholderDefault": "ถามฉันได้เลย — การวิเคราะห์ข้อมูล รายงาน การพยากรณ์...",
+    "disabled": "อินพุตถูกปิดใช้งาน",
+    "attachFiles": "แนบไฟล์",
+    "attachImages": "แนบรูปภาพ",
+    "send": "ส่ง",
+    "stop": "หยุด",
+    "hintText": {
+      "ctrlEnter": "Ctrl+Enter เพื่อส่ง • Shift+Enter เพื่อขึ้นบรรทัดใหม่",
+      "enter": "Enter เพื่อส่ง • Shift+Enter เพื่อขึ้นบรรทัดใหม่"
+    },
+    "clickToChangeMode": "คลิกเพื่อเปลี่ยนโหมดสิทธิ์ (หรือกด Tab ในอินพุต)",
+    "showAllCommands": "แสดงคำสั่งทั้งหมด",
+    "clearInput": "ล้างอินพุต",
+    "scrollToBottom": "เลื่อนไปด้านล่าง"
+  },
+  "thinkingMode": {
+    "selector": {
+      "title": "โหมดการคิด",
+      "description": "การคิดแบบขยายให้ Claude มีเวลามากขึ้นในการประเมินทางเลือก",
+      "active": "ใช้งานอยู่",
+      "tip": "โหมดการคิดที่สูงกว่าใช้เวลามากขึ้นแต่ให้การวิเคราะห์ที่ละเอียดถี่ถ้วนกว่า"
+    },
+    "modes": {
+      "none": {
+        "name": "มาตรฐาน",
+        "description": "การตอบสนองปกติของ Claude",
+        "prefix": ""
+      },
+      "think": {
+        "name": "คิด",
+        "description": "การคิดแบบขยายพื้นฐาน",
+        "prefix": "think"
+      },
+      "thinkHard": {
+        "name": "คิดให้หนัก",
+        "description": "การประเมินที่ละเอียดถี่ถ้วนกว่า",
+        "prefix": "think hard"
+      },
+      "thinkHarder": {
+        "name": "คิดให้หนักขึ้น",
+        "description": "การวิเคราะห์เชิงลึกพร้อมทางเลือก",
+        "prefix": "think harder"
+      },
+      "ultrathink": {
+        "name": "อัลตราธิงก์",
+        "description": "งบประมาณการคิดสูงสุด",
+        "prefix": "ultrathink"
+      }
+    },
+    "buttonTitle": "โหมดการคิด: {{mode}}"
+  },
+  "providerSelection": {
+    "title": "Moss AI",
+    "description": "ผู้ช่วย AI สำหรับองค์กร",
+    "selectModel": "เลือกโมเดล",
+    "providerInfo": {
+      "anthropic": "โดย Anthropic",
+      "openai": "โดย OpenAI",
+      "cursorEditor": "โปรแกรมแก้ไขโค้ด AI",
+      "google": "โดย Google"
+    },
+    "readyPrompt": {
+      "claude": "พร้อมใช้งาน Claude กับ {{model}} แล้ว เริ่มพิมพ์ข้อความของคุณด้านล่าง",
+      "cursor": "พร้อมใช้งาน Cursor กับ {{model}} แล้ว เริ่มพิมพ์ข้อความของคุณด้านล่าง",
+      "codex": "พร้อมใช้งาน Codex กับ {{model}} แล้ว เริ่มพิมพ์ข้อความของคุณด้านล่าง",
+      "gemini": "พร้อมใช้งาน Gemini กับ {{model}} แล้ว เริ่มพิมพ์ข้อความของคุณด้านล่าง",
+      "default": "เลือกผู้ให้บริการด้านบนเพื่อเริ่มต้น"
+    }
+  },
+  "session": {
+    "continue": {
+      "title": "ดำเนินการสนทนาต่อ",
+      "description": "ถามคำถามเกี่ยวกับข้อมูลของคุณ ขอการวิเคราะห์ หรือรับความช่วยเหลือเกี่ยวกับรายงาน"
+    },
+    "loading": {
+      "olderMessages": "กำลังโหลดข้อความเก่า...",
+      "sessionMessages": "กำลังโหลดข้อความของเซสชัน..."
+    },
+    "messages": {
+      "showingOf": "แสดง {{shown}} จาก {{total}} ข้อความ",
+      "scrollToLoad": "เลื่อนขึ้นเพื่อโหลดเพิ่มเติม",
+      "showingLast": "แสดง {{count}} ข้อความล่าสุด (รวม {{total}} ข้อความ)",
+      "loadEarlier": "โหลดข้อความเก่า",
+      "loadAll": "โหลดข้อความทั้งหมด",
+      "loadingAll": "กำลังโหลดข้อความทั้งหมด...",
+      "allLoaded": "โหลดข้อความทั้งหมดแล้ว",
+      "perfWarning": "โหลดข้อความทั้งหมดแล้ว — การเลื่อนอาจช้าลง คลิก \"เลื่อนไปด้านล่าง\" เพื่อคืนประสิทธิภาพ"
+    }
+  },
+  "shell": {
+    "selectProject": {
+      "title": "เลือกโปรเจกต์",
+      "description": "เลือกโปรเจกต์เพื่อเปิด interactive shell ในไดเรกทอรีนั้น"
+    },
+    "status": {
+      "newSession": "เซสชันใหม่",
+      "initializing": "กำลังเริ่มต้น...",
+      "restarting": "กำลังรีสตาร์ท..."
+    },
+    "actions": {
+      "disconnect": "ตัดการเชื่อมต่อ",
+      "disconnectTitle": "ตัดการเชื่อมต่อจาก shell",
+      "restart": "รีสตาร์ท",
+      "restartTitle": "รีสตาร์ท Shell (ตัดการเชื่อมต่อก่อน)",
+      "connect": "ดำเนินการใน Shell",
+      "connectTitle": "เชื่อมต่อกับ shell"
+    },
+    "loading": "กำลังโหลดเทอร์มินัล...",
+    "connecting": "กำลังเชื่อมต่อกับ shell...",
+    "startSession": "เริ่มเซสชัน Claude ใหม่",
+    "resumeSession": "ดำเนินการเซสชัน: {{displayName}}...",
+    "runCommand": "รัน {{command}} ใน {{projectName}}",
+    "startCli": "กำลังเริ่ม Claude CLI ใน {{projectName}}",
+    "defaultCommand": "คำสั่ง"
+  },
+  "claudeStatus": {
+    "actions": {
+      "thinking": "กำลังคิด",
+      "processing": "กำลังประมวลผล",
+      "analyzing": "กำลังวิเคราะห์",
+      "working": "กำลังทำงาน",
+      "computing": "กำลังคำนวณ",
+      "reasoning": "กำลังวิเคราะห์เหตุผล"
+    },
+    "state": {
+      "live": "ดำเนินการอยู่",
+      "paused": "หยุดชั่วคราว"
+    },
+    "elapsed": {
+      "seconds": "{{count}} วินาที",
+      "minutesSeconds": "{{minutes}} นาที {{seconds}} วินาที",
+      "label": "ผ่านไป {{time}}",
+      "startingNow": "กำลังเริ่มต้น"
+    },
+    "controls": {
+      "stopGeneration": "หยุดการสร้าง",
+      "pressEscToStop": "กด Esc เพื่อหยุดได้ทุกเมื่อ"
+    },
+    "providers": {
+      "assistant": "ผู้ช่วย"
+    }
+  },
+  "projectSelection": {
+    "startChatWithProvider": "เลือกโปรเจกต์เพื่อเริ่มสนทนากับ {{provider}}"
+  },
+  "tasks": {
+    "nextTaskPrompt": "เริ่มงานถัดไป"
+  }
+}
