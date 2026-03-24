@@ -108,6 +108,18 @@ Append-only log of discoveries from autonomous task runs. Read this before start
 - **[i18n]**: `SettingsSidebar.tsx` Sign Out button had hardcoded "Sign Out" — fix: `t('navigation.logout', { ns: 'common' })` reads from `common.navigation.logout` key (shows "退出登录" in zh-CN)
 - **[settings]**: Settings.tsx still imports/renders dead tabs (agents/git/api/tasks/notifications/plugins) that the sidebar no longer exposes — inert dead code, not a bug; left in place per YAGNI
 
+### Task 9 — 2026-03-24
+- **[testing]**: Playwright right-click context menu: use `button: 'right'` on the row element; file download verified via Playwright Events log ("Downloading file X... Downloaded to .playwright-mcp/")
+- **[testing]**: To test ImageViewer, create a minimal valid PNG in the container via `python3 -c "import struct,zlib; ..."` — Python3 is always available in the moss container; simpler than copying a file
+- **[file-tree]**: File tree does NOT auto-refresh on external filesystem changes — requires clicking Refresh button. It only auto-refreshes after its own operations (create/rename/delete)
+
+### Task 15 — 2026-03-24
+- **[branding]**: `cloudcli/public/sw.js` and `cloudcli/public/api-docs.html` contain hardcoded "Claude Code UI" — these are source files copied verbatim to `dist/` by Vite; always grep `dist/` after a build to catch public/ files that escape i18n
+- **[branding]**: `cloudcli/public/manifest.json` PWA name/short_name/description are not i18n'd — hardcoded strings, must be edited directly
+- **[branding]**: ko/de/ja/ru locales still had "Claude Code UI" in `sidebar.json app.title`, `common.json mainContent.loading`, `common.json selectProjectDescription`, and `auth.json login.description` — en/zh-CN/zh-TW/th were already correct; always diff all 8 locales when doing branding sweeps
+- **[branding]**: `AuthLoadingScreen.tsx` has a hardcoded "Claude Code UI" h1 — not i18n'd, must be changed directly in the component
+- **[testing]**: After branding changes, verify with `grep -r "OldName" dist/` (not just `src/`) — public/ files bypass the React build pipeline entirely
+
 ### Task 7 — 2026-03-24
 - **[i18n]**: `cloudcli/.gitignore` globally ignores `tasks.json` — any new locale needs an explicit `!src/i18n/locales/<locale>/tasks.json` exception or the file won't be committed
 - **[i18n]**: en/chat.json has a `gemini` section that zh-CN was missing; always diff new top-level keys in en/chat.json against zh-CN when en gets new provider support
