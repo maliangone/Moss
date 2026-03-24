@@ -10,6 +10,38 @@ const router = express.Router();
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
+// Input validation helpers
+const VALID_SCOPES = ['user', 'local', 'project', 'global'];
+const VALID_NAME = /^[a-zA-Z0-9_-]+$/;
+
+function validateMcpName(name) {
+  if (!name || !VALID_NAME.test(name)) {
+    throw new Error('Invalid name: must contain only letters, numbers, hyphens, and underscores');
+  }
+}
+
+function validateMcpScope(scope) {
+  if (!VALID_SCOPES.includes(scope)) {
+    throw new Error(`Invalid scope: must be one of ${VALID_SCOPES.join(', ')}`);
+  }
+}
+
+function validateProjectPath(projectPath) {
+  if (projectPath !== undefined) {
+    if (typeof projectPath !== 'string' || projectPath.includes('\0') || !path.isAbsolute(projectPath)) {
+      throw new Error('Invalid projectPath: must be an absolute path without null bytes');
+    }
+  }
+}
+
+function validateHeaders(headers) {
+  for (const [key, value] of Object.entries(headers)) {
+    if (/[\r\n]/.test(key) || /[\r\n]/.test(String(value))) {
+      throw new Error('Invalid header: keys and values must not contain newline characters');
+    }
+  }
+}
+
 // Claude CLI command routes
 
 // GET /api/mcp/cli/list - List MCP servers using Claude CLI
@@ -59,7 +91,16 @@ router.get('/cli/list', async (req, res) => {
 router.post('/cli/add', async (req, res) => {
   try {
     const { name, type = 'stdio', command, args = [], url, headers = {}, env = {}, scope = 'user', projectPath } = req.body;
-    
+
+    try {
+      validateMcpName(name);
+      validateMcpScope(scope);
+      validateProjectPath(projectPath);
+      validateHeaders(headers);
+    } catch (validationError) {
+      return res.status(400).json({ error: 'Validation failed', details: validationError.message });
+    }
+
     console.log(`➕ Adding MCP server using Claude CLI (${scope} scope):`, name);
     
     const { spawn } = await import('child_process');
@@ -142,7 +183,15 @@ router.post('/cli/add', async (req, res) => {
 router.post('/cli/add-json', async (req, res) => {
   try {
     const { name, jsonConfig, scope = 'user', projectPath } = req.body;
-    
+
+    try {
+      validateMcpName(name);
+      validateMcpScope(scope);
+      validateProjectPath(projectPath);
+    } catch (validationError) {
+      return res.status(400).json({ error: 'Validation failed', details: validationError.message });
+    }
+
     console.log('➕ Adding MCP server using JSON format:', name);
     
     // Validate and parse JSON config
@@ -236,16 +285,23 @@ router.delete('/cli/remove/:name', async (req, res) => {
   try {
     const { name } = req.params;
     const { scope } = req.query; // Get scope from query params
-    
+
     // Handle the ID format (remove scope prefix if present)
     let actualName = name;
     let actualScope = scope;
-    
-    // If the name includes a scope prefix like "local:test", extract it
-    if (name.includes(':')) {
-      const [prefix, serverName] = name.split(':');
+
+    // Strip scope prefix before validation (e.g. "local:server-name" -> "server-name")
+    if (actualName.includes(':')) {
+      const [prefix, serverName] = actualName.split(':');
       actualName = serverName;
-      actualScope = actualScope || prefix; // Use prefix as scope if not provided in query
+      actualScope = actualScope || prefix;
+    }
+
+    try {
+      validateMcpName(actualName);
+      if (actualScope) validateMcpScope(actualScope);
+    } catch (validationError) {
+      return res.status(400).json({ error: 'Validation failed', details: validationError.message });
     }
     
     console.log('🗑️ Removing MCP server using Claude CLI:', actualName, 'scope:', actualScope);
@@ -305,7 +361,13 @@ router.delete('/cli/remove/:name', async (req, res) => {
 router.get('/cli/get/:name', async (req, res) => {
   try {
     const { name } = req.params;
-    
+
+    try {
+      validateMcpName(name);
+    } catch (validationError) {
+      return res.status(400).json({ error: 'Validation failed', details: validationError.message });
+    }
+
     console.log('📄 Getting MCP server details using Claude CLI:', name);
     
     const { spawn } = await import('child_process');
