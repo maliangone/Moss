@@ -63,3 +63,9 @@ Append-only log of discoveries from autonomous task runs. Read this before start
 - **[ui-hide]**: `ProtectedRoute.tsx` already defaults `hasCompletedOnboarding=true` in AuthContext — the onboarding guard was effectively dead code for the Moss use case (admin pre-seeded with has_completed_onboarding=1); safe to remove
 - **[settings]**: Settings default tab is `initialTab = 'agents'` in `Settings.tsx` — must change to `'appearance'` when hiding all other tabs, otherwise Settings opens showing agents content with only Appearance in the sidebar
 - **[testing]**: After hiding tabs, `ps` is not available in the moss container — use `/proc/<pid>/status` to check process UIDs instead
+
+### Task 2 — 2026-03-24
+- **[settings]**: `Settings.tsx` default prop `initialTab='appearance'` is overridden by `useProjectsState.ts` which initializes `settingsInitialTab` to `'agents'` and `openSettings` defaults to `'tools'` — both must be changed to `'appearance'` for the tab fix to take effect
+- **[i18n]**: When adding new i18n keys to `en/chat.json`, always update `zh-CN/chat.json` in the same commit — the `claudeStatus.*` section was left in English in zh-CN while EN was complete
+- **[testing]**: Browser localStorage persists language preference across container restarts — a previous Thai locale test will show Thai on next page load; test in EN first, then switch to verify zh-CN strings
+- **[chat-flow]**: Claude provider auto-selection in `ProviderSelectionEmptyState.tsx` calls `selectProvider("claude")` on render if `provider !== 'claude'` — this is a render-time side-effect that may trigger a re-render; no bug found but worth noting
