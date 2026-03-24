@@ -142,7 +142,7 @@ else
 fi
 chown -R agent:agent "${CLOUDCLI_DB_DIR}"
 
-# ----- Step 5c: Install Moss plugins into CloudCLI plugin directory -----
+# ----- Step 5c: Install/update Moss plugins into CloudCLI plugin directory -----
 CLOUDCLI_PLUGINS_DIR="/home/agent/.claude-code-ui/plugins"
 mkdir -p "${CLOUDCLI_PLUGINS_DIR}"
 for plugin_dir in /app/cloudcli/plugins/moss-*/; do
@@ -151,6 +151,15 @@ for plugin_dir in /app/cloudcli/plugins/moss-*/; do
     if [ ! -d "$target" ]; then
         cp -r "$plugin_dir" "$target"
         echo "[init] Installed plugin: ${plugin_name}"
+    else
+        # Sync non-node_modules files to pick up source/locale updates from image
+        find "$plugin_dir" -not -path "*/node_modules/*" -not -type d | while read -r src_file; do
+            rel="${src_file#${plugin_dir}}"
+            dst="${target}/${rel}"
+            mkdir -p "$(dirname "$dst")"
+            cp -f "$src_file" "$dst"
+        done
+        echo "[init] Updated plugin: ${plugin_name}"
     fi
 done
 chown -R agent:agent /home/agent/.claude-code-ui
