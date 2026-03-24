@@ -55,3 +55,11 @@ Append-only log of discoveries from autonomous task runs. Read this before start
 - **[i18n]**: Adding a locale requires 3 changes: (1) create locale JSON files, (2) add imports + resources in config.js, (3) add entry in languages.js — all three are required for the language to appear in the UI
 - **[i18n]**: Language selector is in Settings → Appearance (外觀), not in the Account tab
 - **[i18n]**: zh-TW (Traditional Chinese) uses significantly different vocabulary than zh-CN: 設定 vs 设置, 儲存 vs 保存, 檔案 vs 文件, 資料夾 vs 文件夹, 登出 vs 退出登录, 搜尋 vs 搜索
+
+### Task 12 — 2026-03-24
+- **[ui-hide]**: `QuickSettingsPanel` in `ChatInterface.tsx` is a standalone component rendered outside the main flex div — remove the JSX element + import to hide it entirely
+- **[ui-hide]**: `ChatInputControls` in `ChatComposer.tsx` is conditionally rendered with `!hasQuestionPanel` guard — remove the block and import; the props (permissionMode, thinkingMode, etc.) are still needed by the parent and remain in the interface
+- **[ui-hide]**: `MobileNav.tsx` `baseCoreItems` hardcoded Shell/Git as strings, not using i18n — when simplifying to Chat+Files, use `t('tabs.chat')` and `t('tabs.files')` from the common namespace for consistency
+- **[ui-hide]**: `ProtectedRoute.tsx` already defaults `hasCompletedOnboarding=true` in AuthContext — the onboarding guard was effectively dead code for the Moss use case (admin pre-seeded with has_completed_onboarding=1); safe to remove
+- **[settings]**: Settings default tab is `initialTab = 'agents'` in `Settings.tsx` — must change to `'appearance'` when hiding all other tabs, otherwise Settings opens showing agents content with only Appearance in the sidebar
+- **[testing]**: After hiding tabs, `ps` is not available in the moss container — use `/proc/<pid>/status` to check process UIDs instead
