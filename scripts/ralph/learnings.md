@@ -97,3 +97,8 @@ Append-only log of discoveries from autonomous task runs. Read this before start
 - **[plugin-system]**: Plugin API calls return 401 because CloudCLI routes require `Authorization: Bearer <token>`. Token is stored in `localStorage.getItem('auth-token')`. Create a plugin-local `apiFetch.js` helper that reads this key and injects the header
 - **[plugin-system]**: Dockerfile must build plugins at image build time: `npm install && npm run build && npm prune --production`. The entrypoint syncs the entire plugin directory (incl. `dist/`) to the cloudcli-plugins volume on boot
 - **[plugin-system]**: `npm prune --production` after build removes Vite + @vitejs/plugin-react from the image layer — these devDeps are large (~30MB); always prune after plugin builds
+
+### Task 13 — 2026-03-24
+- **[welcome-page]**: `ProviderSelectionEmptyState.tsx` new-session branch is the correct place to implement the welcome/empty state — it already receives `setInput` and `textareaRef` props for card click injection
+- **[welcome-page]**: Card click pattern: `setInput(prompt)` then `setTimeout(() => textareaRef.current?.focus(), 100)` — the timeout is needed because React state update + focus races otherwise
+- **[i18n]**: Welcome page keys added under `welcome.*` namespace in all 8 locale chat.json files; falls back to en for any missing locale
