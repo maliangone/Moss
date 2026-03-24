@@ -115,7 +115,8 @@ if [ ! -f /home/agent/.claude/settings.json ] && [ -f "${CONFIG_SRC}/settings.js
 fi
 
 # ----- Step 5b: Pre-seed CloudCLI admin account (skip onboarding wizard) -----
-CLOUDCLI_DB_DIR="/home/agent/.cloudcli"
+# DB lives inside the cloudcli-data volume (/app/cloudcli/data) for persistence
+CLOUDCLI_DB_DIR="/app/cloudcli/data"
 CLOUDCLI_DB="${CLOUDCLI_DB_DIR}/auth.db"
 mkdir -p "${CLOUDCLI_DB_DIR}"
 
