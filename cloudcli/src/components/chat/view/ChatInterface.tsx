@@ -1,7 +1,6 @@
 import React, { useCallback, useEffect, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useTasksSettings } from '../../../contexts/TasksSettingsContext';
-import { QuickSettingsPanel } from '../../quick-settings-panel';
 import type { ChatInterfaceProps, Provider  } from '../types/types';
 import type { SessionProvider } from '../../../types/app';
 import { useChatProviderState } from '../hooks/useChatProviderState';
@@ -411,8 +410,6 @@ function ChatInterface({
           onTranscript={handleTranscript}
         />
       </div>
-
-      <QuickSettingsPanel />
     </>
   );
 }
