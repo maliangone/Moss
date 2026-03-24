@@ -16,7 +16,7 @@ import {
   type LucideIcon,
 } from 'lucide-react';
 import { usePlugins } from '../../contexts/PluginsContext';
-import { AppTab } from '../../types/app';
+import type { AppTab } from '../../types/app';
 
 const PLUGIN_ICON_MAP: Record<string, LucideIcon> = {
   Puzzle, Box, Database, Globe, Terminal, Wrench, Zap, BarChart3, Folder, MessageSquare, GitBranch,

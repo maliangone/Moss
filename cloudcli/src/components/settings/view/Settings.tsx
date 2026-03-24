@@ -104,13 +104,12 @@ function Settings({ isOpen, onClose, projects = [], initialTab = 'appearance' }:
     return null;
   }
 
-  const isAuthenticated = loginProvider === 'claude'
-    ? claudeAuthStatus.authenticated
-    : loginProvider === 'cursor'
-      ? cursorAuthStatus.authenticated
-      : loginProvider === 'codex'
-        ? codexAuthStatus.authenticated
-        : false;
+  const authStatusByProvider: Record<string, { authenticated: boolean }> = {
+    claude: claudeAuthStatus,
+    cursor: cursorAuthStatus,
+    codex: codexAuthStatus,
+  };
+  const isAuthenticated = authStatusByProvider[loginProvider ?? '']?.authenticated ?? false;
 
   return (
     <div className="modal-backdrop fixed inset-0 z-[9999] flex items-center justify-center bg-background/80 backdrop-blur-sm md:p-4">
@@ -191,17 +190,17 @@ function Settings({ isOpen, onClose, projects = [], initialTab = 'appearance' }:
 
               {activeTab === 'tasks' && <TasksSettingsTab />}
 
-            {activeTab === 'notifications' && (
-              <NotificationsSettingsTab
-                notificationPreferences={notificationPreferences}
-                onNotificationPreferencesChange={setNotificationPreferences}
-                pushPermission={pushPermission}
-                isPushSubscribed={isPushSubscribed}
-                isPushLoading={isPushLoading}
-                onEnablePush={handleEnablePush}
-                onDisablePush={handleDisablePush}
-              />
-            )}
+              {activeTab === 'notifications' && (
+                <NotificationsSettingsTab
+                  notificationPreferences={notificationPreferences}
+                  onNotificationPreferencesChange={setNotificationPreferences}
+                  pushPermission={pushPermission}
+                  isPushSubscribed={isPushSubscribed}
+                  isPushLoading={isPushLoading}
+                  onEnablePush={handleEnablePush}
+                  onDisablePush={handleDisablePush}
+                />
+              )}
 
               {activeTab === 'api' && <CredentialsSettingsTab />}
 

@@ -1,4 +1,4 @@
-import { Palette, LogOut } from 'lucide-react';
+import { Palette, LogOut, type LucideIcon } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { cn } from '../../../lib/utils';
 import { PillBar, Pill } from '../../../shared/view/ui';
@@ -13,7 +13,7 @@ type SettingsSidebarProps = {
 type NavItem = {
   id: SettingsMainTab;
   labelKey: string;
-  icon: typeof Bot;
+  icon: LucideIcon;
 };
 
 const NAV_ITEMS: NavItem[] = [

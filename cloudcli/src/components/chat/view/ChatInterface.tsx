@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useRef } from 'react';
+import { memo, useCallback, useEffect, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useTasksSettings } from '../../../contexts/TasksSettingsContext';
 import type { ChatInterfaceProps, Provider  } from '../types/types';
@@ -15,6 +15,13 @@ import ChatComposer from './subcomponents/ChatComposer';
 type PendingViewSession = {
   sessionId: string | null;
   startedAt: number;
+};
+
+const PROVIDER_LABEL_KEYS: Record<string, string> = {
+  cursor: 'messageTypes.cursor',
+  codex: 'messageTypes.codex',
+  gemini: 'messageTypes.gemini',
+  claude: 'messageTypes.claude',
 };
 
 function ChatInterface({
@@ -268,14 +275,7 @@ function ChatInterface({
   }, [resetStreamingState]);
 
   if (!selectedProject) {
-    const selectedProviderLabel =
-      provider === 'cursor'
-        ? t('messageTypes.cursor')
-        : provider === 'codex'
-          ? t('messageTypes.codex')
-          : provider === 'gemini'
-            ? t('messageTypes.gemini')
-            : t('messageTypes.claude');
+    const selectedProviderLabel = t(PROVIDER_LABEL_KEYS[provider] ?? PROVIDER_LABEL_KEYS.claude);
 
     return (
       <div className="flex h-full items-center justify-center">
@@ -292,7 +292,6 @@ function ChatInterface({
   }
 
   return (
-    <>
       <div className="flex h-full flex-col">
         <ChatMessagesPane
           scrollContainerRef={scrollContainerRef}
@@ -396,22 +395,14 @@ function ChatInterface({
           onInputFocusChange={handleInputFocusChange}
           isInputFocused={isInputFocused}
           placeholder={t('input.placeholder', {
-            provider:
-              provider === 'cursor'
-                ? t('messageTypes.cursor')
-                : provider === 'codex'
-                  ? t('messageTypes.codex')
-                  : provider === 'gemini'
-                    ? t('messageTypes.gemini')
-                    : t('messageTypes.claude'),
+            provider: t(PROVIDER_LABEL_KEYS[provider] ?? PROVIDER_LABEL_KEYS.claude),
           })}
           isTextareaExpanded={isTextareaExpanded}
           sendByCtrlEnter={sendByCtrlEnter}
           onTranscript={handleTranscript}
         />
       </div>
-    </>
   );
 }
 
-export default React.memo(ChatInterface);
+export default memo(ChatInterface);
