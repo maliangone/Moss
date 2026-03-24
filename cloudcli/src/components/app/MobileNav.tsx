@@ -5,7 +5,6 @@ import {
   Folder,
   Terminal,
   GitBranch,
-  ClipboardCheck,
   Ellipsis,
   Puzzle,
   Box,
@@ -16,7 +15,6 @@ import {
   BarChart3,
   type LucideIcon,
 } from 'lucide-react';
-import { useTasksSettings } from '../../contexts/TasksSettingsContext';
 import { usePlugins } from '../../contexts/PluginsContext';
 import { AppTab } from '../../types/app';
 
@@ -39,8 +37,6 @@ type MobileNavProps = {
 
 export default function MobileNav({ activeTab, setActiveTab, isInputFocused }: MobileNavProps) {
   const { t } = useTranslation(['common', 'settings']);
-  const { tasksEnabled, isTaskMasterInstalled } = useTasksSettings();
-  const shouldShowTasksTab = Boolean(tasksEnabled && isTaskMasterInstalled);
   const { plugins } = usePlugins();
   const [moreOpen, setMoreOpen] = useState(false);
   const moreRef = useRef<HTMLDivElement | null>(null);
@@ -69,15 +65,10 @@ export default function MobileNav({ activeTab, setActiveTab, isInputFocused }: M
     setMoreOpen(false);
   };
 
-  const baseCoreItems: CoreNavItem[] = [
-    { id: 'chat', icon: MessageSquare, label: 'Chat' },
-    { id: 'shell', icon: Terminal, label: 'Shell' },
-    { id: 'files', icon: Folder, label: 'Files' },
-    { id: 'git', icon: GitBranch, label: 'Git' },
+  const coreItems: CoreNavItem[] = [
+    { id: 'chat', icon: MessageSquare, label: t('tabs.chat') },
+    { id: 'files', icon: Folder, label: t('tabs.files') },
   ];
-  const coreItems: CoreNavItem[] = shouldShowTasksTab
-    ? [...baseCoreItems, { id: 'tasks', icon: ClipboardCheck, label: 'Tasks' }]
-    : baseCoreItems;
 
   return (
     <div
