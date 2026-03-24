@@ -82,10 +82,10 @@ export default function SetupForm() {
 
   return (
     <AuthScreenLayout
-      title="Welcome to Claude Code UI"
-      description="Set up your account to get started"
-      footerText="This is a single-user system. Only one account can be created."
-      logo={<img src="/logo.svg" alt="CloudCLI" className="h-16 w-16" />}
+      title="Welcome to Moss AI"
+      description="Set up your admin account to get started"
+      footerText="Enterprise AI Agent Platform"
+      logo={<img src="/logo.svg" alt="Moss AI" className="h-16 w-16" />}
     >
       <form onSubmit={handleSubmit} className="space-y-4">
         <AuthInputField

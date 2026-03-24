@@ -120,16 +120,16 @@
     }
   },
   "input": {
-    "placeholder": "Type / for commands, @ for files, or ask {{provider}} anything...",
-    "placeholderDefault": "Type your message...",
+    "placeholder": "Ask me anything — data analysis, reports, predictions...",
+    "placeholderDefault": "Ask me anything — data analysis, reports, predictions...",
     "disabled": "Input disabled",
     "attachFiles": "Attach files",
     "attachImages": "Attach images",
     "send": "Send",
     "stop": "Stop",
     "hintText": {
-      "ctrlEnter": "Ctrl+Enter to send • Shift+Enter for new line • Tab to change modes • / for slash commands",
-      "enter": "Enter to send • Shift+Enter for new line • Tab to change modes • / for slash commands"
+      "ctrlEnter": "Ctrl+Enter to send • Shift+Enter for new line",
+      "enter": "Enter to send • Shift+Enter for new line"
     },
     "clickToChangeMode": "Click to change permission mode (or press Tab in input)",
     "showAllCommands": "Show all commands",
@@ -173,8 +173,8 @@
     "buttonTitle": "Thinking mode: {{mode}}"
   },
   "providerSelection": {
-    "title": "Choose Your AI Assistant",
-    "description": "Select a provider to start a new conversation",
+    "title": "Moss AI",
+    "description": "Enterprise AI Assistant",
     "selectModel": "Select Model",
     "providerInfo": {
       "anthropic": "by Anthropic",
@@ -193,7 +193,7 @@
   "session": {
     "continue": {
       "title": "Continue your conversation",
-      "description": "Ask questions about your code, request changes, or get help with development tasks"
+      "description": "Ask questions about your data, request analysis, or get help with reports"
     },
     "loading": {
       "olderMessages": "Loading older messages...",

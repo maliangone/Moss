@@ -84,10 +84,10 @@
     "openInEditor": "在编辑器中打开"
   },
   "mainContent": {
-    "loading": "正在加载 Claude Code UI",
+    "loading": "正在加载 Moss AI",
     "settingUpWorkspace": "正在设置您的工作空间...",
-    "chooseProject": "选择您的项目",
-    "selectProjectDescription": "从侧边栏选择一个项目以开始使用 Claude 进行编程。每个项目包含您的聊天会话和文件历史。",
+    "chooseProject": "选择您的工作区",
+    "selectProjectDescription": "从侧边栏选择一个工作区以开始使用。每个工作区包含您的对话和文件。",
     "tip": "提示",
     "createProjectMobile": "点击上方的菜单按钮以访问项目",
     "createProjectDesktop": "点击侧边栏中的文件夹图标以创建新项目",

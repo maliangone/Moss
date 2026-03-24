@@ -114,7 +114,29 @@ if [ ! -f /home/agent/.claude/settings.json ] && [ -f "${CONFIG_SRC}/settings.js
     echo "[init] Installed Claude Code settings.json to ~/.claude/"
 fi
 
-# ----- Step 5b: Install Moss plugins into CloudCLI plugin directory -----
+# ----- Step 5b: Pre-seed CloudCLI admin account (skip onboarding wizard) -----
+CLOUDCLI_DB_DIR="/home/agent/.cloudcli"
+CLOUDCLI_DB="${CLOUDCLI_DB_DIR}/auth.db"
+mkdir -p "${CLOUDCLI_DB_DIR}"
+
+if [ ! -f "${CLOUDCLI_DB}" ]; then
+    echo "[init] Creating CloudCLI database and admin account..."
+    ADMIN_USER="${CLOUDCLI_ADMIN_USER:-admin}"
+    ADMIN_PASS="${CLOUDCLI_ADMIN_PASS:-moss2026}"
+    # Hash the password using Node.js bcrypt (from CloudCLI's node_modules)
+    PASS_HASH=$(NODE_PATH=/app/cloudcli/node_modules node -e "const bcrypt=require('bcrypt');bcrypt.hash('${ADMIN_PASS}',12).then(h=>console.log(h))")
+    # Initialize DB schema
+    sqlite3 "${CLOUDCLI_DB}" < /app/cloudcli/server/database/init.sql
+    # Insert admin user with onboarding completed
+    sqlite3 "${CLOUDCLI_DB}" "INSERT INTO users (username, password_hash, git_name, git_email, has_completed_onboarding) VALUES ('${ADMIN_USER}', '${PASS_HASH}', 'Moss Admin', 'admin@moss.local', 1);"
+    echo "[init] Admin account created (user: ${ADMIN_USER})"
+    echo "[init] Onboarding wizard: skipped"
+else
+    echo "[init] CloudCLI database already exists, skipping account setup"
+fi
+chown -R agent:agent "${CLOUDCLI_DB_DIR}"
+
+# ----- Step 5c: Install Moss plugins into CloudCLI plugin directory -----
 CLOUDCLI_PLUGINS_DIR="/home/agent/.claude-code-ui/plugins"
 mkdir -p "${CLOUDCLI_PLUGINS_DIR}"
 for plugin_dir in /app/cloudcli/plugins/moss-*/; do

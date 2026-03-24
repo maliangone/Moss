@@ -41,9 +41,9 @@ RUN pip install --no-cache-dir \
     xgboost \
     lightgbm
 
-# AutoGluon (large package, separate layer for caching)
+# AutoGluon tabular only (much smaller than full autogluon)
 RUN pip install --no-cache-dir \
-    autogluon
+    autogluon.tabular[all]
 
 # Statistics
 RUN pip install --no-cache-dir \
@@ -113,6 +113,8 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     curl \
     # Git (needed by Claude Code)
     git \
+    # SQLite CLI (for pre-seeding CloudCLI database)
+    sqlite3 \
     # Privilege drop utility
     gosu \
     && rm -rf /var/lib/apt/lists/*

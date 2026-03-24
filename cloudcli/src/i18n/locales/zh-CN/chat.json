@@ -102,16 +102,16 @@
     "technicalDetails": "技术细节"
   },
   "input": {
-    "placeholder": "输入 / 调用命令，@ 选择文件，或向 {{provider}} 提问...",
-    "placeholderDefault": "输入您的消息...",
+    "placeholder": "请输入您的问题 — 数据分析、报告生成、趋势预测...",
+    "placeholderDefault": "请输入您的问题 — 数据分析、报告生成、趋势预测...",
     "disabled": "输入已禁用",
     "attachFiles": "附加文件",
     "attachImages": "附加图片",
     "send": "发送",
     "stop": "停止",
     "hintText": {
-      "ctrlEnter": "Ctrl+Enter 发送 • Shift+Enter 换行 • Tab 切换模式 • / 斜杠命令",
-      "enter": "Enter 发送 • Shift+Enter 换行 • Tab 切换模式 • / 斜杠命令"
+      "ctrlEnter": "Ctrl+Enter 发送 • Shift+Enter 换行",
+      "enter": "Enter 发送 • Shift+Enter 换行"
     },
     "clickToChangeMode": "点击更改权限模式（或在输入框中按 Tab）",
     "showAllCommands": "显示所有命令",
@@ -155,8 +155,8 @@
     "buttonTitle": "思考模式：{{mode}}"
   },
   "providerSelection": {
-    "title": "选择您的 AI 助手",
-    "description": "选择一个供应商以开始新对话",
+    "title": "Moss AI",
+    "description": "企业 AI 助手",
     "selectModel": "选择模型",
     "providerInfo": {
       "anthropic": "由 Anthropic 提供",
@@ -175,7 +175,7 @@
   "session": {
     "continue": {
       "title": "继续您的对话",
-      "description": "询问有关代码的问题、请求更改或获取开发任务的帮助"
+      "description": "询问数据相关问题、请求分析或获取报告帮助"
     },
     "loading": {
       "olderMessages": "正在加载更早的消息...",

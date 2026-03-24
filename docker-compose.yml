@@ -57,6 +57,11 @@ services:
       - HOST=${HOST:-0.0.0.0}
       - CONTEXT_WINDOW=${CONTEXT_WINDOW:-160000}
       - HOME=/home/agent
+      # CloudCLI database path (persisted via volume)
+      - DATABASE_PATH=/home/agent/.cloudcli/auth.db
+      # Default admin credentials (only used on first boot)
+      - CLOUDCLI_ADMIN_USER=${CLOUDCLI_ADMIN_USER:-admin}
+      - CLOUDCLI_ADMIN_PASS=${CLOUDCLI_ADMIN_PASS:-moss2026}
 
     # --- Volumes ---
     volumes:
