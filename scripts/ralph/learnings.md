@@ -72,7 +72,7 @@ Append-only log of discoveries from autonomous task runs. Read this before start
 
 ### Task 3 — 2026-03-24
 - **[ui-hide]**: `SidebarCollapsed.tsx` has its own Discord link — task-12 removed it from `SidebarFooter.tsx` (expanded sidebar) but missed `SidebarCollapsed.tsx` (icon-only collapsed view); always check both sidebar states when removing links
-- **[plugin-system]**: Plugin `entry` in `manifest.json` points to `src/index.jsx` (raw JSX); CloudCLI fetches it and `import()`s it as an ES module — browsers cannot parse JSX, causing `SyntaxError: Unexpected token '<'`. Plugins need a Vite build step producing a compiled `dist/index.js`
+- **[plugin-system]**: Plugin `entry` in `manifest.json` points to `src/index.jsx` (raw JSX); CloudCLI fetches it and `import()`s it as an ES module — browsers cannot parse JSX, causing `SyntaxError: Unexpected token '<'`. Plugins need a Vite build step producing a compiled `dist/index.mjs` (see Task 4)
 - **[plugin-system]**: CloudCLI plugin API expects `export function mount(container, api)` from plugin modules, NOT a React default export — plugins must wrap their React component in a `mount()` function that calls `ReactDOM.createRoot(container).render(<Component />)`
 - **[plugin-system]**: Plugin `icon` field in manifest.json should NOT use emoji (e.g. `"icon": "🧰"`) — CloudCLI tries to fetch the emoji as a static asset file, causing 404s; use a named Lucide icon string instead
 
@@ -89,3 +89,11 @@ Append-only log of discoveries from autonomous task runs. Read this before start
 - **[plugin-i18n]**: Locale source-of-truth JSON files belong in `plugins/{plugin}/i18n/{locale}.json`. The `i18n.js` helper embeds them as inline JS objects (for runtime use without build); when a Vite build is added, migrate to `import en from '../i18n/en.json'` + react-i18next.
 - **[entrypoint]**: Plugin copy logic used `if [ ! -d "$target" ]` — new source files (i18n.js, i18n/*.json) added to existing plugins NEVER reached the volume on subsequent restarts. Fix: sync non-node_modules files via `find ... | while read; do cp -f ...; done` on every boot.
 - **[i18n]**: zh-TW uses different vocabulary: 建立 vs 创建, 儲存 vs 保存, 使用者 vs 用户, 封存 vs 归档, 行銷 vs 市场, 營運 vs 运营
+
+### Task 4 — 2026-03-24
+- **[plugin-system]**: Vite library build (`formats: ['es']`) outputs `dist/index.mjs` NOT `dist/index.js` — manifest `"entry"` must be `"dist/index.mjs"`, not `"dist/index.js"`
+- **[plugin-system]**: Vite library mode does NOT externalize React by default when `rollupOptions: { external: [] }` — React is bundled inline into the .mjs. This is required for blob URL imports (no importmaps available in CloudCLI's iframe)
+- **[plugin-system]**: `process.env.NODE_ENV` is undefined in browser bundle — React calls it for dev/prod switching. Fix: add `define: { 'process.env.NODE_ENV': JSON.stringify('production') }` to vite.config.js
+- **[plugin-system]**: Plugin API calls return 401 because CloudCLI routes require `Authorization: Bearer <token>`. Token is stored in `localStorage.getItem('auth-token')`. Create a plugin-local `apiFetch.js` helper that reads this key and injects the header
+- **[plugin-system]**: Dockerfile must build plugins at image build time: `npm install && npm run build && npm prune --production`. The entrypoint syncs the entire plugin directory (incl. `dist/`) to the cloudcli-plugins volume on boot
+- **[plugin-system]**: `npm prune --production` after build removes Vite + @vitejs/plugin-react from the image layer — these devDeps are large (~30MB); always prune after plugin builds
