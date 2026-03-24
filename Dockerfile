@@ -168,5 +168,9 @@ ENV CONTEXT_WINDOW=160000
 # Expose CloudCLI port
 EXPOSE 3001
 
+# Health check — matches docker-compose.yml healthcheck
+HEALTHCHECK --interval=30s --timeout=10s --start-period=60s --retries=3 \
+    CMD curl -sf http://localhost:3001/ || exit 1
+
 # Use tini as init system for proper signal handling
 ENTRYPOINT ["tini", "--", "/app/scripts/entrypoint.sh"]
