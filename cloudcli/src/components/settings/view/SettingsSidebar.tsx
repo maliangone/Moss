@@ -1,7 +1,8 @@
-import { Bell, Bot, GitBranch, Key, ListChecks, Palette, Puzzle } from 'lucide-react';
+import { Bell, Bot, GitBranch, Key, ListChecks, Palette, Puzzle, LogOut } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { cn } from '../../../lib/utils';
 import { PillBar, Pill } from '../../../shared/view/ui';
+import { useAuth } from '../../auth/context/AuthContext';
 import type { SettingsMainTab } from '../types/types';
 
 type SettingsSidebarProps = {
@@ -27,12 +28,13 @@ const NAV_ITEMS: NavItem[] = [
 
 export default function SettingsSidebar({ activeTab, onChange }: SettingsSidebarProps) {
   const { t } = useTranslation('settings');
+  const { logout } = useAuth();
 
   return (
     <>
       {/* Desktop sidebar */}
       <aside className="hidden w-56 flex-shrink-0 border-r border-border bg-muted/30 md:flex md:flex-col">
-        <nav className="flex flex-col gap-1 p-3">
+        <nav className="flex flex-1 flex-col gap-1 p-3">
           {NAV_ITEMS.map((item) => {
             const Icon = item.icon;
             const isActive = activeTab === item.id;
@@ -54,6 +56,15 @@ export default function SettingsSidebar({ activeTab, onChange }: SettingsSidebar
             );
           })}
         </nav>
+        <div className="border-t border-border p-3">
+          <button
+            onClick={logout}
+            className="flex w-full items-center gap-3 rounded-lg px-3 py-2.5 text-left text-sm font-medium text-muted-foreground transition-colors duration-150 hover:bg-destructive/10 hover:text-destructive active:bg-destructive/10"
+          >
+            <LogOut className="h-4 w-4 flex-shrink-0" />
+            Sign Out
+          </button>
+        </div>
       </aside>
 
       {/* Mobile horizontal nav — pill bar */}
