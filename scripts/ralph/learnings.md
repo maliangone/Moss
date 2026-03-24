@@ -75,3 +75,11 @@ Append-only log of discoveries from autonomous task runs. Read this before start
 - **[plugin-system]**: Plugin `entry` in `manifest.json` points to `src/index.jsx` (raw JSX); CloudCLI fetches it and `import()`s it as an ES module — browsers cannot parse JSX, causing `SyntaxError: Unexpected token '<'`. Plugins need a Vite build step producing a compiled `dist/index.js`
 - **[plugin-system]**: CloudCLI plugin API expects `export function mount(container, api)` from plugin modules, NOT a React default export — plugins must wrap their React component in a `mount()` function that calls `ReactDOM.createRoot(container).render(<Component />)`
 - **[plugin-system]**: Plugin `icon` field in manifest.json should NOT use emoji (e.g. `"icon": "🧰"`) — CloudCLI tries to fetch the emoji as a static asset file, causing 404s; use a named Lucide icon string instead
+
+### Task 6 — 2026-03-24
+- **[security]**: entrypoint.sh ADMIN_PASS interpolated into `node -e "...bcrypt.hash('${ADMIN_PASS}',...)"` — single quotes in password break JS syntax; fix: pass via env var `_MOSS_ADMIN_PASS="${ADMIN_PASS}" node -e "...process.env._MOSS_ADMIN_PASS..."`
+- **[security]**: ADMIN_USER interpolated in sqlite3 SQL string — fix: `SAFE_USER="${ADMIN_USER//\'/\'\'}"` (bash double-quote escaping for SQLite)
+- **[security]**: MCP route uses `spawn(shell:false)` so no bash injection, but name/scope/projectPath/headers need validation to prevent passing CLI flag-like values to `claude` process
+- **[security]**: nginx security headers (HSTS/X-Content-Type-Options/X-Frame-Options/Referrer-Policy/CSP) must be added manually — nginx:alpine has no defaults
+- **[testing]**: node processes in container are PID 7 and 82 (tini spawns via gosu) — check `/proc/7/status` Uid to verify UID 1000; `pgrep` not available in slim image
+- **[testing]**: Git Bash on Windows mangles `/tmp/` paths in `docker cp` and `docker exec` — write scripts to `/app/` inside container (writable) or use Python `-c` for inline tests
