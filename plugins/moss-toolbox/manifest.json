@@ -4,10 +4,10 @@
   "version": "1.0.0",
   "description": "Enterprise AI Agent Platform — Toolbox, Smart Suggestions, Welcome Page, and Skill Management for non-technical users",
   "author": "Moss AI Platform",
-  "icon": "🧰",
+  "icon": "src/toolbox.svg",
   "type": "react",
   "slot": "tab",
-  "entry": "src/index.jsx",
+  "entry": "dist/index.js",
   "server": "src/server.js",
   "permissions": ["read", "write"]
 }

@@ -6,6 +6,7 @@
  */
 
 import React, { useState, useEffect, useCallback } from 'react';
+import ReactDOM from 'react-dom/client';
 import { ToolboxPanel } from './ToolboxPanel.jsx';
 import { WelcomePage } from './WelcomePage.jsx';
 import { SuggestionBar } from './SuggestionBar.jsx';
@@ -114,6 +115,20 @@ export default function MossToolbox({ context }) {
       )}
     </div>
   );
+}
+
+// CloudCLI plugin API: mount/unmount functions
+export function mount(container, api) {
+  const root = ReactDOM.createRoot(container);
+  root.render(React.createElement(MossToolbox, { context: api?.context }));
+  container.__reactRoot = root;
+}
+
+export function unmount(container) {
+  if (container.__reactRoot) {
+    container.__reactRoot.unmount();
+    delete container.__reactRoot;
+  }
 }
 
 const styles = `

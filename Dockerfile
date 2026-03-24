@@ -141,9 +141,9 @@ COPY config/ /app/config/
 # Copy Moss plugins
 COPY plugins/ /app/cloudcli/plugins/
 
-# Install plugin dependencies
-RUN cd /app/cloudcli/plugins/moss-toolbox && npm install --production 2>/dev/null || true
-RUN cd /app/cloudcli/plugins/moss-admin && npm install --production 2>/dev/null || true
+# Install plugin dependencies, build JS bundles, then prune dev deps
+RUN cd /app/cloudcli/plugins/moss-toolbox && npm install && npm run build && npm prune --production
+RUN cd /app/cloudcli/plugins/moss-admin && npm install && npm run build && npm prune --production
 
 # Fix line endings (Windows CRLF → Unix LF) and make scripts executable
 RUN sed -i 's/\r$//' /app/scripts/*.sh && chmod +x /app/scripts/*.sh

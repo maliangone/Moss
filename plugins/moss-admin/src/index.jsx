@@ -11,6 +11,7 @@
  */
 
 import React, { useState, useEffect, useCallback } from 'react';
+import ReactDOM from 'react-dom/client';
 import { useTranslation } from './i18n.js';
 
 const API_BASE = '/api/plugins/moss-admin/rpc';
@@ -97,6 +98,20 @@ export default function MossAdmin() {
       </div>
     </div>
   );
+}
+
+// CloudCLI plugin API: mount/unmount functions
+export function mount(container) {
+  const root = ReactDOM.createRoot(container);
+  root.render(React.createElement(MossAdmin));
+  container.__reactRoot = root;
+}
+
+export function unmount(container) {
+  if (container.__reactRoot) {
+    container.__reactRoot.unmount();
+    delete container.__reactRoot;
+  }
 }
 
 // ===== Dashboard =====

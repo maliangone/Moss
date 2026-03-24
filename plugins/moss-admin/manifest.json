@@ -4,10 +4,10 @@
   "version": "1.0.0",
   "description": "Enterprise AI Agent Platform — Admin dashboard for skill management, user provisioning, usage monitoring, and security policies",
   "author": "Moss AI Platform",
-  "icon": "⚙️",
+  "icon": "src/admin.svg",
   "type": "react",
   "slot": "tab",
-  "entry": "src/index.jsx",
+  "entry": "dist/index.js",
   "server": "src/server.js",
   "permissions": ["read", "write"]
 }
