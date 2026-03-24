@@ -90,4 +90,4 @@ iptables -A OUTPUT -j REJECT
 
 echo "[firewall] Outbound firewall configured successfully."
 echo "[firewall] Policy: default-deny, HTTPS allowed with logging."
-iptables -L OUTPUT -n --line-numbers | head -30
+iptables -L OUTPUT -n --line-numbers 2>/dev/null | head -30 || true
