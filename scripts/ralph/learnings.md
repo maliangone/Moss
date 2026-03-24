@@ -83,3 +83,9 @@ Append-only log of discoveries from autonomous task runs. Read this before start
 - **[security]**: nginx security headers (HSTS/X-Content-Type-Options/X-Frame-Options/Referrer-Policy/CSP) must be added manually — nginx:alpine has no defaults
 - **[testing]**: node processes in container are PID 7 and 82 (tini spawns via gosu) — check `/proc/7/status` Uid to verify UID 1000; `pgrep` not available in slim image
 - **[testing]**: Git Bash on Windows mangles `/tmp/` paths in `docker cp` and `docker exec` — write scripts to `/app/` inside container (writable) or use Python `-c` for inline tests
+
+### Task 14 — 2026-03-24
+- **[plugin-i18n]**: Plugins are plain JSX (no build step) — can't import npm packages at runtime. Use a custom `useTranslation` hook that embeds locale dicts inline and reads `localStorage.getItem('userLanguage')` (same key as CloudCLI). Reactive via `window.addEventListener('storage', ...)`.
+- **[plugin-i18n]**: Locale source-of-truth JSON files belong in `plugins/{plugin}/i18n/{locale}.json`. The `i18n.js` helper embeds them as inline JS objects (for runtime use without build); when a Vite build is added, migrate to `import en from '../i18n/en.json'` + react-i18next.
+- **[entrypoint]**: Plugin copy logic used `if [ ! -d "$target" ]` — new source files (i18n.js, i18n/*.json) added to existing plugins NEVER reached the volume on subsequent restarts. Fix: sync non-node_modules files via `find ... | while read; do cp -f ...; done` on every boot.
+- **[i18n]**: zh-TW uses different vocabulary: 建立 vs 创建, 儲存 vs 保存, 使用者 vs 用户, 封存 vs 归档, 行銷 vs 市场, 營運 vs 运营
