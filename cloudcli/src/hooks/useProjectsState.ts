@@ -151,7 +151,7 @@ export function useProjectsState({
   const [loadingProgress, setLoadingProgress] = useState<LoadingProgress | null>(null);
   const [isInputFocused, setIsInputFocused] = useState(false);
   const [showSettings, setShowSettings] = useState(false);
-  const [settingsInitialTab, setSettingsInitialTab] = useState('agents');
+  const [settingsInitialTab, setSettingsInitialTab] = useState('appearance');
   const [externalMessageUpdate, setExternalMessageUpdate] = useState(0);
 
   const loadingProgressTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
@@ -187,7 +187,7 @@ export function useProjectsState({
     await fetchProjects({ showLoadingState: false });
   }, [fetchProjects]);
 
-  const openSettings = useCallback((tab = 'tools') => {
+  const openSettings = useCallback((tab = 'appearance') => {
     setSettingsInitialTab(tab);
     setShowSettings(true);
   }, []);
