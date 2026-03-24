@@ -248,10 +248,11 @@ app.post('/skills/share', (req, res) => {
   }
 });
 
-// Start server
-const PORT = process.env.MOSS_TOOLBOX_PORT || 3100;
-app.listen(PORT, '127.0.0.1', () => {
-  console.log(`[moss-toolbox] Plugin server running on port ${PORT}`);
+// Start server — pick a free port and signal readiness to CloudCLI
+const server = app.listen(0, '127.0.0.1', () => {
+  const port = server.address().port;
+  // CloudCLI plugin protocol: print JSON ready line to stdout
+  console.log(JSON.stringify({ ready: true, port }));
 });
 
 module.exports = app;

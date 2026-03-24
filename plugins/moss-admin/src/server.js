@@ -493,10 +493,11 @@ function copyDirSync(src, dest) {
   }
 }
 
-// Start server
-const PORT = process.env.MOSS_ADMIN_PORT || 3101;
-app.listen(PORT, '127.0.0.1', () => {
-  console.log(`[moss-admin] Admin server running on port ${PORT}`);
+// Start server — pick a free port and signal readiness to CloudCLI
+const server = app.listen(0, '127.0.0.1', () => {
+  const port = server.address().port;
+  // CloudCLI plugin protocol: print JSON ready line to stdout
+  console.log(JSON.stringify({ ready: true, port }));
 });
 
 module.exports = app;
