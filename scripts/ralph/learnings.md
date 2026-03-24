@@ -103,6 +103,11 @@ Append-only log of discoveries from autonomous task runs. Read this before start
 - **[welcome-page]**: Card click pattern: `setInput(prompt)` then `setTimeout(() => textareaRef.current?.focus(), 100)` — the timeout is needed because React state update + focus races otherwise
 - **[i18n]**: Welcome page keys added under `welcome.*` namespace in all 8 locale chat.json files; falls back to en for any missing locale
 
+### Task 8 — 2026-03-24
+- **[settings]**: Task descriptions may be stale — "Code Scan Findings" in task 8 were already fixed by tasks 2 and 12; always check current code state before implementing
+- **[i18n]**: `SettingsSidebar.tsx` Sign Out button had hardcoded "Sign Out" — fix: `t('navigation.logout', { ns: 'common' })` reads from `common.navigation.logout` key (shows "退出登录" in zh-CN)
+- **[settings]**: Settings.tsx still imports/renders dead tabs (agents/git/api/tasks/notifications/plugins) that the sidebar no longer exposes — inert dead code, not a bug; left in place per YAGNI
+
 ### Task 7 — 2026-03-24
 - **[i18n]**: `cloudcli/.gitignore` globally ignores `tasks.json` — any new locale needs an explicit `!src/i18n/locales/<locale>/tasks.json` exception or the file won't be committed
 - **[i18n]**: en/chat.json has a `gemini` section that zh-CN was missing; always diff new top-level keys in en/chat.json against zh-CN when en gets new provider support
