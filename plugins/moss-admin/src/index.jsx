@@ -11,10 +11,12 @@
  */
 
 import React, { useState, useEffect, useCallback } from 'react';
+import { useTranslation } from './i18n.js';
 
 const API_BASE = '/api/plugins/moss-admin/rpc';
 
 export default function MossAdmin() {
+  const { t } = useTranslation();
   const [activeTab, setActiveTab] = useState('dashboard');
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -47,12 +49,12 @@ export default function MossAdmin() {
   useEffect(() => { fetchData(); }, [fetchData]);
 
   const tabs = [
-    { id: 'dashboard', icon: '📊', label: '概览' },
-    { id: 'users', icon: '👥', label: '用户' },
-    { id: 'skills', icon: '🧰', label: '技能' },
-    { id: 'review', icon: '📋', label: '审核' },
-    { id: 'policy', icon: '🔒', label: '策略' },
-    { id: 'health', icon: '💚', label: '系统' },
+    { id: 'dashboard', icon: '📊', label: t('tabs.dashboard') },
+    { id: 'users', icon: '👥', label: t('tabs.users') },
+    { id: 'skills', icon: '🧰', label: t('tabs.skills') },
+    { id: 'review', icon: '📋', label: t('tabs.review') },
+    { id: 'policy', icon: '🔒', label: t('tabs.policy') },
+    { id: 'health', icon: '💚', label: t('tabs.health') },
   ];
 
   return (
@@ -75,13 +77,13 @@ export default function MossAdmin() {
             )}
           </button>
         ))}
-        <button className="admin-refresh" onClick={fetchData} title="刷新">🔄</button>
+        <button className="admin-refresh" onClick={fetchData} title={t('refresh')}>🔄</button>
       </div>
 
       {/* Content */}
       <div className="admin-content">
         {loading ? (
-          <div className="admin-loading">加载中...</div>
+          <div className="admin-loading">{t('loading')}</div>
         ) : (
           <>
             {activeTab === 'dashboard' && <Dashboard data={data?.dashboard} />}
@@ -100,23 +102,24 @@ export default function MossAdmin() {
 // ===== Dashboard =====
 
 function Dashboard({ data }) {
+  const { t } = useTranslation();
   if (!data) return null;
 
   return (
     <div className="admin-section">
-      <h2>📊 平台概览</h2>
+      <h2>{t('dashboard.header')}</h2>
       <div className="admin-cards">
         <div className="admin-card">
           <div className="admin-card-value">{data.activeUsers || 0}</div>
-          <div className="admin-card-label">活跃用户</div>
+          <div className="admin-card-label">{t('dashboard.active_users')}</div>
         </div>
         <div className="admin-card">
           <div className="admin-card-value">{data.totalSkills || 0}</div>
-          <div className="admin-card-label">共享技能</div>
+          <div className="admin-card-label">{t('dashboard.shared_skills')}</div>
         </div>
         <div className="admin-card">
           <div className="admin-card-value">{data.pendingReviews || 0}</div>
-          <div className="admin-card-label">待审核</div>
+          <div className="admin-card-label">{t('dashboard.pending_review')}</div>
         </div>
       </div>
     </div>
@@ -126,6 +129,7 @@ function Dashboard({ data }) {
 // ===== User Manager =====
 
 function UserManager({ data, onRefresh }) {
+  const { t } = useTranslation();
   const [newUser, setNewUser] = useState('');
   const [newDept, setNewDept] = useState('general');
 
@@ -142,57 +146,57 @@ function UserManager({ data, onRefresh }) {
         onRefresh();
       } else {
         const err = await res.json();
-        alert(err.error || '创建失败');
+        alert(err.error || t('users.error_create'));
       }
     } catch (err) {
-      alert('创建用户失败: ' + err.message);
+      alert(t('users.error_create_msg', { message: err.message }));
     }
   };
 
   const handleDeleteUser = async (username) => {
-    if (!confirm(`确定要归档用户 "${username}" 的工作区吗？`)) return;
+    if (!confirm(t('users.confirm_archive', { username }))) return;
     try {
       await fetch(`${API_BASE}/users/${username}`, { method: 'DELETE' });
       onRefresh();
     } catch (err) {
-      alert('操作失败: ' + err.message);
+      alert(t('users.error_action', { message: err.message }));
     }
   };
 
   return (
     <div className="admin-section">
-      <h2>👥 用户管理</h2>
+      <h2>{t('users.header')}</h2>
 
       {/* Create User Form */}
       <div className="admin-form-row">
         <input
           type="text"
-          placeholder="用户名"
+          placeholder={t('users.username_placeholder')}
           value={newUser}
           onChange={e => setNewUser(e.target.value)}
           className="admin-input"
         />
         <select value={newDept} onChange={e => setNewDept(e.target.value)} className="admin-select">
-          <option value="general">通用</option>
-          <option value="it">IT</option>
-          <option value="marketing">市场</option>
-          <option value="finance">财务</option>
-          <option value="legal">法务</option>
-          <option value="operations">运营</option>
-          <option value="production">生产</option>
+          <option value="general">{t('users.dept_general')}</option>
+          <option value="it">{t('users.dept_it')}</option>
+          <option value="marketing">{t('users.dept_marketing')}</option>
+          <option value="finance">{t('users.dept_finance')}</option>
+          <option value="legal">{t('users.dept_legal')}</option>
+          <option value="operations">{t('users.dept_operations')}</option>
+          <option value="production">{t('users.dept_production')}</option>
         </select>
-        <button onClick={handleCreateUser} className="admin-btn primary">+ 创建用户</button>
+        <button onClick={handleCreateUser} className="admin-btn primary">{t('users.create_btn')}</button>
       </div>
 
       {/* User Table */}
       <table className="admin-table">
         <thead>
           <tr>
-            <th>用户名</th>
-            <th>部门</th>
-            <th>个人技能</th>
-            <th>最后活跃</th>
-            <th>操作</th>
+            <th>{t('users.col_username')}</th>
+            <th>{t('users.col_department')}</th>
+            <th>{t('users.col_skills')}</th>
+            <th>{t('users.col_last_active')}</th>
+            <th>{t('users.col_actions')}</th>
           </tr>
         </thead>
         <tbody>
@@ -207,7 +211,7 @@ function UserManager({ data, onRefresh }) {
                   className="admin-btn danger small"
                   onClick={() => handleDeleteUser(user.username)}
                 >
-                  归档
+                  {t('users.archive_btn')}
                 </button>
               </td>
             </tr>
@@ -221,26 +225,28 @@ function UserManager({ data, onRefresh }) {
 // ===== Skill Manager =====
 
 function SkillManager({ skills, onRefresh }) {
+  const { t } = useTranslation();
+
   const handleDelete = async (skillId) => {
-    if (!confirm(`确定要删除共享技能 "${skillId}" 吗？`)) return;
+    if (!confirm(t('skills.confirm_delete', { skillId }))) return;
     try {
       await fetch(`${API_BASE}/skills/${skillId}`, { method: 'DELETE' });
       onRefresh();
     } catch (err) {
-      alert('删除失败: ' + err.message);
+      alert(t('skills.error_delete', { message: err.message }));
     }
   };
 
   return (
     <div className="admin-section">
-      <h2>🧰 技能管理</h2>
+      <h2>{t('skills.header')}</h2>
       <table className="admin-table">
         <thead>
           <tr>
-            <th>技能ID</th>
-            <th>名称</th>
-            <th>描述</th>
-            <th>操作</th>
+            <th>{t('skills.col_id')}</th>
+            <th>{t('skills.col_name')}</th>
+            <th>{t('skills.col_description')}</th>
+            <th>{t('skills.col_actions')}</th>
           </tr>
         </thead>
         <tbody>
@@ -254,13 +260,13 @@ function SkillManager({ skills, onRefresh }) {
                   className="admin-btn danger small"
                   onClick={() => handleDelete(skill.id)}
                 >
-                  删除
+                  {t('skills.delete_btn')}
                 </button>
               </td>
             </tr>
           ))}
           {(!skills || skills.length === 0) && (
-            <tr><td colSpan="4" className="admin-empty">暂无共享技能</td></tr>
+            <tr><td colSpan="4" className="admin-empty">{t('skills.empty')}</td></tr>
           )}
         </tbody>
       </table>
@@ -271,6 +277,7 @@ function SkillManager({ skills, onRefresh }) {
 // ===== Review Queue =====
 
 function ReviewQueue({ submissions, onRefresh }) {
+  const { t } = useTranslation();
   const pending = (submissions || []).filter(s => s.status === 'pending');
 
   const handleAction = async (id, action, feedback) => {
@@ -283,23 +290,23 @@ function ReviewQueue({ submissions, onRefresh }) {
       });
       onRefresh();
     } catch (err) {
-      alert('操作失败: ' + err.message);
+      alert(t('review.error_action', { message: err.message }));
     }
   };
 
   return (
     <div className="admin-section">
-      <h2>📋 技能审核队列 ({pending.length} 待审核)</h2>
+      <h2>{t('review.header', { count: pending.length })}</h2>
 
       {pending.length === 0 ? (
-        <div className="admin-empty-state">暂无待审核技能</div>
+        <div className="admin-empty-state">{t('review.empty')}</div>
       ) : (
         <div className="review-list">
           {pending.map(sub => (
             <div key={sub.id} className="review-item">
               <div className="review-header">
                 <strong>{sub.skillId}</strong>
-                <span className="review-meta">提交者: {sub.username}</span>
+                <span className="review-meta">{t('review.submitted_by', { username: sub.username })}</span>
                 <span className="review-meta">{new Date(sub.submittedAt).toLocaleDateString()}</span>
               </div>
               <div className="review-actions">
@@ -307,16 +314,16 @@ function ReviewQueue({ submissions, onRefresh }) {
                   className="admin-btn primary small"
                   onClick={() => handleAction(sub.id, 'approve')}
                 >
-                  ✅ 批准
+                  {t('review.approve_btn')}
                 </button>
                 <button
                   className="admin-btn danger small"
                   onClick={() => {
-                    const feedback = prompt('拒绝原因（可选）:');
+                    const feedback = prompt(t('review.reject_reason'));
                     handleAction(sub.id, 'reject', feedback);
                   }}
                 >
-                  ❌ 拒绝
+                  {t('review.reject_btn')}
                 </button>
               </div>
             </div>
@@ -330,6 +337,7 @@ function ReviewQueue({ submissions, onRefresh }) {
 // ===== Policy Editor =====
 
 function PolicyEditor({ policy, onRefresh }) {
+  const { t } = useTranslation();
   const [localPolicy, setLocalPolicy] = useState(policy || {});
 
   const handleSave = async () => {
@@ -339,10 +347,10 @@ function PolicyEditor({ policy, onRefresh }) {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ policy: localPolicy }),
       });
-      alert('策略已保存');
+      alert(t('policy.saved'));
       onRefresh();
     } catch (err) {
-      alert('保存失败: ' + err.message);
+      alert(t('policy.error_save', { message: err.message }));
     }
   };
 
@@ -366,37 +374,37 @@ function PolicyEditor({ policy, onRefresh }) {
 
   return (
     <div className="admin-section">
-      <h2>🔒 技能策略设置</h2>
+      <h2>{t('policy.header')}</h2>
 
       <div className="policy-group">
-        <h3>用户自创技能</h3>
+        <h3>{t('policy.group_user_creation')}</h3>
         <label className="policy-toggle">
           <input type="checkbox" checked={creation.enabled !== false} onChange={() => toggle('user_skill_creation.enabled')} />
-          允许用户创建个人技能
+          {t('policy.allow_user_creation')}
         </label>
       </div>
 
       <div className="policy-group">
-        <h3>社区安装</h3>
+        <h3>{t('policy.group_community')}</h3>
         <label className="policy-toggle">
           <input type="checkbox" checked={community.enabled !== false} onChange={() => toggle('community_install.enabled')} />
-          允许从社区安装技能
+          {t('policy.allow_community')}
         </label>
       </div>
 
       <div className="policy-group">
-        <h3>分享机制</h3>
+        <h3>{t('policy.group_sharing')}</h3>
         <label className="policy-toggle">
           <input type="checkbox" checked={share.enabled !== false} onChange={() => toggle('share_to_team.enabled')} />
-          允许用户分享技能给团队
+          {t('policy.allow_sharing')}
         </label>
         <label className="policy-toggle">
           <input type="checkbox" checked={share.require_admin_review !== false} onChange={() => toggle('share_to_team.require_admin_review')} />
-          分享前需要管理员审核
+          {t('policy.require_review')}
         </label>
       </div>
 
-      <button className="admin-btn primary" onClick={handleSave}>保存策略</button>
+      <button className="admin-btn primary" onClick={handleSave}>{t('policy.save_btn')}</button>
     </div>
   );
 }
@@ -404,16 +412,17 @@ function PolicyEditor({ policy, onRefresh }) {
 // ===== System Health =====
 
 function SystemHealth({ health }) {
+  const { t } = useTranslation();
   if (!health) return null;
 
   return (
     <div className="admin-section">
-      <h2>💚 系统状态</h2>
+      <h2>{t('health.header')}</h2>
       <div className="health-grid">
         <div className="health-item">
-          <span className="health-label">状态</span>
+          <span className="health-label">{t('health.label_status')}</span>
           <span className={`health-value ${health.status === 'ok' ? 'ok' : 'error'}`}>
-            {health.status === 'ok' ? '✅ 正常' : '❌ 异常'}
+            {health.status === 'ok' ? t('health.status_ok') : t('health.status_error')}
           </span>
         </div>
         {health.services && Object.entries(health.services).map(([key, value]) => (
@@ -423,11 +432,11 @@ function SystemHealth({ health }) {
           </div>
         ))}
         <div className="health-item">
-          <span className="health-label">磁盘使用</span>
+          <span className="health-label">{t('health.label_disk')}</span>
           <span className="health-value">{health.diskUsage || 'unknown'}</span>
         </div>
         <div className="health-item">
-          <span className="health-label">时间</span>
+          <span className="health-label">{t('health.label_time')}</span>
           <span className="health-value">{new Date(health.timestamp).toLocaleString()}</span>
         </div>
       </div>

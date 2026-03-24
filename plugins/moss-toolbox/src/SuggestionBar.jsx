@@ -10,6 +10,7 @@
  */
 
 import React, { useState, useEffect, useMemo } from 'react';
+import { useTranslation } from './i18n.js';
 
 const API_BASE = '/api/plugins/moss-toolbox/rpc';
 
@@ -49,6 +50,7 @@ function matchSuggestions(rules, context) {
 }
 
 export function SuggestionBar({ context, onActionClick }) {
+  const { t } = useTranslation();
   const [rules, setRules] = useState([]);
   const [chatContext, setChatContext] = useState({
     lastUserMessage: '',
@@ -106,7 +108,7 @@ export function SuggestionBar({ context, onActionClick }) {
   return (
     <div className="suggestion-bar">
       <style>{suggestionStyles}</style>
-      <span className="suggestion-label">💡 你可能想要:</span>
+      <span className="suggestion-label">{t('suggestion.label')}</span>
       <div className="suggestion-chips">
         {suggestions.map((suggestion, idx) => (
           <button

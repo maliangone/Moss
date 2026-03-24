@@ -8,31 +8,33 @@
  */
 
 import React, { useState } from 'react';
+import { useTranslation } from './i18n.js';
 
 export function CreateSkillDialog({ onClose, onActionClick }) {
+  const { t } = useTranslation();
   const [selectedMethod, setSelectedMethod] = useState(null);
 
   const methods = [
     {
       id: 'describe',
       icon: '💬',
-      title: '描述我的需求',
-      description: '告诉AI你经常重复做的工作流程，AI帮你做成技能',
-      prompt: '我想创建一个新的技能。请使用 /skill-creator 引导我完成创建过程。我会描述我经常重复做的工作流程，请帮我把它做成一个可重复使用的技能。',
+      title: t('dialog.describe.title'),
+      description: t('dialog.describe.description'),
+      prompt: t('dialog.describe.prompt'),
     },
     {
       id: 'community',
       icon: '📦',
-      title: '安装社区技能',
-      description: '从社区技能库中搜索并安装现成技能',
-      prompt: '请帮我搜索和安装社区技能。我想浏览可用的技能列表，请列出一些推荐的数据分析相关技能。',
+      title: t('dialog.community.title'),
+      description: t('dialog.community.description'),
+      prompt: t('dialog.community.prompt'),
     },
     {
       id: 'from-chat',
       icon: '📝',
-      title: '基于当前对话创建',
-      description: '把刚才的分析流程保存为可重复技能',
-      prompt: '请把我们刚才的对话中的分析流程保存为一个可重复使用的技能。使用 /skill-creator 来创建。保存到我的个人技能库（~/.claude/skills/）中，这样下次新对话我也能用。',
+      title: t('dialog.from_chat.title'),
+      description: t('dialog.from_chat.description'),
+      prompt: t('dialog.from_chat.prompt'),
     },
   ];
 
@@ -46,11 +48,11 @@ export function CreateSkillDialog({ onClose, onActionClick }) {
       <style>{dialogStyles}</style>
       <div className="skill-dialog" onClick={e => e.stopPropagation()}>
         <div className="skill-dialog-header">
-          <h2>🛠 创建新技能</h2>
-          <button className="skill-dialog-close" onClick={onClose}>✕</button>
+          <h2>{t('dialog.title')}</h2>
+          <button className="skill-dialog-close" onClick={onClose}>{t('dialog.close')}</button>
         </div>
 
-        <p className="skill-dialog-subtitle">选择创建方式：</p>
+        <p className="skill-dialog-subtitle">{t('dialog.subtitle')}</p>
 
         <div className="skill-dialog-methods">
           {methods.map(method => (
@@ -70,7 +72,7 @@ export function CreateSkillDialog({ onClose, onActionClick }) {
         </div>
 
         <div className="skill-dialog-hint">
-          💡 创建后的技能会出现在工具箱的「⭐ 我的技能」中，可以随时使用
+          {t('dialog.hint')}
         </div>
       </div>
     </div>
@@ -82,14 +84,15 @@ export function CreateSkillDialog({ onClose, onActionClick }) {
  * Asks user whether to save as permanent or session-only
  */
 export function SaveSkillPrompt({ skillName, onSavePermanent, onSaveTemp, onDismiss }) {
+  const { t } = useTranslation();
   return (
     <div className="save-skill-prompt">
       <style>{dialogStyles}</style>
       <div className="save-skill-header">
-        ✅ 技能创建成功: 「{skillName}」
+        {t('save.success', { skillName })}
       </div>
 
-      <p className="save-skill-label">保存为：</p>
+      <p className="save-skill-label">{t('save.save_as')}</p>
 
       <div className="save-skill-options">
         <div
@@ -97,10 +100,10 @@ export function SaveSkillPrompt({ skillName, onSavePermanent, onSaveTemp, onDism
           onClick={onSavePermanent}
         >
           <div className="save-skill-option-header">
-            <span>⭐ 常用技能（推荐）</span>
+            <span>{t('save.permanent')}</span>
           </div>
           <span className="save-skill-option-desc">
-            以后随时可以用，跨会话持久保存
+            {t('save.permanent_desc')}
           </span>
         </div>
 
@@ -109,10 +112,10 @@ export function SaveSkillPrompt({ skillName, onSavePermanent, onSaveTemp, onDism
           onClick={onSaveTemp}
         >
           <div className="save-skill-option-header">
-            <span>📂 仅本次任务</span>
+            <span>{t('save.temp')}</span>
           </div>
           <span className="save-skill-option-desc">
-            只在当前分析中使用，会话结束后清理
+            {t('save.temp_desc')}
           </span>
         </div>
       </div>
@@ -124,6 +127,7 @@ export function SaveSkillPrompt({ skillName, onSavePermanent, onSaveTemp, onDism
  * Share Skill Button — Renders inline in personal skill cards
  */
 export function ShareSkillButton({ skillId, onShare }) {
+  const { t } = useTranslation();
   const [shared, setShared] = useState(false);
 
   const handleShare = async () => {
@@ -132,12 +136,12 @@ export function ShareSkillButton({ skillId, onShare }) {
   };
 
   if (shared) {
-    return <span className="share-skill-done">✅ 已提交</span>;
+    return <span className="share-skill-done">{t('share_btn.submitted')}</span>;
   }
 
   return (
-    <button className="share-skill-btn" onClick={handleShare} title="分享给团队">
-      📤 分享
+    <button className="share-skill-btn" onClick={handleShare} title={t('share_btn.share_title')}>
+      {t('share_btn.share')}
     </button>
   );
 }

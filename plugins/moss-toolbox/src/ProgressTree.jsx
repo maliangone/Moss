@@ -7,6 +7,7 @@
  */
 
 import React, { useState } from 'react';
+import { useTranslation } from './i18n.js';
 
 /**
  * Task node statuses
@@ -84,6 +85,7 @@ function TaskNode({ task, depth = 0 }) {
  * Task tree container with header
  */
 export function TaskTree({ title, tasks, skills }) {
+  const { t } = useTranslation();
   const [collapsed, setCollapsed] = useState(false);
 
   if (!tasks || tasks.length === 0) return null;
@@ -93,7 +95,7 @@ export function TaskTree({ title, tasks, skills }) {
       <style>{treeStyles}</style>
 
       <div className="task-tree-header" onClick={() => setCollapsed(!collapsed)}>
-        <span>🔄 {title || '正在执行'}</span>
+        <span>🔄 {title || t('progress.running_default')}</span>
         <span className="task-tree-toggle">{collapsed ? '▶' : '▼'}</span>
       </div>
 
@@ -118,6 +120,7 @@ export function TaskTree({ title, tasks, skills }) {
  * Skill badges — shows which skills are being used (collapsible)
  */
 export function SkillBadges({ skills }) {
+  const { t } = useTranslation();
   const [expanded, setExpanded] = useState(false);
 
   return (
@@ -126,7 +129,7 @@ export function SkillBadges({ skills }) {
         className="skill-badges-header"
         onClick={() => setExpanded(!expanded)}
       >
-        ⚙ 本次使用的技能 ({skills.length}) {expanded ? '▼' : '▶'}
+        {t('progress.skills_used', { count: skills.length })} {expanded ? '▼' : '▶'}
       </div>
 
       {expanded && (
@@ -136,7 +139,7 @@ export function SkillBadges({ skills }) {
               <span className="skill-badge-icon">{skill.icon || '⚙'}</span>
               <span className="skill-badge-name">{skill.name}</span>
               <span className="skill-badge-trigger">
-                {skill.autoTriggered ? '— 自动触发' : '— 用户选择'}
+                {skill.autoTriggered ? t('progress.auto_triggered') : t('progress.user_selected')}
               </span>
             </div>
           ))}

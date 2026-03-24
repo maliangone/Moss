@@ -10,10 +10,12 @@ import { ToolboxPanel } from './ToolboxPanel.jsx';
 import { WelcomePage } from './WelcomePage.jsx';
 import { SuggestionBar } from './SuggestionBar.jsx';
 import { CreateSkillDialog } from './CreateSkillDialog.jsx';
+import { useTranslation } from './i18n.js';
 
 const API_BASE = '/api/plugins/moss-toolbox/rpc';
 
 export default function MossToolbox({ context }) {
+  const { t } = useTranslation();
   const [toolboxData, setToolboxData] = useState(null);
   const [showToolbox, setShowToolbox] = useState(false);
   const [showCreateSkill, setShowCreateSkill] = useState(false);
@@ -72,7 +74,7 @@ export default function MossToolbox({ context }) {
         body: JSON.stringify({ skillId }),
       });
       if (res.ok) {
-        alert('技能已提交审核，管理员审核通过后将对全公司开放。');
+        alert(t('share_submitted'));
       }
     } catch (err) {
       console.error('[moss-toolbox] Failed to share skill:', err);
@@ -83,7 +85,7 @@ export default function MossToolbox({ context }) {
     return (
       <div className="moss-loading">
         <div className="moss-spinner" />
-        <p>加载工具箱...</p>
+        <p>{t('loading')}</p>
       </div>
     );
   }

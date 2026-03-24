@@ -1,0 +1,81 @@
+{
+  "tabs": {
+    "dashboard": "ภาพรวม",
+    "users": "ผู้ใช้",
+    "skills": "ทักษะ",
+    "review": "ตรวจสอบ",
+    "policy": "นโยบาย",
+    "health": "ระบบ"
+  },
+  "refresh": "รีเฟรช",
+  "loading": "กำลังโหลด...",
+  "dashboard": {
+    "header": "📊 ภาพรวมแพลตฟอร์ม",
+    "active_users": "ผู้ใช้ที่ใช้งานอยู่",
+    "shared_skills": "ทักษะที่แชร์",
+    "pending_review": "รอการตรวจสอบ"
+  },
+  "users": {
+    "header": "👥 จัดการผู้ใช้",
+    "username_placeholder": "ชื่อผู้ใช้",
+    "dept_general": "ทั่วไป",
+    "dept_it": "IT",
+    "dept_marketing": "การตลาด",
+    "dept_finance": "การเงิน",
+    "dept_legal": "กฎหมาย",
+    "dept_operations": "ปฏิบัติการ",
+    "dept_production": "การผลิต",
+    "create_btn": "+ สร้างผู้ใช้",
+    "col_username": "ชื่อผู้ใช้",
+    "col_department": "แผนก",
+    "col_skills": "ทักษะส่วนตัว",
+    "col_last_active": "ใช้งานล่าสุด",
+    "col_actions": "การดำเนินการ",
+    "archive_btn": "เก็บถาวร",
+    "confirm_archive": "เก็บถาวรพื้นที่ทำงานของผู้ใช้ \"{{username}}\"?",
+    "error_create": "การสร้างล้มเหลว",
+    "error_create_msg": "ไม่สามารถสร้างผู้ใช้: {{message}}",
+    "error_action": "การดำเนินการล้มเหลว: {{message}}"
+  },
+  "skills": {
+    "header": "🧰 จัดการทักษะ",
+    "col_id": "ID ทักษะ",
+    "col_name": "ชื่อ",
+    "col_description": "คำอธิบาย",
+    "col_actions": "การดำเนินการ",
+    "delete_btn": "ลบ",
+    "confirm_delete": "ลบทักษะที่แชร์ \"{{skillId}}\"?",
+    "error_delete": "การลบล้มเหลว: {{message}}",
+    "empty": "ไม่มีทักษะที่แชร์"
+  },
+  "review": {
+    "header": "📋 คิวตรวจสอบทักษะ ({{count}} รอดำเนินการ)",
+    "empty": "ไม่มีทักษะที่รอตรวจสอบ",
+    "submitted_by": "ส่งโดย: {{username}}",
+    "approve_btn": "✅ อนุมัติ",
+    "reject_btn": "❌ ปฏิเสธ",
+    "reject_reason": "เหตุผลในการปฏิเสธ (ไม่บังคับ):",
+    "error_action": "การดำเนินการล้มเหลว: {{message}}"
+  },
+  "policy": {
+    "header": "🔒 การตั้งค่านโยบายทักษะ",
+    "group_user_creation": "ทักษะที่ผู้ใช้สร้าง",
+    "allow_user_creation": "อนุญาตให้ผู้ใช้สร้างทักษะส่วนตัว",
+    "group_community": "การติดตั้งจากชุมชน",
+    "allow_community": "อนุญาตให้ติดตั้งทักษะจากชุมชน",
+    "group_sharing": "กลไกการแชร์",
+    "allow_sharing": "อนุญาตให้ผู้ใช้แชร์ทักษะกับทีม",
+    "require_review": "ต้องให้ผู้ดูแลระบบตรวจสอบก่อนแชร์",
+    "save_btn": "บันทึกนโยบาย",
+    "saved": "บันทึกนโยบายแล้ว",
+    "error_save": "การบันทึกล้มเหลว: {{message}}"
+  },
+  "health": {
+    "header": "💚 สถานะระบบ",
+    "label_status": "สถานะ",
+    "status_ok": "✅ ปกติ",
+    "status_error": "❌ ผิดปกติ",
+    "label_disk": "การใช้ดิสก์",
+    "label_time": "เวลา"
+  }
+}

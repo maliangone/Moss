@@ -1,0 +1,81 @@
+{
+  "tabs": {
+    "dashboard": "Dashboard",
+    "users": "Users",
+    "skills": "Skills",
+    "review": "Review",
+    "policy": "Policy",
+    "health": "System"
+  },
+  "refresh": "Refresh",
+  "loading": "Loading...",
+  "dashboard": {
+    "header": "📊 Platform Overview",
+    "active_users": "Active Users",
+    "shared_skills": "Shared Skills",
+    "pending_review": "Pending Review"
+  },
+  "users": {
+    "header": "👥 User Management",
+    "username_placeholder": "Username",
+    "dept_general": "General",
+    "dept_it": "IT",
+    "dept_marketing": "Marketing",
+    "dept_finance": "Finance",
+    "dept_legal": "Legal",
+    "dept_operations": "Operations",
+    "dept_production": "Production",
+    "create_btn": "+ Create User",
+    "col_username": "Username",
+    "col_department": "Department",
+    "col_skills": "Personal Skills",
+    "col_last_active": "Last Active",
+    "col_actions": "Actions",
+    "archive_btn": "Archive",
+    "confirm_archive": "Archive workspace for user \"{{username}}\"?",
+    "error_create": "Creation failed",
+    "error_create_msg": "Failed to create user: {{message}}",
+    "error_action": "Action failed: {{message}}"
+  },
+  "skills": {
+    "header": "🧰 Skill Management",
+    "col_id": "Skill ID",
+    "col_name": "Name",
+    "col_description": "Description",
+    "col_actions": "Actions",
+    "delete_btn": "Delete",
+    "confirm_delete": "Delete shared skill \"{{skillId}}\"?",
+    "error_delete": "Delete failed: {{message}}",
+    "empty": "No shared skills"
+  },
+  "review": {
+    "header": "📋 Skill Review Queue ({{count}} pending)",
+    "empty": "No skills pending review",
+    "submitted_by": "Submitted by: {{username}}",
+    "approve_btn": "✅ Approve",
+    "reject_btn": "❌ Reject",
+    "reject_reason": "Reason for rejection (optional):",
+    "error_action": "Action failed: {{message}}"
+  },
+  "policy": {
+    "header": "🔒 Skill Policy Settings",
+    "group_user_creation": "User-created Skills",
+    "allow_user_creation": "Allow users to create personal skills",
+    "group_community": "Community Installation",
+    "allow_community": "Allow installing skills from community",
+    "group_sharing": "Sharing Mechanism",
+    "allow_sharing": "Allow users to share skills with team",
+    "require_review": "Require admin review before sharing",
+    "save_btn": "Save Policy",
+    "saved": "Policy saved",
+    "error_save": "Save failed: {{message}}"
+  },
+  "health": {
+    "header": "💚 System Status",
+    "label_status": "Status",
+    "status_ok": "✅ Normal",
+    "status_error": "❌ Error",
+    "label_disk": "Disk Usage",
+    "label_time": "Time"
+  }
+}

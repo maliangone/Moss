@@ -1,0 +1,81 @@
+{
+  "tabs": {
+    "dashboard": "概覽",
+    "users": "使用者",
+    "skills": "技能",
+    "review": "審核",
+    "policy": "策略",
+    "health": "系統"
+  },
+  "refresh": "重新整理",
+  "loading": "載入中...",
+  "dashboard": {
+    "header": "📊 平台概覽",
+    "active_users": "活躍使用者",
+    "shared_skills": "共享技能",
+    "pending_review": "待審核"
+  },
+  "users": {
+    "header": "👥 使用者管理",
+    "username_placeholder": "使用者名稱",
+    "dept_general": "通用",
+    "dept_it": "IT",
+    "dept_marketing": "行銷",
+    "dept_finance": "財務",
+    "dept_legal": "法務",
+    "dept_operations": "營運",
+    "dept_production": "生產",
+    "create_btn": "+ 建立使用者",
+    "col_username": "使用者名稱",
+    "col_department": "部門",
+    "col_skills": "個人技能",
+    "col_last_active": "最後活躍",
+    "col_actions": "操作",
+    "archive_btn": "封存",
+    "confirm_archive": "確定要封存使用者 \"{{username}}\" 的工作區嗎？",
+    "error_create": "建立失敗",
+    "error_create_msg": "建立使用者失敗: {{message}}",
+    "error_action": "操作失敗: {{message}}"
+  },
+  "skills": {
+    "header": "🧰 技能管理",
+    "col_id": "技能ID",
+    "col_name": "名稱",
+    "col_description": "描述",
+    "col_actions": "操作",
+    "delete_btn": "刪除",
+    "confirm_delete": "確定要刪除共享技能 \"{{skillId}}\" 嗎？",
+    "error_delete": "刪除失敗: {{message}}",
+    "empty": "目前無共享技能"
+  },
+  "review": {
+    "header": "📋 技能審核佇列 ({{count}} 待審核)",
+    "empty": "目前無待審核技能",
+    "submitted_by": "提交者: {{username}}",
+    "approve_btn": "✅ 批准",
+    "reject_btn": "❌ 拒絕",
+    "reject_reason": "拒絕原因（選填）:",
+    "error_action": "操作失敗: {{message}}"
+  },
+  "policy": {
+    "header": "🔒 技能策略設定",
+    "group_user_creation": "使用者自建技能",
+    "allow_user_creation": "允許使用者建立個人技能",
+    "group_community": "社群安裝",
+    "allow_community": "允許從社群安裝技能",
+    "group_sharing": "分享機制",
+    "allow_sharing": "允許使用者分享技能給團隊",
+    "require_review": "分享前需要管理員審核",
+    "save_btn": "儲存策略",
+    "saved": "策略已儲存",
+    "error_save": "儲存失敗: {{message}}"
+  },
+  "health": {
+    "header": "💚 系統狀態",
+    "label_status": "狀態",
+    "status_ok": "✅ 正常",
+    "status_error": "❌ 異常",
+    "label_disk": "磁碟使用",
+    "label_time": "時間"
+  }
+}

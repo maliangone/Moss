@@ -6,6 +6,7 @@
  */
 
 import React, { useState, useMemo } from 'react';
+import { useTranslation } from './i18n.js';
 
 export function ToolboxPanel({
   categories,
@@ -16,6 +17,7 @@ export function ToolboxPanel({
   onCreateSkill,
   onRefresh,
 }) {
+  const { t } = useTranslation();
   const [searchQuery, setSearchQuery] = useState('');
   const [expandedCategories, setExpandedCategories] = useState(
     new Set(categories.map(c => c.id))
@@ -62,8 +64,8 @@ export function ToolboxPanel({
 
       {/* Header */}
       <div className="toolbox-header">
-        <h2>🧰 工具箱</h2>
-        <button className="toolbox-refresh" onClick={onRefresh} title="刷新">
+        <h2>{t('panel.header')}</h2>
+        <button className="toolbox-refresh" onClick={onRefresh} title={t('panel.refresh')}>
           🔄
         </button>
       </div>
@@ -72,7 +74,7 @@ export function ToolboxPanel({
       <div className="toolbox-search">
         <input
           type="text"
-          placeholder="🔍 搜索工具..."
+          placeholder={t('panel.search_placeholder')}
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
         />
@@ -85,13 +87,13 @@ export function ToolboxPanel({
             className="toolbox-section-header personal"
             onClick={() => toggleCategory('__personal__')}
           >
-            <span>⭐ 我的技能 ({personalSkills.length})</span>
+            <span>{t('panel.my_skills', { count: personalSkills.length })}</span>
             <button
               className="toolbox-create-btn"
               onClick={(e) => { e.stopPropagation(); onCreateSkill(); }}
-              title="创建新技能"
+              title={t('panel.create_title')}
             >
-              + 创建
+              {t('panel.create_btn')}
             </button>
           </div>
 
@@ -101,7 +103,7 @@ export function ToolboxPanel({
                 <div key={skill.id} className="toolbox-item personal-skill">
                   <div
                     className="toolbox-item-main"
-                    onClick={() => onActionClick(`使用我的"${skill.name}"技能来处理`)}
+                    onClick={() => onActionClick(t('panel.use_skill', { name: skill.name }))}
                   >
                     <span className="toolbox-item-icon">⭐</span>
                     <div className="toolbox-item-text">
@@ -114,13 +116,13 @@ export function ToolboxPanel({
                   <div className="toolbox-item-actions">
                     <button
                       onClick={(e) => { e.stopPropagation(); onShareSkill(skill.id); }}
-                      title="分享给团队"
+                      title={t('panel.share_title')}
                     >
                       📤
                     </button>
                     <button
                       onClick={(e) => { e.stopPropagation(); onDeleteSkill(skill.id); }}
-                      title="删除"
+                      title={t('panel.delete_title')}
                     >
                       🗑
                     </button>
@@ -130,7 +132,7 @@ export function ToolboxPanel({
 
               {filteredPersonalSkills.length === 0 && !searchQuery && (
                 <div className="toolbox-empty-personal">
-                  💡 告诉 AI "帮我把这个分析流程做成一个可重复的工具" 就能创建你自己的技能
+                  {t('panel.empty_personal')}
                 </div>
               )}
             </div>
@@ -166,7 +168,7 @@ export function ToolboxPanel({
                     <span className="toolbox-item-desc">{item.description}</span>
                   </div>
                   {item.trigger === 'auto+manual' && (
-                    <span className="toolbox-auto-badge" title="可自动触发">⚡</span>
+                    <span className="toolbox-auto-badge" title={t('panel.auto_trigger')}>⚡</span>
                   )}
                 </div>
               ))}

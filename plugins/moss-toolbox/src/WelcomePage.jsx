@@ -6,10 +6,12 @@
  */
 
 import React, { useState, useEffect } from 'react';
+import { useTranslation } from './i18n.js';
 
 const API_BASE = '/api/plugins/moss-toolbox/rpc';
 
 export function WelcomePage({ onActionClick }) {
+  const { t } = useTranslation();
   const [data, setData] = useState(null);
 
   useEffect(() => {
@@ -26,8 +28,8 @@ export function WelcomePage({ onActionClick }) {
       <style>{welcomeStyles}</style>
 
       <div className="welcome-hero">
-        <h1>🤖 你好！我是你的 AI 分析助手</h1>
-        <p>告诉我你想做什么，或者选择一个快速任务：</p>
+        <h1>{t('welcome.hero_title')}</h1>
+        <p>{t('welcome.hero_subtitle')}</p>
       </div>
 
       {/* Quick Action Cards */}
@@ -50,13 +52,13 @@ export function WelcomePage({ onActionClick }) {
       {/* Personal Skills Shortcuts */}
       {data.personalSkills && data.personalSkills.length > 0 && (
         <div className="welcome-personal">
-          <h3>⭐ 我的技能 ({data.personalSkills.length}个)</h3>
+          <h3>{t('welcome.my_skills', { count: data.personalSkills.length })}</h3>
           <div className="welcome-skill-chips">
             {data.personalSkills.map(skill => (
               <button
                 key={skill.id}
                 className="welcome-skill-chip"
-                onClick={() => onActionClick(`使用我的"${skill.name}"技能`)}
+                onClick={() => onActionClick(t('welcome.use_skill', { name: skill.name }))}
               >
                 {skill.name}
               </button>
@@ -67,17 +69,17 @@ export function WelcomePage({ onActionClick }) {
 
       {/* Skill Creation Hint */}
       <div className="welcome-hint">
-        🛠 把你经常重复的工作告诉我，我帮你做成一键触发的专属工具
+        {t('welcome.hint')}
       </div>
 
       {/* Example Prompt */}
       <div className="welcome-example">
-        💡 或者直接告诉我：
+        {t('welcome.example_intro')}
         <button
           className="welcome-example-prompt"
-          onClick={() => onActionClick('帮我分析上个月的销售数据，找出下降最多的产品线')}
+          onClick={() => onActionClick(t('welcome.example_prompt'))}
         >
-          "帮我分析上个月的销售数据，找出下降最多的产品线"
+          "{t('welcome.example_prompt')}"
         </button>
       </div>
     </div>

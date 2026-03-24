@@ -1,0 +1,69 @@
+{
+  "loading": "加载工具箱...",
+  "share_submitted": "技能已提交审核，管理员审核通过后将对全公司开放。",
+  "panel": {
+    "header": "🧰 工具箱",
+    "refresh": "刷新",
+    "search_placeholder": "🔍 搜索工具...",
+    "my_skills": "⭐ 我的技能 ({{count}})",
+    "create_btn": "+ 创建",
+    "create_title": "创建新技能",
+    "use_skill": "使用我的\"{{name}}\"技能来处理",
+    "share_title": "分享给团队",
+    "delete_title": "删除",
+    "empty_personal": "💡 告诉 AI \"帮我把这个分析流程做成一个可重复的工具\" 就能创建你自己的技能",
+    "auto_trigger": "可自动触发"
+  },
+  "suggestion": {
+    "label": "💡 你可能想要:"
+  },
+  "welcome": {
+    "hero_title": "🤖 你好！我是你的 AI 分析助手",
+    "hero_subtitle": "告诉我你想做什么，或者选择一个快速任务：",
+    "my_skills": "⭐ 我的技能 ({{count}}个)",
+    "use_skill": "使用我的\"{{name}}\"技能",
+    "hint": "🛠 把你经常重复的工作告诉我，我帮你做成一键触发的专属工具",
+    "example_intro": "💡 或者直接告诉我：",
+    "example_prompt": "帮我分析上个月的销售数据，找出下降最多的产品线"
+  },
+  "dialog": {
+    "title": "🛠 创建新技能",
+    "close": "✕",
+    "subtitle": "选择创建方式：",
+    "hint": "💡 创建后的技能会出现在工具箱的「⭐ 我的技能」中，可以随时使用",
+    "describe": {
+      "title": "描述我的需求",
+      "description": "告诉AI你经常重复做的工作流程，AI帮你做成技能",
+      "prompt": "我想创建一个新的技能。请使用 /skill-creator 引导我完成创建过程。我会描述我经常重复做的工作流程，请帮我把它做成一个可重复使用的技能。"
+    },
+    "community": {
+      "title": "安装社区技能",
+      "description": "从社区技能库中搜索并安装现成技能",
+      "prompt": "请帮我搜索和安装社区技能。我想浏览可用的技能列表，请列出一些推荐的数据分析相关技能。"
+    },
+    "from_chat": {
+      "title": "基于当前对话创建",
+      "description": "把刚才的分析流程保存为可重复技能",
+      "prompt": "请把我们刚才的对话中的分析流程保存为一个可重复使用的技能。使用 /skill-creator 来创建。保存到我的个人技能库（~/.claude/skills/）中，这样下次新对话我也能用。"
+    }
+  },
+  "save": {
+    "success": "✅ 技能创建成功: 「{{skillName}}」",
+    "save_as": "保存为：",
+    "permanent": "⭐ 常用技能（推荐）",
+    "permanent_desc": "以后随时可以用，跨会话持久保存",
+    "temp": "📂 仅本次任务",
+    "temp_desc": "只在当前分析中使用，会话结束后清理"
+  },
+  "share_btn": {
+    "submitted": "✅ 已提交",
+    "share_title": "分享给团队",
+    "share": "📤 分享"
+  },
+  "progress": {
+    "running_default": "正在执行",
+    "skills_used": "⚙ 本次使用的技能 ({{count}})",
+    "auto_triggered": "— 自动触发",
+    "user_selected": "— 用户选择"
+  }
+}

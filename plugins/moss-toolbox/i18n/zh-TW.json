@@ -1,0 +1,69 @@
+{
+  "loading": "載入工具箱...",
+  "share_submitted": "技能已提交審核，管理員審核通過後將對全公司開放。",
+  "panel": {
+    "header": "🧰 工具箱",
+    "refresh": "重新整理",
+    "search_placeholder": "🔍 搜尋工具...",
+    "my_skills": "⭐ 我的技能 ({{count}})",
+    "create_btn": "+ 建立",
+    "create_title": "建立新技能",
+    "use_skill": "使用我的\"{{name}}\"技能來處理",
+    "share_title": "分享給團隊",
+    "delete_title": "刪除",
+    "empty_personal": "💡 告訴 AI \"幫我把這個分析流程做成一個可重複的工具\" 就能建立你自己的技能",
+    "auto_trigger": "可自動觸發"
+  },
+  "suggestion": {
+    "label": "💡 你可能想要："
+  },
+  "welcome": {
+    "hero_title": "🤖 你好！我是你的 AI 分析助手",
+    "hero_subtitle": "告訴我你想做什麼，或者選擇一個快速任務：",
+    "my_skills": "⭐ 我的技能 ({{count}}個)",
+    "use_skill": "使用我的\"{{name}}\"技能",
+    "hint": "🛠 把你經常重複的工作告訴我，我幫你做成一鍵觸發的專屬工具",
+    "example_intro": "💡 或者直接告訴我：",
+    "example_prompt": "幫我分析上個月的銷售資料，找出下降最多的產品線"
+  },
+  "dialog": {
+    "title": "🛠 建立新技能",
+    "close": "✕",
+    "subtitle": "選擇建立方式：",
+    "hint": "💡 建立後的技能會出現在工具箱的「⭐ 我的技能」中，可以隨時使用",
+    "describe": {
+      "title": "描述我的需求",
+      "description": "告訴AI你經常重複做的工作流程，AI幫你做成技能",
+      "prompt": "我想建立一個新的技能。請使用 /skill-creator 引導我完成建立過程。我會描述我經常重複做的工作流程，請幫我把它做成一個可重複使用的技能。"
+    },
+    "community": {
+      "title": "安裝社群技能",
+      "description": "從社群技能庫中搜尋並安裝現成技能",
+      "prompt": "請幫我搜尋和安裝社群技能。我想瀏覽可用的技能清單，請列出一些推薦的資料分析相關技能。"
+    },
+    "from_chat": {
+      "title": "基於目前對話建立",
+      "description": "把剛才的分析流程儲存為可重複技能",
+      "prompt": "請把我們剛才的對話中的分析流程儲存為一個可重複使用的技能。使用 /skill-creator 來建立。儲存到我的個人技能庫（~/.claude/skills/）中，這樣下次新對話我也能用。"
+    }
+  },
+  "save": {
+    "success": "✅ 技能建立成功：「{{skillName}}」",
+    "save_as": "儲存為：",
+    "permanent": "⭐ 常用技能（推薦）",
+    "permanent_desc": "以後隨時可以用，跨會話持久儲存",
+    "temp": "📂 僅本次任務",
+    "temp_desc": "只在目前分析中使用，會話結束後清除"
+  },
+  "share_btn": {
+    "submitted": "✅ 已提交",
+    "share_title": "分享給團隊",
+    "share": "📤 分享"
+  },
+  "progress": {
+    "running_default": "正在執行",
+    "skills_used": "⚙ 本次使用的技能 ({{count}})",
+    "auto_triggered": "— 自動觸發",
+    "user_selected": "— 使用者選擇"
+  }
+}
