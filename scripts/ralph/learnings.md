@@ -13,7 +13,7 @@ Append-only log of discoveries from autonomous task runs. Read this before start
 
 ### CloudCLI Frontend
 - React 18 + TypeScript + Tailwind CSS + Vite
-- i18n: en + zh-CN in `cloudcli/src/i18n/locales/` — all keys must exist in both
+- i18n: 8 locales in `cloudcli/src/i18n/locales/` (en, zh-CN, ko, ja, ru, de, zh-TW, th) — all 7 namespaces (auth, chat, codeEditor, common, settings, sidebar, tasks) should exist per locale; missing ones fall back to en
 - Plugin system loads from `plugins/` directory — each plugin has manifest.json, React entry (index.jsx), Express backend (server.js)
 - State management via custom stores in `cloudcli/src/stores/`
 
@@ -49,3 +49,9 @@ Append-only log of discoveries from autonomous task runs. Read this before start
 - **[firewall]**: On Docker Desktop (iptables-nft backend), `iptables -L | head -N` exits non-zero with "iptables-legacy tables present" warning even when rules are applied; add `|| true` to display-only iptables commands to avoid false "Firewall setup failed" messages
 - **[testing]**: `docker exec moss-agent whoami` returns `root` because docker-compose sets `user: "0:0"` — the actual CloudCLI process runs as agent (UID 1000); verify via `/proc/*/exe` uid check or `cat /proc/<pid>/status`
 - **[testing]**: Git Bash on Windows converts `/app/cloudcli/data/` paths in docker exec commands to Windows paths — always wrap in `bash -c "..."` to prevent path mangling
+
+### Task 11 — 2026-03-24
+- **[i18n]**: `cloudcli/.gitignore` ignores `tasks.json` globally — adding a new locale's tasks.json requires an explicit exception line like `!src/i18n/locales/<locale>/tasks.json` (see lines 134-139 of cloudcli/.gitignore)
+- **[i18n]**: Adding a locale requires 3 changes: (1) create locale JSON files, (2) add imports + resources in config.js, (3) add entry in languages.js — all three are required for the language to appear in the UI
+- **[i18n]**: Language selector is in Settings → Appearance (外觀), not in the Account tab
+- **[i18n]**: zh-TW (Traditional Chinese) uses significantly different vocabulary than zh-CN: 設定 vs 设置, 儲存 vs 保存, 檔案 vs 文件, 資料夾 vs 文件夹, 登出 vs 退出登录, 搜尋 vs 搜索
