@@ -13,6 +13,7 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import ReactDOM from 'react-dom/client';
 import { useTranslation } from './i18n.js';
+import { apiFetch } from './apiFetch.js';
 
 const API_BASE = '/api/plugins/moss-admin/rpc';
 
@@ -26,11 +27,11 @@ export default function MossAdmin() {
     setLoading(true);
     try {
       const [dashRes, skillsRes, reviewRes, healthRes, policyRes] = await Promise.all([
-        fetch(`${API_BASE}/dashboard`),
-        fetch(`${API_BASE}/skills`),
-        fetch(`${API_BASE}/skills/review`),
-        fetch(`${API_BASE}/health`),
-        fetch(`${API_BASE}/config/policy`),
+        apiFetch(`${API_BASE}/dashboard`),
+        apiFetch(`${API_BASE}/skills`),
+        apiFetch(`${API_BASE}/skills/review`),
+        apiFetch(`${API_BASE}/health`),
+        apiFetch(`${API_BASE}/config/policy`),
       ]);
 
       setData({
@@ -151,9 +152,8 @@ function UserManager({ data, onRefresh }) {
   const handleCreateUser = async () => {
     if (!newUser.trim()) return;
     try {
-      const res = await fetch(`${API_BASE}/users`, {
+      const res = await apiFetch(`${API_BASE}/users`, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ username: newUser.trim(), department: newDept }),
       });
       if (res.ok) {
@@ -171,7 +171,7 @@ function UserManager({ data, onRefresh }) {
   const handleDeleteUser = async (username) => {
     if (!confirm(t('users.confirm_archive', { username }))) return;
     try {
-      await fetch(`${API_BASE}/users/${username}`, { method: 'DELETE' });
+      await apiFetch(`${API_BASE}/users/${username}`, { method: 'DELETE' });
       onRefresh();
     } catch (err) {
       alert(t('users.error_action', { message: err.message }));
@@ -245,7 +245,7 @@ function SkillManager({ skills, onRefresh }) {
   const handleDelete = async (skillId) => {
     if (!confirm(t('skills.confirm_delete', { skillId }))) return;
     try {
-      await fetch(`${API_BASE}/skills/${skillId}`, { method: 'DELETE' });
+      await apiFetch(`${API_BASE}/skills/${skillId}`, { method: 'DELETE' });
       onRefresh();
     } catch (err) {
       alert(t('skills.error_delete', { message: err.message }));
@@ -298,9 +298,8 @@ function ReviewQueue({ submissions, onRefresh }) {
   const handleAction = async (id, action, feedback) => {
     try {
       const body = action === 'reject' ? { feedback: feedback || '' } : {};
-      await fetch(`${API_BASE}/skills/review/${id}/${action}`, {
+      await apiFetch(`${API_BASE}/skills/review/${id}/${action}`, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(body),
       });
       onRefresh();
@@ -357,9 +356,8 @@ function PolicyEditor({ policy, onRefresh }) {
 
   const handleSave = async () => {
     try {
-      await fetch(`${API_BASE}/config/policy`, {
+      await apiFetch(`${API_BASE}/config/policy`, {
         method: 'PUT',
-        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ policy: localPolicy }),
       });
       alert(t('policy.saved'));

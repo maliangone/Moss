@@ -11,6 +11,7 @@
 
 import React, { useState, useEffect, useMemo } from 'react';
 import { useTranslation } from './i18n.js';
+import { apiFetch } from './apiFetch.js';
 
 const API_BASE = '/api/plugins/moss-toolbox/rpc';
 
@@ -60,7 +61,7 @@ export function SuggestionBar({ context, onActionClick }) {
 
   // Load suggestion rules
   useEffect(() => {
-    fetch(`${API_BASE}/suggestions`)
+    apiFetch(`${API_BASE}/suggestions`)
       .then(res => res.json())
       .then(data => setRules(data.rules || []))
       .catch(err => console.error('[moss-suggestions] Failed to load rules:', err));

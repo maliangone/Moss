@@ -9,9 +9,9 @@
         "testStrategy": "1. `docker compose build && docker compose up -d`\n2. Navigate to http://localhost:3001 via Playwright\n3. Verify login page shows 'Moss AI' branding\n4. Login with admin/moss2026\n5. Verify no onboarding wizard appears\n6. Verify main UI loads with 'Moss AI' heading\n7. Refresh page — verify session persists\n8. Click Settings → Logout → verify redirect to login\n9. Try login with wrong password → verify error\n10. Switch language to zh-CN → verify auth strings",
         "priority": "high",
         "dependencies": [],
-        "status": "pending",
+        "status": "done",
         "subtasks": [],
-        "updatedAt": "2026-03-24T08:30:00Z"
+        "updatedAt": "2026-03-24T08:59:39.613Z"
       },
       {
         "id": "2",
@@ -23,9 +23,9 @@
         "dependencies": [
           "1"
         ],
-        "status": "pending",
+        "status": "done",
         "subtasks": [],
-        "updatedAt": "2026-03-24T08:30:00Z"
+        "updatedAt": "2026-03-24T11:03:09.559Z"
       },
       {
         "id": "3",
@@ -37,9 +37,9 @@
         "dependencies": [
           "1"
         ],
-        "status": "pending",
+        "status": "done",
         "subtasks": [],
-        "updatedAt": "2026-03-24T08:30:00Z"
+        "updatedAt": "2026-03-24T11:26:14.959Z"
       },
       {
         "id": "4",
@@ -64,9 +64,9 @@
         "testStrategy": "1. `docker compose down -v` (clean state)\n2. `docker compose build` (full rebuild)\n3. `docker compose up -d`\n4. `docker compose logs moss` — verify all [init] steps pass\n5. `curl -s http://localhost:3001/ -o /dev/null -w '%{http_code}'` → 200\n6. `docker exec moss-agent whoami` → agent\n7. `docker exec moss-agent python3 -c 'import pandas; import sklearn; print(\"OK\")'`\n8. `docker exec moss-agent iptables -L OUTPUT -n` → default DENY with whitelisted IPs\n9. `docker inspect --format='{{.State.Health.Status}}' moss-agent` → healthy\n10. Check image size: `docker images moss-moss --format '{{.Size}}'`",
         "priority": "high",
         "dependencies": [],
-        "status": "pending",
+        "status": "done",
         "subtasks": [],
-        "updatedAt": "2026-03-24T08:30:00Z"
+        "updatedAt": "2026-03-24T09:08:40.673Z"
       },
       {
         "id": "6",
@@ -78,9 +78,9 @@
         "dependencies": [
           "5"
         ],
-        "status": "pending",
+        "status": "done",
         "subtasks": [],
-        "updatedAt": "2026-03-24T08:30:00Z"
+        "updatedAt": "2026-03-24T11:45:23.752Z"
       },
       {
         "id": "7",
@@ -139,12 +139,83 @@
         "status": "pending",
         "subtasks": [],
         "updatedAt": "2026-03-24T08:30:00Z"
+      },
+      {
+        "id": "11",
+        "title": "Add Traditional Chinese (zh-TW) and Thai (th) locale support",
+        "description": "Add two new locales: Traditional Chinese (zh-TW) and Thai (th). Create all 7 locale files for each language, register them in i18n config and languages.js, and translate all UI strings.",
+        "details": "## Implementation Steps\n\n### Files to Create\n- `cloudcli/src/i18n/locales/zh-TW/` — 7 files: auth.json, chat.json, codeEditor.json, common.json, settings.json, sidebar.json, tasks.json\n- `cloudcli/src/i18n/locales/th/` — 7 files: same structure\n\n### Files to Modify\n- `cloudcli/src/i18n/languages.js` — Add zh-TW and th to languages array:\n  ```js\n  { value: 'zh-TW', label: 'Traditional Chinese', nativeName: '繁體中文' },\n  { value: 'th', label: 'Thai', nativeName: 'ภาษาไทย' },\n  ```\n- `cloudcli/src/i18n/config.js` — Add import statements for all 7 zh-TW files and 7 th files, register in resources object\n\n### Translation Strategy\n- **zh-TW**: Start from zh-CN, convert Simplified → Traditional Chinese (most strings are 1:1 conversion, some terminology differs)\n- **th**: Translate from en/ baseline\n- Both must include Moss-specific strings we customized (Moss AI branding, enterprise-friendly placeholders, non-developer descriptions)\n\n### Scope: 7 files × 2 locales = 14 new files\nEstimate ~350 translation keys per locale based on en/ file sizes.",
+        "testStrategy": "1. docker compose build && docker compose up -d\n2. Login to Moss AI\n3. Open Settings → Language selector → verify zh-TW and th appear\n4. Switch to zh-TW → verify all UI strings are Traditional Chinese\n5. Switch to th → verify all UI strings are Thai\n6. Navigate through: login, chat, sidebar, settings, files, plugins\n7. Verify no English fallback text leaks through\n8. Switch back to en → verify English works\n9. Switch to zh-CN → verify Simplified Chinese still works",
+        "priority": "high",
+        "dependencies": [],
+        "status": "done",
+        "subtasks": [],
+        "updatedAt": "2026-03-24T09:30:21.208Z"
+      },
+      {
+        "id": "12",
+        "title": "Hide remaining developer UI: mobile nav, quick settings, ChatInputControls, onboarding route",
+        "description": "Remove Shell/Git tabs from MobileNav, hide Quick Settings panel, hide ChatInputControls bar (permission mode, thinking mode, token counter), and block onboarding route for non-admin users.",
+        "details": "## Implementation Steps\n\n### 1. MobileNav — Remove Shell/Git (currently still shown on mobile)\n- `cloudcli/src/components/app/MobileNav.tsx` line 72-77\n- `baseCoreItems` still includes Shell and Git\n- Fix: Filter to Chat + Files only (match desktop MainContentTabSwitcher)\n```tsx\nconst baseCoreItems: CoreNavItem[] = [\n  { id: 'chat', icon: MessageSquare, label: t('tabs.chat') },\n  { id: 'files', icon: Folder, label: t('tabs.files') },\n];\n```\n\n### 2. Quick Settings Panel — Hide entirely\n- `cloudcli/src/components/chat/view/ChatInterface.tsx` — imports and renders `<QuickSettingsPanel />`\n- Remove or conditionally hide the Quick Settings handle + panel\n- These are developer-oriented toggles: auto-expand tools, show raw parameters, show thinking\n\n### 3. ChatInputControls — Hide permission mode, thinking mode selector, token counter\n- `cloudcli/src/components/chat/view/subcomponents/ChatComposer.tsx` — renders `<ChatInputControls />`\n- This bar shows: Default Mode button, thinking mode selector, token pie chart, max turns badge\n- Non-technical users don't need these; hide the entire bar\n- Keep the file upload button and send button\n\n### 4. Onboarding Components — Block route entirely\n- `cloudcli/src/components/auth/view/ProtectedRoute.tsx` — checks onboarding status\n- `cloudcli/src/components/onboarding/` — 5 components (Git Config, Agent Connections)\n- Since we pre-seed admin with onboarding=1, these should never show\n- Add safety guard: if onboarding route somehow triggers, skip straight to main UI\n\n### 5. Settings Sidebar — Review what tabs to keep\n- `cloudcli/src/components/settings/view/SettingsSidebar.tsx` (user has this open)\n- Keep: Appearance (dark mode, language)\n- Hide for non-admin: Agents, API Keys, Git, Notifications, Tasks, Plugins\n- These expose developer concepts non-technical users shouldn't touch",
+        "testStrategy": "1. docker compose build && docker compose up -d\n2. Login on mobile viewport (375px width) → verify only Chat + Files tabs\n3. Verify no Quick Settings gear icon on right edge of chat\n4. Verify no permission mode / thinking mode / token counter above input\n5. Verify input area is clean: just text field + file upload + send button\n6. Open Settings → verify only Appearance tab visible (for non-admin)\n7. Navigate to every page → verify no developer concepts leak through\n8. Test on desktop too → verify consistency",
+        "priority": "high",
+        "dependencies": [],
+        "status": "done",
+        "subtasks": [],
+        "updatedAt": "2026-03-24T10:42:54.536Z"
+      },
+      {
+        "id": "13",
+        "title": "Implement Welcome Page with quick-start cards per UI design doc",
+        "description": "Replace the plain 'Moss AI' welcome text with the designed welcome page: greeting, 4 quick-start action cards (Analyze Data, Predict Trends, Generate Report, Process Documents), and example prompt — as specified in docs/UI_Design_Recommendation section 7.",
+        "details": "## Implementation Steps\n\n### Design Reference\nFrom `docs/UI_Design_Recommendation_工具箱与交互设计.md` Section 7:\n- Greeting: '你好！我是你的 AI 分析助手'\n- 4 quick-start cards:\n  1. 📊 分析数据 — Upload Excel/CSV, get insights\n  2. 📈 预测趋势 — Forecast based on historical data\n  3. 📋 生成报告 — Turn analysis into reports/PPT\n  4. 🔧 处理文档 — PDF extraction, translation, batch processing\n- Example prompt: '帮我分析上个月的销售数据，找出下降最多的产品线'\n- Input bar: File upload + Toolbox button + text input + send\n\n### Files to Modify\n- `cloudcli/src/components/chat/view/subcomponents/ProviderSelectionEmptyState.tsx` — Replace current 'Moss AI / Enterprise AI Assistant' with the full welcome page design\n- Use i18n keys for all text (en + zh-CN + zh-TW + th)\n- Add new i18n keys to all locale chat.json files\n\n### Technical Notes\n- Quick-start cards should inject their prompt text into the chat input when clicked\n- Cards should be responsive (2×2 grid on desktop, 1 column on mobile)\n- Design must work in both dark and light mode\n- Consider making cards configurable via toolbox-config.yaml",
+        "testStrategy": "1. docker compose build && docker compose up -d\n2. Login → verify welcome page shows greeting + 4 cards\n3. Click each card → verify prompt text injected into input\n4. Verify responsive layout (desktop 2×2, mobile stacked)\n5. Switch to zh-CN → verify Chinese greeting and card text\n6. Switch to en → verify English version\n7. Toggle dark mode → verify cards look good\n8. Start a conversation → verify welcome page replaced by chat\n9. New session → verify welcome page reappears",
+        "priority": "high",
+        "dependencies": [
+          "11",
+          "12"
+        ],
+        "status": "pending",
+        "subtasks": [],
+        "updatedAt": "2026-03-24T09:30:00Z"
+      },
+      {
+        "id": "14",
+        "title": "Add i18n to moss-toolbox and moss-admin plugins (extract 100+ hardcoded Chinese strings)",
+        "description": "Both plugins have 50+ hardcoded Chinese strings each with zero i18n support. Add a lightweight i18n system to plugins, extract all strings into locale files (en, zh-CN, zh-TW, th), and wire up language switching.",
+        "details": "## Implementation Steps\n\n### Current State\n- `plugins/moss-toolbox/src/ToolboxPanel.jsx` — '🧰 工具箱', '🔍 搜索工具...', '⭐ 我的技能', etc.\n- `plugins/moss-toolbox/src/WelcomePage.jsx` — Welcome text, quick action cards\n- `plugins/moss-toolbox/src/SuggestionBar.jsx` — Suggestion labels\n- `plugins/moss-toolbox/src/CreateSkillDialog.jsx` — Form labels, buttons\n- `plugins/moss-toolbox/src/ProgressTree.jsx` — Status labels\n- `plugins/moss-admin/src/index.jsx` — Tab labels ('概览', '用户', '技能'), dashboard text, all CRUD UI\n\n### Approach\nPlugins load as iframes/modules — they can't share CloudCLI's i18next instance.\nOptions:\n1. **Simple**: Pass language as URL param or postMessage, use a local JSON lookup object in each plugin\n2. **Full**: Bundle a minimal i18n module in each plugin\n\nRecommend option 1 (simple) — create a `locales.js` file per plugin with all strings keyed by language code.\n\n### Files to Create\n- `plugins/moss-toolbox/src/locales.js` — All toolbox strings in 4 languages\n- `plugins/moss-admin/src/locales.js` — All admin strings in 4 languages\n\n### Files to Modify\n- All `.jsx` files in both plugins — replace hardcoded strings with `t('key')` calls\n- Plugin server.js — pass current language to frontend if needed",
+        "testStrategy": "1. docker compose build && docker compose up -d\n2. Login → click Toolbox tab → verify Chinese text renders\n3. Switch language to en → verify Toolbox shows English\n4. Switch to zh-TW → verify Traditional Chinese\n5. Switch to th → verify Thai\n6. Click Admin tab → repeat language switch test\n7. Test all interactive elements in both plugins with each language\n8. Verify no hardcoded Chinese remains when language is en",
+        "priority": "high",
+        "dependencies": [
+          "11"
+        ],
+        "status": "done",
+        "subtasks": [],
+        "updatedAt": "2026-03-24T12:11:17.914Z"
+      },
+      {
+        "id": "15",
+        "title": "Clean up remaining CloudCLI developer references across codebase",
+        "description": "Audit and remove all remaining 'CloudCLI', 'Claude Code UI', 'Run Claude CLI', 'Codex Session', developer-oriented strings and references that leak through to the user-facing UI.",
+        "details": "## Implementation Steps\n\n### Strings to Fix (from code scan)\nGrep the codebase for these patterns and replace with Moss-appropriate text:\n\n1. **en/sidebar.json line 15**: `\"codexSession\": \"Codex Session\"` → remove or rename\n2. **en/sidebar.json line 16**: `\"fetchingProjects\": \"Fetching your Claude projects and sessions\"` → `\"Fetching your workspaces\"`\n3. **en/sidebar.json line 20**: `\"runClaudeCli\": \"Run Claude CLI in a project directory to get started\"` → `\"Create a workspace to get started\"`\n4. **zh-CN/sidebar.json**: Same 3 strings in Chinese\n5. **en/common.json line 90**: `\"selectProjectDescription\"` still mentions 'coding with Claude'\n6. **All remaining 'Claude Code UI' or 'CloudCLI' text** across de, ja, ko, ru locales\n7. **cloudcli/public/manifest.json**: PWA name still says 'CloudCLI UI'\n8. **cloudcli/server/index.js**: Server startup banner may say 'Claude Code UI Server'\n\n### Also review:\n- `cloudcli/src/components/onboarding/` — references to 'Claude', 'Cursor', 'Gemini'\n- Any hardcoded provider names in components beyond ProviderSelectionEmptyState\n- Settings page labels referencing 'Claude Code' or 'CLI'",
+        "testStrategy": "1. Grep entire codebase for 'CloudCLI', 'Claude Code UI', 'Claude CLI'\n2. Verify zero user-facing hits remain\n3. docker compose build && docker compose up -d\n4. Navigate every page → verify no developer references visible\n5. Check page source → verify no 'CloudCLI' in HTML/JS\n6. Check PWA manifest → verify Moss AI branding\n7. Check server startup logs → verify branding",
+        "priority": "medium",
+        "dependencies": [
+          "11"
+        ],
+        "status": "pending",
+        "subtasks": [],
+        "updatedAt": "2026-03-24T09:30:00Z"
       }
     ],
     "metadata": {
-      "lastModified": "2026-03-24T08:44:44.000Z",
-      "taskCount": 10,
-      "completedCount": 0
+      "version": "1.0.0",
+      "lastModified": "2026-03-24T12:11:17.916Z",
+      "taskCount": 15,
+      "completedCount": 8,
+      "tags": [
+        "master"
+      ]
     }
   }
 }

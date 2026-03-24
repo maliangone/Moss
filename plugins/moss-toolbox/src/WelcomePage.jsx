@@ -7,6 +7,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { useTranslation } from './i18n.js';
+import { apiFetch } from './apiFetch.js';
 
 const API_BASE = '/api/plugins/moss-toolbox/rpc';
 
@@ -15,7 +16,7 @@ export function WelcomePage({ onActionClick }) {
   const [data, setData] = useState(null);
 
   useEffect(() => {
-    fetch(`${API_BASE}/welcome`)
+    apiFetch(`${API_BASE}/welcome`)
       .then(res => res.json())
       .then(setData)
       .catch(err => console.error('[moss-welcome] Failed to load:', err));

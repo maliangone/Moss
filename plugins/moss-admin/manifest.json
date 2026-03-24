@@ -7,7 +7,7 @@
   "icon": "src/admin.svg",
   "type": "react",
   "slot": "tab",
-  "entry": "dist/index.js",
+  "entry": "dist/index.mjs",
   "server": "src/server.js",
   "permissions": ["read", "write"]
 }

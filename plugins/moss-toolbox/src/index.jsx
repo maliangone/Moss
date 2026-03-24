@@ -12,6 +12,7 @@ import { WelcomePage } from './WelcomePage.jsx';
 import { SuggestionBar } from './SuggestionBar.jsx';
 import { CreateSkillDialog } from './CreateSkillDialog.jsx';
 import { useTranslation } from './i18n.js';
+import { apiFetch } from './apiFetch.js';
 
 const API_BASE = '/api/plugins/moss-toolbox/rpc';
 
@@ -30,7 +31,7 @@ export default function MossToolbox({ context }) {
   const fetchToolboxData = useCallback(async () => {
     try {
       setLoading(true);
-      const res = await fetch(`${API_BASE}/toolbox`);
+      const res = await apiFetch(`${API_BASE}/toolbox`);
       if (res.ok) {
         const data = await res.json();
         setToolboxData(data);
@@ -56,7 +57,7 @@ export default function MossToolbox({ context }) {
 
   const handleDeleteSkill = useCallback(async (skillId) => {
     try {
-      const res = await fetch(`${API_BASE}/skills/personal/${skillId}`, {
+      const res = await apiFetch(`${API_BASE}/skills/personal/${skillId}`, {
         method: 'DELETE',
       });
       if (res.ok) {
@@ -69,9 +70,8 @@ export default function MossToolbox({ context }) {
 
   const handleShareSkill = useCallback(async (skillId) => {
     try {
-      const res = await fetch(`${API_BASE}/skills/share`, {
+      const res = await apiFetch(`${API_BASE}/skills/share`, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ skillId }),
       });
       if (res.ok) {
