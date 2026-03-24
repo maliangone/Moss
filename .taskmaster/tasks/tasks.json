@@ -1,0 +1,150 @@
+{
+  "master": {
+    "tasks": [
+      {
+        "id": "1",
+        "title": "Auth Flow & Onboarding — Verify login, registration, session persistence",
+        "description": "Full integration test of CloudCLI auth system: login, registration, session tokens, logout, and pre-seeded admin account flow. Verify onboarding wizard is correctly skipped.",
+        "details": "## Implementation Steps\n\n### Files\n- `cloudcli/src/components/auth/view/LoginForm.tsx` — Login UI\n- `cloudcli/src/components/auth/view/SetupForm.tsx` — Registration UI\n- `cloudcli/src/components/auth/context/AuthContext.tsx` — Auth state management\n- `cloudcli/src/components/auth/view/ProtectedRoute.tsx` — Route guard\n- `cloudcli/src/components/onboarding/` — 5 onboarding components\n- `cloudcli/server/routes/auth.js` — Auth API (register, login, status, user, logout)\n- `cloudcli/server/middleware/auth.js` — JWT token verification\n- `cloudcli/server/database/db.js` — User DB operations\n- `scripts/entrypoint.sh` — Admin account pre-seeding (lines 117-136)\n\n### Code Scan Findings\n- Login footer text updated to 'Moss AI Enterprise Platform' ✓\n- SetupForm updated to 'Welcome to Moss AI' ✓\n- Auth locale files updated (en + zh-CN) ✓\n- `has_completed_onboarding` flag set to 1 in pre-seed ✓\n- No hardcoded secrets in auth code ✓\n- bcrypt properly uses salt rounds 12 ✓\n\n### Interactions to Test\n1. Fresh boot: admin account auto-created, no onboarding wizard\n2. Login with admin/moss2026 → lands on main UI (no git config step)\n3. Wrong password → error message shown\n4. Session token persists across page refresh\n5. Logout → redirects to login page\n6. Token expiry handling\n7. Registration page hidden (single-user, admin already exists → returns 403)\n8. Branding: all auth screens say 'Moss AI', not 'CloudCLI'",
+        "testStrategy": "1. `docker compose build && docker compose up -d`\n2. Navigate to http://localhost:3001 via Playwright\n3. Verify login page shows 'Moss AI' branding\n4. Login with admin/moss2026\n5. Verify no onboarding wizard appears\n6. Verify main UI loads with 'Moss AI' heading\n7. Refresh page — verify session persists\n8. Click Settings → Logout → verify redirect to login\n9. Try login with wrong password → verify error\n10. Switch language to zh-CN → verify auth strings",
+        "priority": "high",
+        "dependencies": [],
+        "status": "pending",
+        "subtasks": [],
+        "updatedAt": "2026-03-24T08:30:00Z"
+      },
+      {
+        "id": "2",
+        "title": "Chat Interface — Verify messaging, provider auto-select, input UX",
+        "description": "Test the core chat interface: Moss AI welcome screen, Claude auto-selection, message input/send, tool rendering, thinking indicators, and all chat-related interactions.",
+        "details": "## Implementation Steps\n\n### Files (30 components)\n- `cloudcli/src/components/chat/view/ChatInterface.tsx` — Main chat view\n- `cloudcli/src/components/chat/view/subcomponents/ProviderSelectionEmptyState.tsx` — Welcome screen (modified for Moss)\n- `cloudcli/src/components/chat/view/subcomponents/ChatComposer.tsx` — Input area\n- `cloudcli/src/components/chat/view/subcomponents/ChatMessagesPane.tsx` — Message list\n- `cloudcli/src/components/chat/view/subcomponents/MessageComponent.tsx` — Individual messages\n- `cloudcli/src/components/chat/view/subcomponents/ClaudeStatus.tsx` — Thinking indicator\n- `cloudcli/src/components/chat/view/subcomponents/ThinkingModeSelector.tsx` — Thinking mode\n- `cloudcli/src/components/chat/view/subcomponents/TokenUsagePie.tsx` — Token counter\n- `cloudcli/src/components/chat/view/subcomponents/CommandMenu.tsx` — Slash commands\n- `cloudcli/src/components/chat/hooks/useChatProviderState.ts` — Provider state\n- `cloudcli/src/components/chat/hooks/useChatMessages.ts` — Message handling\n- `cloudcli/src/components/chat/tools/` — 15+ tool renderers\n- `cloudcli/server/routes/messages.js` — Message API\n- `cloudcli/server/routes/commands.js` — Command execution\n\n### Code Scan Findings\n- Provider selection reduced to Claude only ✓\n- Input placeholder updated to enterprise-friendly text ✓\n- Hint text simplified (no slash command references) ✓\n- Quick Settings panel still visible (could hide for non-tech users)\n- `ChatInputControls` bar still shows (Default Mode, thinking mode, token pie)\n\n### Interactions to Test\n1. Welcome screen shows 'Moss AI — Enterprise AI Assistant'\n2. Claude auto-selected (no provider picker cards)\n3. Input placeholder: 'Ask me anything — data analysis, reports, predictions...'\n4. Hint text: 'Enter to send • Shift+Enter for new line' (no slash commands)\n5. Send a message → thinking indicator appears\n6. Message renders with proper formatting (markdown)\n7. File attachment button works\n8. Image attachment button works\n9. Token usage pie displays correctly\n10. Stop generation button works (Esc key)\n11. Permission request banner appears when needed\n12. Scroll to bottom on new messages",
+        "testStrategy": "1. Start Docker services\n2. Login and navigate to chat\n3. Verify welcome screen shows 'Moss AI' (not provider picker)\n4. Verify input placeholder text is enterprise-friendly\n5. Send a test message (requires valid API key)\n6. Verify thinking indicator appears\n7. Verify response renders correctly\n8. Test file upload button\n9. Test Shift+Enter for new line\n10. Switch language to zh-CN → verify all chat strings\n11. Verify no 'Choose Your AI Assistant' screen\n12. Verify no Cursor/Codex/Gemini references anywhere",
+        "priority": "high",
+        "dependencies": [
+          "1"
+        ],
+        "status": "pending",
+        "subtasks": [],
+        "updatedAt": "2026-03-24T08:30:00Z"
+      },
+      {
+        "id": "3",
+        "title": "Sidebar & Navigation — Verify project list, sessions, tab switching",
+        "description": "Test sidebar navigation: project list, session management, search, favorites, tab switching (Chat/Files/plugin tabs), and verify developer elements are hidden.",
+        "details": "## Implementation Steps\n\n### Files (12 sidebar + 7 main-content components)\n- `cloudcli/src/components/sidebar/view/Sidebar.tsx` — Main sidebar\n- `cloudcli/src/components/sidebar/view/subcomponents/SidebarHeader.tsx` — Title + search\n- `cloudcli/src/components/sidebar/view/subcomponents/SidebarFooter.tsx` — Settings (Discord removed)\n- `cloudcli/src/components/sidebar/view/subcomponents/SidebarProjectList.tsx` — Project list\n- `cloudcli/src/components/sidebar/view/subcomponents/SidebarProjectItem.tsx` — Project item\n- `cloudcli/src/components/sidebar/view/subcomponents/SidebarSessionItem.tsx` — Session item\n- `cloudcli/src/components/sidebar/view/subcomponents/SidebarModals.tsx` — Confirmation dialogs\n- `cloudcli/src/components/main-content/view/subcomponents/MainContentTabSwitcher.tsx` — Tab bar\n- `cloudcli/src/components/main-content/view/MainContent.tsx` — Tab content routing\n- `cloudcli/src/components/app/MobileNav.tsx` — Mobile navigation\n\n### Code Scan Findings\n- Sidebar heading: 'Moss AI' ✓\n- Discord link removed ✓\n- Shell and Source Control tabs removed from BASE_TABS ✓\n- cloudcli.ai dashboard link replaced with '#' ✓\n- Page title updated in SidebarProjectList.tsx ✓\n\n### Interactions to Test\n1. Sidebar shows 'Moss AI' heading (not 'Claude Code UI')\n2. No Discord 'Join Community' link\n3. Settings button visible and clickable\n4. Project list renders correctly\n5. New Session button works\n6. Project search works\n7. Session rename (F2) works\n8. Session delete works with confirmation\n9. Tab bar shows: Chat, Files (no Shell, no Source Control)\n10. Plugin tabs (Moss 工具箱, Moss 管理后台) appear\n11. Clicking plugin tabs switches content\n12. Sidebar collapse/expand\n13. Mobile navigation (responsive)\n14. Favorites (star/unstar)",
+        "testStrategy": "1. Login to Moss AI\n2. Verify sidebar heading says 'Moss AI'\n3. Verify no Discord link in sidebar footer\n4. Click Settings → verify settings page opens\n5. Verify tab bar: Chat, Files, plus plugin tabs\n6. Verify NO Shell or Source Control tabs\n7. Click 'New Session' → verify new session created\n8. Right-click project → verify context menu\n9. Test search functionality\n10. Resize browser to mobile width → verify mobile nav\n11. Click each plugin tab → verify content loads\n12. Switch language → verify all sidebar strings",
+        "priority": "high",
+        "dependencies": [
+          "1"
+        ],
+        "status": "pending",
+        "subtasks": [],
+        "updatedAt": "2026-03-24T08:30:00Z"
+      },
+      {
+        "id": "4",
+        "title": "Plugin System — Verify moss-toolbox and moss-admin load and function",
+        "description": "Test plugin discovery, loading, server startup, and UI rendering for both Moss plugins. Verify plugin API endpoints respond correctly.",
+        "details": "## Implementation Steps\n\n### Files\n- `cloudcli/server/utils/plugin-loader.js` — Plugin discovery (scans ~/.claude-code-ui/plugins/)\n- `cloudcli/server/utils/plugin-process-manager.js` — Plugin server lifecycle\n- `cloudcli/server/routes/plugins.js` — Plugin API (list, manifest, assets, install, enable/disable)\n- `cloudcli/src/contexts/PluginsContext.tsx` — Plugin state in React\n- `cloudcli/src/components/plugins/view/PluginTabContent.tsx` — Plugin tab renderer\n- `cloudcli/src/components/plugins/view/PluginIcon.tsx` — Plugin icon (uses dangerouslySetInnerHTML for SVG)\n- `cloudcli/src/components/plugins/view/PluginSettingsTab.tsx` — Plugin settings UI\n- `plugins/moss-toolbox/manifest.json` — Toolbox manifest\n- `plugins/moss-toolbox/src/index.jsx` — Toolbox main component\n- `plugins/moss-toolbox/src/ToolboxPanel.jsx` — Toolbox UI (50+ hardcoded Chinese strings!)\n- `plugins/moss-toolbox/src/SuggestionBar.jsx` — Smart suggestions\n- `plugins/moss-toolbox/src/WelcomePage.jsx` — Welcome page\n- `plugins/moss-toolbox/src/CreateSkillDialog.jsx` — Skill creation dialog\n- `plugins/moss-toolbox/src/ProgressTree.jsx` — Progress visualization\n- `plugins/moss-toolbox/src/server.js` — Toolbox API backend\n- `plugins/moss-admin/manifest.json` — Admin manifest\n- `plugins/moss-admin/src/index.jsx` — Admin dashboard (50+ hardcoded Chinese strings!)\n- `plugins/moss-admin/src/server.js` — Admin API backend\n- `config/toolbox-config.yaml` — Skill categories/suggestions config (252 lines)\n- `config/skill-policy.yaml` — Skill creation policies\n- `scripts/entrypoint.sh` lines 139-149 — Plugin installation to ~/.claude-code-ui/plugins/\n\n### Code Scan Findings\n- **HIGH: 50+ hardcoded Chinese strings in both plugins** — No i18n framework\n- Plugin manifest uses 'manifest.json' (matches CloudCLI loader) ✓\n- Plugins copied to correct dir in entrypoint ✓\n- Plugin servers start on random ports ✓\n- `PluginIcon.tsx` uses `dangerouslySetInnerHTML` for SVG — mitigated by trust model\n- `moss-admin` fetch calls lack robust JSON parse error handling\n\n### Interactions to Test\n1. Both plugins appear as tabs after login\n2. Toolbox tab: renders categories, search, skill cards\n3. Toolbox: click a skill card → triggers skill\n4. Toolbox: search filters skills\n5. Toolbox: personal skills section shows\n6. Toolbox: Create Skill dialog opens and functions\n7. Toolbox: Smart suggestions bar appears\n8. Admin tab: dashboard with stats renders\n9. Admin: user management CRUD\n10. Admin: skill review/approve workflow\n11. Admin: health check display\n12. Plugin settings: can enable/disable plugins\n13. Plugin API: GET /api/plugins returns both plugins\n14. Plugin servers: both running on their assigned ports",
+        "testStrategy": "1. `docker compose up -d`\n2. Check logs: `docker compose logs moss | grep -i plugin`\n3. Verify both plugins started on ports\n4. Login and click Toolbox tab → verify UI renders\n5. Click Admin tab → verify dashboard renders\n6. Test each button/interaction in both plugins\n7. `curl http://localhost:3001/api/plugins` (with auth token) → verify JSON response\n8. Test plugin enable/disable in settings\n9. Verify all hardcoded Chinese strings display correctly\n10. Test toolbox search functionality\n11. Test skill creation dialog\n12. Test admin user list refresh",
+        "priority": "high",
+        "dependencies": [
+          "1",
+          "3"
+        ],
+        "status": "pending",
+        "subtasks": [],
+        "updatedAt": "2026-03-24T08:30:00Z"
+      },
+      {
+        "id": "5",
+        "title": "Docker Build & Container Lifecycle — Full clean build + startup verification",
+        "description": "Verify complete Docker build pipeline, container startup sequence, firewall rules, privilege drop, volume mounts, health checks, and resource limits.",
+        "details": "## Implementation Steps\n\n### Files\n- `Dockerfile` — 3-stage build (python-base → cloudcli-build → runtime)\n- `docker-compose.yml` — Services (moss + nginx), 4 volumes, security constraints\n- `scripts/entrypoint.sh` — 7-step startup (firewall → storage → config → env check → permissions → plugins → server)\n- `scripts/init-firewall.sh` — iptables default-deny + whitelist\n- `scripts/cleanup-sessions.sh` — Hourly stale session cleanup\n- `nginx/nginx.conf` — Reverse proxy (TLS, basic auth, WebSocket, large uploads)\n\n### Code Scan Findings\n- **MISSING: No HEALTHCHECK in Dockerfile** — docker-compose has one but Dockerfile should too\n- AutoGluon changed to tabular-only (smaller image) ✓\n- sqlite3 added for admin pre-seeding ✓\n- gosu privilege drop works ✓\n- entrypoint fixes CRLF line endings ✓\n- DATABASE_PATH env var added for CloudCLI DB persistence ✓\n\n### Verification Steps\n1. Clean build: `docker compose build --no-cache`\n2. Image size check (should be <17GB with tabular-only AutoGluon)\n3. Startup: `docker compose up -d`\n4. Entrypoint sequence in logs:\n   - Firewall configured\n   - Persistent storage initialized\n   - Config files copied\n   - Claude Code CLI found\n   - Python found\n   - Node.js found\n   - API key configured\n   - Admin account created\n   - Plugins installed\n   - CloudCLI server ready\n5. Health check passes: `docker inspect --format='{{.State.Health.Status}}' moss-agent`\n6. Firewall rules: `docker exec moss-agent iptables -L OUTPUT -n`\n7. Non-root: `docker exec moss-agent whoami` → 'agent'\n8. Volumes mounted: all 4 volumes writable\n9. Python packages: pandas, sklearn, autogluon importable\n10. Claude Code CLI: `docker exec moss-agent claude --version`\n11. Nginx: HTTPS on port 443, HTTP redirect on 80",
+        "testStrategy": "1. `docker compose down -v` (clean state)\n2. `docker compose build` (full rebuild)\n3. `docker compose up -d`\n4. `docker compose logs moss` — verify all [init] steps pass\n5. `curl -s http://localhost:3001/ -o /dev/null -w '%{http_code}'` → 200\n6. `docker exec moss-agent whoami` → agent\n7. `docker exec moss-agent python3 -c 'import pandas; import sklearn; print(\"OK\")'`\n8. `docker exec moss-agent iptables -L OUTPUT -n` → default DENY with whitelisted IPs\n9. `docker inspect --format='{{.State.Health.Status}}' moss-agent` → healthy\n10. Check image size: `docker images moss-moss --format '{{.Size}}'`",
+        "priority": "high",
+        "dependencies": [],
+        "status": "pending",
+        "subtasks": [],
+        "updatedAt": "2026-03-24T08:30:00Z"
+      },
+      {
+        "id": "6",
+        "title": "Security Audit — Firewall, permissions, secrets, input validation",
+        "description": "Comprehensive security review: iptables rules, settings.json deny list, secret handling, input validation on all API endpoints, command injection vectors, and XSS prevention.",
+        "details": "## Implementation Steps\n\n### Files\n- `scripts/init-firewall.sh` — iptables rules\n- `config/settings.json` — Tool allow/deny lists (56 lines)\n- `config/skill-policy.yaml` — Skill creation restrictions\n- `cloudcli/server/middleware/auth.js` — JWT validation\n- `cloudcli/server/routes/auth.js` — Registration (bcrypt, salt 12)\n- `cloudcli/server/database/db.js` — SQL queries (parameterized)\n- `cloudcli/server/routes/mcp.js` — **Command injection risk: header values passed to spawn args**\n- `cloudcli/server/routes/git.js` — Git command execution\n- `cloudcli/src/components/plugins/view/PluginIcon.tsx` — **dangerouslySetInnerHTML for SVG**\n- `scripts/entrypoint.sh` — Admin password in sqlite3 command (shell injection if password contains quotes)\n- `docker-compose.yml` — Security constraints (cap_drop, no-new-privileges)\n\n### Code Scan Findings\n- SQL injection: PASSED (all parameterized queries) ✓\n- Hardcoded secrets: PASSED (all via env vars) ✓\n- **MODERATE: MCP route header injection** — headers passed to spawn without validation\n- **MODERATE: Entrypoint shell injection** — ADMIN_PASS interpolated directly in sqlite3 command\n- **HIGH (mitigated): SVG XSS** — dangerouslySetInnerHTML for plugin icons, mitigated by plugin trust model\n- bcrypt salt rounds: 12 ✓\n- JWT token generation: proper ✓\n- Non-root user: UID 1000 ✓\n- Capabilities: ALL dropped, minimal add ✓\n\n### Fix Required\n1. Entrypoint: use sqlite3 parameter binding or escape ADMIN_PASS\n2. MCP route: validate/sanitize header values before passing to spawn\n3. Consider CSP headers in nginx.conf",
+        "testStrategy": "1. Verify firewall: `docker exec moss-agent iptables -L OUTPUT -n` — default DENY\n2. Test blocked outbound: `docker exec moss-agent curl -s http://example.com` — should fail\n3. Test allowed outbound: `docker exec moss-agent curl -s https://api.anthropic.com` — should connect\n4. Verify non-root: `docker exec moss-agent id` → uid=1000\n5. Verify settings.json deny list blocks dangerous commands\n6. Test SQL injection: POST /api/auth/login with `username: \"admin' OR 1=1--\"` → should fail safely\n7. Test XSS: send message with `<script>alert(1)</script>` → should be escaped\n8. Verify ADMIN_PASS with special characters works without injection\n9. Check nginx security headers",
+        "priority": "high",
+        "dependencies": [
+          "5"
+        ],
+        "status": "pending",
+        "subtasks": [],
+        "updatedAt": "2026-03-24T08:30:00Z"
+      },
+      {
+        "id": "7",
+        "title": "i18n Completeness — Verify all strings in en + zh-CN, fix plugin hardcoding",
+        "description": "Audit all i18n locale files for completeness between en and zh-CN. Fix 100+ hardcoded Chinese strings in moss-toolbox and moss-admin plugins.",
+        "details": "## Implementation Steps\n\n### Files\n- `cloudcli/src/i18n/locales/en/` — 8 files (auth, chat, codeEditor, common, settings, sidebar, tasks)\n- `cloudcli/src/i18n/locales/zh-CN/` — 8 files (same structure)\n- `cloudcli/src/i18n/locales/de/` — 7 files (missing tasks.json)\n- `cloudcli/src/i18n/locales/ja/` — 7 files (missing tasks.json)\n- `cloudcli/src/i18n/locales/ko/` — 6 files (missing tasks.json + sidebar.json)\n- `cloudcli/src/i18n/locales/ru/` — 7 files (missing tasks.json)\n- `plugins/moss-toolbox/src/*.jsx` — 50+ hardcoded Chinese strings (NO i18n)\n- `plugins/moss-admin/src/index.jsx` — 50+ hardcoded Chinese strings (NO i18n)\n\n### Code Scan Findings\n- en + zh-CN: all keys aligned ✓\n- de/ja/ko/ru: missing `tasks.json` (will fallback to en)\n- ko: also missing `sidebar.json`\n- **Plugins have ZERO i18n support** — all strings hardcoded in Chinese\n- CloudCLI components properly use `useTranslation()` and `t()` ✓\n\n### Priority Actions\n1. Verify en/zh-CN key parity (diff all 8 file pairs)\n2. Add i18n to moss-toolbox plugin (extract 50+ strings)\n3. Add i18n to moss-admin plugin (extract 50+ strings)\n4. Add missing tasks.json to de, ja, ko, ru locales\n5. Add missing sidebar.json to ko locale",
+        "testStrategy": "1. Run key comparison script between en/ and zh-CN/ locales\n2. Switch UI to zh-CN → verify all CloudCLI strings display in Chinese\n3. Switch to en → verify all strings in English\n4. Navigate to Toolbox tab in zh-CN → verify Chinese strings\n5. Navigate to Admin tab in zh-CN → verify Chinese strings\n6. Switch to en → verify plugin strings (currently will remain Chinese)\n7. After fixing plugins: verify bilingual support in both plugins\n8. Test de/ja/ko/ru fallback behavior",
+        "priority": "medium",
+        "dependencies": [
+          "4"
+        ],
+        "status": "pending",
+        "subtasks": [],
+        "updatedAt": "2026-03-24T08:30:00Z"
+      },
+      {
+        "id": "8",
+        "title": "Settings & Quick Settings — Verify all settings panels and toggles",
+        "description": "Test Settings page (26 components), Quick Settings panel, and all configuration toggles. Verify appropriate settings are hidden for enterprise deployment.",
+        "details": "## Implementation Steps\n\n### Files (26 settings components)\n- `cloudcli/src/components/settings/view/Settings.tsx` — Main settings view\n- `cloudcli/src/components/settings/view/SettingsMainTabs.tsx` — Tab navigation\n- `cloudcli/src/components/settings/view/tabs/agents-settings/AgentsSettingsTab.tsx` — Agent config\n- `cloudcli/src/components/settings/view/tabs/api-settings/CredentialsSettingsTab.tsx` — API keys\n- `cloudcli/src/components/settings/view/tabs/git-settings/GitSettingsTab.tsx` — Git config\n- `cloudcli/src/components/settings/view/tabs/AppearanceSettingsTab.tsx` — Theme/language\n- `cloudcli/src/components/settings/view/tabs/NotificationsSettingsTab.tsx` — Push notifications\n- `cloudcli/src/components/quick-settings-panel/` — 7 components (floating panel)\n- `cloudcli/server/routes/settings.js` — Settings API\n\n### Code Scan Findings\n- Quick Settings panel still visible (auto-expand tools, show raw parameters, show thinking)\n- These are developer-oriented settings that confuse non-technical users\n- Settings page exposes: Agents, API Keys, Git — all developer concepts\n- Appearance (Dark Mode, Language) is fine for all users\n\n### Interactions to Test\n1. Settings button in sidebar footer → opens settings\n2. Appearance tab: Dark Mode toggle works\n3. Appearance tab: Language selector switches UI language\n4. Agents tab: shows Claude agent configuration\n5. API Keys tab: shows key management\n6. Git tab: shows git configuration\n7. Quick Settings panel: toggle auto-expand, raw params, thinking\n8. All toggles persist across page refresh\n9. Settings close button works",
+        "testStrategy": "1. Login and click Settings in sidebar\n2. Test each settings tab renders without errors\n3. Toggle Dark Mode → verify theme changes\n4. Change language to zh-CN → verify all settings labels change\n5. Test Quick Settings panel (gear icon on right edge)\n6. Toggle each checkbox → verify persistence on refresh\n7. Close settings → verify return to previous view\n8. Consider: should some tabs be hidden for non-tech users?",
+        "priority": "medium",
+        "dependencies": [
+          "3"
+        ],
+        "status": "pending",
+        "subtasks": [],
+        "updatedAt": "2026-03-24T08:30:00Z"
+      },
+      {
+        "id": "9",
+        "title": "File Browser — Verify file tree, upload, download, context menu",
+        "description": "Test the Files tab: file tree rendering, upload, download, rename, delete, context menu, image viewer, and file search.",
+        "details": "## Implementation Steps\n\n### Files (10 components)\n- `cloudcli/src/components/file-tree/view/FileTree.tsx` — Main tree\n- `cloudcli/src/components/file-tree/view/FileTreeNode.tsx` — Tree node\n- `cloudcli/src/components/file-tree/view/FileTreeBody.tsx` — Tree body\n- `cloudcli/src/components/file-tree/view/FileTreeHeader.tsx` — Header with search/view mode\n- `cloudcli/src/components/file-tree/view/FileContextMenu.tsx` — Right-click menu\n- `cloudcli/src/components/file-tree/view/ImageViewer.tsx` — Image preview\n- `cloudcli/src/components/file-tree/view/FileTreeDetailedColumns.tsx` — Detailed view\n- `cloudcli/src/components/file-tree/hooks/useFileTreeUpload.ts` — File upload\n- `cloudcli/server/routes/projects.js` — File API\n\n### Interactions to Test\n1. Files tab renders file tree\n2. Expand/collapse directories\n3. Click file → opens in code editor\n4. Right-click file → context menu (rename, delete, copy path, download)\n5. File upload via drag-and-drop or button\n6. View modes: simple, compact, detailed\n7. File search\n8. Image files preview in ImageViewer\n9. New File / New Folder buttons\n10. File size and modification time display in detailed view",
+        "testStrategy": "1. Login and click Files tab\n2. Verify file tree shows container filesystem\n3. Expand directories → verify children load\n4. Right-click a file → verify context menu appears\n5. Upload a test file → verify it appears in tree\n6. Download a file → verify download works\n7. Switch view modes (simple/compact/detailed)\n8. Search for a filename → verify filter works\n9. Switch language → verify all file tree strings",
+        "priority": "medium",
+        "dependencies": [
+          "3"
+        ],
+        "status": "pending",
+        "subtasks": [],
+        "updatedAt": "2026-03-24T08:30:00Z"
+      },
+      {
+        "id": "10",
+        "title": "Edge Cases & Robustness — Rapid clicks, empty inputs, network failures",
+        "description": "Test edge cases across all UI flows: double-submit, empty/long/special-character inputs, network disconnection handling, WebSocket reconnection, and error boundaries.",
+        "details": "## Implementation Steps\n\n### Cross-Cutting Concerns\n- `cloudcli/src/components/main-content/view/ErrorBoundary.tsx` — React error boundary\n- `cloudcli/src/contexts/WebSocketContext.tsx` — WebSocket connection management\n- `cloudcli/src/hooks/useSessionProtection.ts` — Session protection\n- All form components (auth, settings, project wizard, skill creation)\n\n### Test Cases\n1. **Double submit**: Click send/login button rapidly → verify no duplicate requests\n2. **Empty inputs**: Submit empty message, empty login, empty search → verify validation\n3. **Long inputs**: 10K character message → verify handling\n4. **Special characters**: `<script>alert(1)</script>`, SQL injection strings, Unicode emoji → verify escaping\n5. **Network disconnect**: Kill network → verify error message shown, reconnect works\n6. **WebSocket drop**: Kill WS → verify reconnection attempt\n7. **Token expiry**: Expire JWT → verify redirect to login\n8. **Concurrent sessions**: Two tabs open → verify consistency\n9. **Rapid tab switching**: Click tabs quickly → no crashes\n10. **Large file upload**: Upload 50MB file → verify progress/error\n11. **Error boundary**: Force component error → verify fallback UI\n12. **Browser back/forward**: Navigate with browser buttons → verify routing",
+        "testStrategy": "1. Use Playwright to automate rapid interaction tests\n2. Test each form with empty/long/special inputs\n3. Disconnect network adapter during operation → verify error handling\n4. Open two browser tabs → verify no data corruption\n5. Force-expire JWT token in localStorage → verify redirect\n6. Verify error boundary catches component crashes\n7. Test browser back/forward navigation\n8. Verify no console errors during normal usage",
+        "priority": "medium",
+        "dependencies": [
+          "2",
+          "3",
+          "4"
+        ],
+        "status": "pending",
+        "subtasks": [],
+        "updatedAt": "2026-03-24T08:30:00Z"
+      }
+    ],
+    "metadata": {
+      "lastModified": "2026-03-24T08:44:44.000Z",
+      "taskCount": 10,
+      "completedCount": 0
+    }
+  }
+}
