@@ -102,3 +102,9 @@ Append-only log of discoveries from autonomous task runs. Read this before start
 - **[welcome-page]**: `ProviderSelectionEmptyState.tsx` new-session branch is the correct place to implement the welcome/empty state — it already receives `setInput` and `textareaRef` props for card click injection
 - **[welcome-page]**: Card click pattern: `setInput(prompt)` then `setTimeout(() => textareaRef.current?.focus(), 100)` — the timeout is needed because React state update + focus races otherwise
 - **[i18n]**: Welcome page keys added under `welcome.*` namespace in all 8 locale chat.json files; falls back to en for any missing locale
+
+### Task 7 — 2026-03-24
+- **[i18n]**: `cloudcli/.gitignore` globally ignores `tasks.json` — any new locale needs an explicit `!src/i18n/locales/<locale>/tasks.json` exception or the file won't be committed
+- **[i18n]**: en/chat.json has a `gemini` section that zh-CN was missing; always diff new top-level keys in en/chat.json against zh-CN when en gets new provider support
+- **[i18n]**: zh-CN/codeEditor.json was missing `previewMarkdown` and `editMarkdown` in the `actions` object — check all nested keys, not just top-level sections
+- **[i18n]**: ko locale had all 6 files except tasks.json; de/ja/ru were complete (task description was written before those were added); always glob locale dirs fresh rather than trusting stale task notes
