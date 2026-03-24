@@ -34,7 +34,7 @@ plt.rcParams['axes.unicode_minus'] = False
 ## File Conventions
 
 - Read user input files from the current working directory (uploaded files appear here)
-- Save all outputs to `./output/` directory
+- Save all outputs to `./output/` directory — create it first with `os.makedirs('./output', exist_ok=True)` if it doesn't exist
 - Use descriptive Chinese filenames for outputs (e.g., `销售趋势分析.png`, `预测结果.xlsx`)
 
 ## Prediction Tasks

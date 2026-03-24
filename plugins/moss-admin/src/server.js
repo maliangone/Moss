@@ -76,6 +76,10 @@ app.post('/users', (req, res) => {
     return res.status(400).json({ error: 'Invalid username' });
   }
 
+  // Validate department to prevent command injection
+  const VALID_DEPARTMENTS = ['marketing', 'finance', 'legal', 'operations', 'production', 'it', 'general'];
+  const safeDept = VALID_DEPARTMENTS.includes(department) ? department : 'general';
+
   const userDir = path.join(USERS_DIR, username);
   if (fs.existsSync(userDir)) {
     return res.status(409).json({ error: 'User already exists' });
@@ -85,7 +89,7 @@ app.post('/users', (req, res) => {
     // Use create-user.sh if available, otherwise create manually
     const createScript = '/app/scripts/create-user.sh';
     if (fs.existsSync(createScript)) {
-      execSync(`bash ${createScript} ${username} ${department || 'general'}`, {
+      execSync(`bash ${createScript} ${username} ${safeDept}`, {
         timeout: 10000,
       });
     } else {

@@ -1,8 +1,8 @@
 .git
 .env
-docs/
 *.zip
 nginx/certs/
 nginx/htpasswd
 README.md
-docs/*.md
+docs/
+LICENSE

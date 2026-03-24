@@ -42,7 +42,7 @@ export HOME="${USER_DIR}"
 
 # ===== Create session work directory =====
 WORK_DIR="${PERSISTENT_DIR}/temp/session-${SESSION_ID}"
-mkdir -p "${WORK_DIR}"
+mkdir -p "${WORK_DIR}/output"
 
 # ===== Link global CLAUDE.md into workspace (if not already there) =====
 GLOBAL_CLAUDE_MD="${PERSISTENT_DIR}/shared/CLAUDE.md"

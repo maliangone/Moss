@@ -56,6 +56,9 @@ iptables -A OUTPUT -p tcp --dport 443 -d api.minimax.chat -j ACCEPT
 # Moonshot (Kimi)
 iptables -A OUTPUT -p tcp --dport 443 -d api.moonshot.ai -j ACCEPT
 
+# OpenRouter
+iptables -A OUTPUT -p tcp --dport 443 -d openrouter.ai -j ACCEPT
+
 # ===== Package Registries =====
 # Python (PyPI)
 iptables -A OUTPUT -p tcp --dport 443 -d pypi.org -j ACCEPT

@@ -114,7 +114,13 @@ if [ ! -f /home/agent/.claude/settings.json ] && [ -f "${CONFIG_SRC}/settings.js
     echo "[init] Installed Claude Code settings.json to ~/.claude/"
 fi
 
-# ----- Step 6: Start CloudCLI Server (drop privileges) -----
+# ----- Step 6: Schedule session cleanup (runs hourly in background) -----
+if command -v find &> /dev/null; then
+    echo "[init] Starting session cleanup background job (hourly)..."
+    (while true; do sleep 3600; bash /app/scripts/cleanup-sessions.sh 24 2>/dev/null; done) &
+fi
+
+# ----- Step 7: Start CloudCLI Server (drop privileges) -----
 echo "[init] Starting CloudCLI web server as 'agent' user..."
 echo "============================================"
 
@@ -123,4 +129,4 @@ echo "============================================"
 # run as non-root, while iptables rules set above persist.
 cd /app/cloudcli
 
-exec gosu agent node server.js
+exec gosu agent node server/index.js

@@ -77,6 +77,10 @@ FROM node:20-slim AS cloudcli-build
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
     git \
+    ca-certificates \
+    python3 \
+    make \
+    g++ \
     && rm -rf /var/lib/apt/lists/*
 
 # Clone CloudCLI (siteboon/claudecodeui)
@@ -85,7 +89,8 @@ RUN git clone --depth 1 https://github.com/siteboon/claudecodeui.git .
 
 # Install dependencies and build
 RUN npm install
-RUN npm run build 2>/dev/null || true
+# Build CloudCLI if build script exists; skip gracefully for repos without one
+RUN if grep -q '"build"' package.json 2>/dev/null; then npm run build; fi
 
 
 # ==========================
@@ -141,8 +146,8 @@ COPY plugins/ /app/cloudcli/plugins/
 RUN cd /app/cloudcli/plugins/moss-toolbox && npm install --production 2>/dev/null || true
 RUN cd /app/cloudcli/plugins/moss-admin && npm install --production 2>/dev/null || true
 
-# Make scripts executable
-RUN chmod +x /app/scripts/*.sh
+# Fix line endings (Windows CRLF → Unix LF) and make scripts executable
+RUN sed -i 's/\r$//' /app/scripts/*.sh && chmod +x /app/scripts/*.sh
 
 # Create non-root user
 RUN groupadd -g 1000 agent \
