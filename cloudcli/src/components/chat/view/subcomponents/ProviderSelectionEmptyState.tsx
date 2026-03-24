@@ -127,27 +127,88 @@ export default function ProviderSelectionEmptyState({
     geminiModel,
   );
 
-  /* ── New session — Moss: auto-select Claude, show welcome message ── */
+  /* ── New session — Moss: auto-select Claude, show welcome page ── */
   if (!selectedSession && !currentSessionId) {
     // Auto-select Claude provider on mount if not already set
     if (provider !== "claude") {
       selectProvider("claude");
     }
 
+    const cards = [
+      {
+        key: "analyze" as const,
+        icon: "📊",
+        title: t("welcome.cards.analyze.title"),
+        desc: t("welcome.cards.analyze.desc"),
+        prompt: t("welcome.cardPrompts.analyze"),
+      },
+      {
+        key: "predict" as const,
+        icon: "📈",
+        title: t("welcome.cards.predict.title"),
+        desc: t("welcome.cards.predict.desc"),
+        prompt: t("welcome.cardPrompts.predict"),
+      },
+      {
+        key: "report" as const,
+        icon: "📋",
+        title: t("welcome.cards.report.title"),
+        desc: t("welcome.cards.report.desc"),
+        prompt: t("welcome.cardPrompts.report"),
+      },
+      {
+        key: "documents" as const,
+        icon: "🔧",
+        title: t("welcome.cards.documents.title"),
+        desc: t("welcome.cards.documents.desc"),
+        prompt: t("welcome.cardPrompts.documents"),
+      },
+    ];
+
+    const handleCardClick = (prompt: string) => {
+      setInput(prompt);
+      setTimeout(() => textareaRef.current?.focus(), 100);
+    };
+
     return (
-      <div className="flex h-full items-center justify-center px-4">
-        <div className="w-full max-w-md text-center">
-          <div className="mb-4">
-            <h2 className="text-lg font-semibold tracking-tight text-foreground sm:text-xl">
-              Moss AI
+      <div className="flex h-full items-center justify-center px-4 py-8">
+        <div className="w-full max-w-2xl">
+          {/* Greeting */}
+          <div className="mb-8 text-center">
+            <div className="mb-3 text-4xl">🤖</div>
+            <h2 className="text-xl font-semibold tracking-tight text-foreground sm:text-2xl">
+              {t("welcome.greeting")}
             </h2>
             <p className="mt-2 text-sm text-muted-foreground">
-              Enterprise AI Assistant — powered by intelligent agents
+              {t("welcome.subtitle")}
             </p>
           </div>
-          <p className="text-sm text-muted-foreground/70">
-            Type your question below to start a conversation.
-          </p>
+
+          {/* Quick-start cards — 2×2 grid */}
+          <div className="mb-6 grid grid-cols-1 gap-3 sm:grid-cols-2">
+            {cards.map((card) => (
+              <button
+                key={card.key}
+                onClick={() => handleCardClick(card.prompt)}
+                className="flex flex-col items-start rounded-xl border border-border bg-card p-4 text-left transition-colors hover:border-primary/50 hover:bg-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+              >
+                <div className="mb-2 text-2xl">{card.icon}</div>
+                <div className="font-medium text-foreground">{card.title}</div>
+                <div className="mt-1 text-sm text-muted-foreground">
+                  {card.desc}
+                </div>
+              </button>
+            ))}
+          </div>
+
+          {/* Example prompt hint */}
+          <div className="rounded-lg bg-muted/50 px-4 py-3 text-sm text-muted-foreground">
+            <span className="font-medium">{t("welcome.exampleHint")}</span>
+            <br />
+            <span className="mt-1 block italic">
+              &ldquo;{t("welcome.examplePrompt")}&rdquo;
+            </span>
+          </div>
         </div>
       </div>
     );

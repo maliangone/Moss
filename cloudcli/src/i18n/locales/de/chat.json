@@ -268,5 +268,35 @@
   },
   "tasks": {
     "nextTaskPrompt": "Nächste Aufgabe starten"
+  },
+  "welcome": {
+    "greeting": "Hallo! Ich bin dein KI-Analyseassistent",
+    "subtitle": "Sag mir, was du tun möchtest, oder wähle eine schnelle Aufgabe:",
+    "exampleHint": "💡 Oder sag mir direkt:",
+    "examplePrompt": "Analysiere die Verkaufsdaten des letzten Monats und finde die Produktlinien mit dem größten Rückgang",
+    "cards": {
+      "analyze": {
+        "title": "Daten analysieren",
+        "desc": "Excel/CSV hochladen und Erkenntnisse erhalten"
+      },
+      "predict": {
+        "title": "Trends vorhersagen",
+        "desc": "Zukünftige Trends aus historischen Daten prognostizieren"
+      },
+      "report": {
+        "title": "Bericht erstellen",
+        "desc": "Analyseergebnisse in Berichte oder PPT umwandeln"
+      },
+      "documents": {
+        "title": "Dokumente verarbeiten",
+        "desc": "PDF-Extraktion / Übersetzung / Stapelverarbeitung"
+      }
+    },
+    "cardPrompts": {
+      "analyze": "Bitte analysiere die hochgeladene Datendatei und erstelle eine statistische Zusammenfassung mit Visualisierungen",
+      "predict": "Bitte erstelle eine Trendprognose für diese Daten und prognostiziere zukünftige Entwicklungen",
+      "report": "Bitte erstelle einen vollständigen Analysebericht aus den Ergebnissen",
+      "documents": "Bitte verarbeite dieses Dokument und extrahiere die wichtigsten Informationen"
+    }
   }
 }

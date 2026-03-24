@@ -250,5 +250,35 @@
   },
   "tasks": {
     "nextTaskPrompt": "开始下一个任务"
+  },
+  "welcome": {
+    "greeting": "你好！我是你的 AI 分析助手",
+    "subtitle": "告诉我你想做什么，或者选择一个快速任务：",
+    "exampleHint": "💡 或者直接告诉我：",
+    "examplePrompt": "帮我分析上个月的销售数据，找出下降最多的产品线",
+    "cards": {
+      "analyze": {
+        "title": "分析数据",
+        "desc": "上传 Excel/CSV 获得洞察"
+      },
+      "predict": {
+        "title": "预测趋势",
+        "desc": "基于历史数据预测未来走势"
+      },
+      "report": {
+        "title": "生成报告",
+        "desc": "将分析结果变成报告或 PPT"
+      },
+      "documents": {
+        "title": "处理文档",
+        "desc": "PDF 提取 / 翻译 / 批量处理"
+      }
+    },
+    "cardPrompts": {
+      "analyze": "帮我分析上传的数据文件，生成统计摘要和可视化图表",
+      "predict": "帮我对这份数据进行趋势预测，预测未来的走势",
+      "report": "帮我把分析结果生成一份完整的分析报告",
+      "documents": "帮我处理这份文档，提取关键信息"
+    }
   }
 }

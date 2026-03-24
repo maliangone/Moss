@@ -268,5 +268,35 @@
   },
   "tasks": {
     "nextTaskPrompt": "開始下一個任務"
+  },
+  "welcome": {
+    "greeting": "你好！我是你的 AI 分析助手",
+    "subtitle": "告訴我你想做什麼，或者選擇一個快速任務：",
+    "exampleHint": "💡 或者直接告訴我：",
+    "examplePrompt": "幫我分析上個月的銷售數據，找出下降最多的產品線",
+    "cards": {
+      "analyze": {
+        "title": "分析資料",
+        "desc": "上傳 Excel/CSV 獲得洞察"
+      },
+      "predict": {
+        "title": "預測趨勢",
+        "desc": "基於歷史資料預測未來走勢"
+      },
+      "report": {
+        "title": "產生報告",
+        "desc": "將分析結果變成報告或 PPT"
+      },
+      "documents": {
+        "title": "處理文件",
+        "desc": "PDF 提取 / 翻譯 / 批次處理"
+      }
+    },
+    "cardPrompts": {
+      "analyze": "幫我分析上傳的資料檔案，產生統計摘要和視覺化圖表",
+      "predict": "幫我對這份資料進行趨勢預測，預測未來的走勢",
+      "report": "幫我把分析結果產生一份完整的分析報告",
+      "documents": "幫我處理這份文件，提取關鍵資訊"
+    }
   }
 }

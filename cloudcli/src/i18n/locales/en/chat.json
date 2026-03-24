@@ -268,5 +268,35 @@
   },
   "tasks": {
     "nextTaskPrompt": "Start the next task"
+  },
+  "welcome": {
+    "greeting": "Hello! I'm your AI Analytics Assistant",
+    "subtitle": "Tell me what you'd like to do, or pick a quick task:",
+    "exampleHint": "💡 Or just tell me:",
+    "examplePrompt": "Analyze last month's sales data and find the product lines with the biggest drops",
+    "cards": {
+      "analyze": {
+        "title": "Analyze Data",
+        "desc": "Upload Excel/CSV and get insights"
+      },
+      "predict": {
+        "title": "Predict Trends",
+        "desc": "Forecast future trends from historical data"
+      },
+      "report": {
+        "title": "Generate Report",
+        "desc": "Turn analysis into reports or PPT"
+      },
+      "documents": {
+        "title": "Process Documents",
+        "desc": "PDF extraction, translation, batch processing"
+      }
+    },
+    "cardPrompts": {
+      "analyze": "Please analyze the uploaded data file and generate a statistical summary and visualizations",
+      "predict": "Please perform trend forecasting on this data and predict future trends",
+      "report": "Please generate a complete analysis report from the results",
+      "documents": "Please process this document and extract the key information"
+    }
   }
 }

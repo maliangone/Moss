@@ -250,5 +250,35 @@
   },
   "tasks": {
     "nextTaskPrompt": "다음 작업 시작"
+  },
+  "welcome": {
+    "greeting": "안녕하세요! 저는 AI 데이터 분석 어시스턴트입니다",
+    "subtitle": "무엇을 하고 싶은지 알려주세요. 또는 빠른 작업을 선택하세요:",
+    "exampleHint": "💡 또는 직접 알려주세요:",
+    "examplePrompt": "지난달 판매 데이터를 분석하고 가장 많이 감소한 제품 라인을 찾아주세요",
+    "cards": {
+      "analyze": {
+        "title": "데이터 분석",
+        "desc": "Excel/CSV 업로드 후 인사이트 획득"
+      },
+      "predict": {
+        "title": "트렌드 예측",
+        "desc": "과거 데이터로 미래 트렌드 예측"
+      },
+      "report": {
+        "title": "보고서 생성",
+        "desc": "분석 결과를 보고서나 PPT로 변환"
+      },
+      "documents": {
+        "title": "문서 처리",
+        "desc": "PDF 추출 / 번역 / 일괄 처리"
+      }
+    },
+    "cardPrompts": {
+      "analyze": "업로드된 데이터 파일을 분석하고 통계 요약과 시각화를 생성해주세요",
+      "predict": "이 데이터의 트렌드를 예측하고 미래 동향을 예측해주세요",
+      "report": "분석 결과로 완전한 분석 보고서를 생성해주세요",
+      "documents": "이 문서를 처리하고 핵심 정보를 추출해주세요"
+    }
   }
 }
