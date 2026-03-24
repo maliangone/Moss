@@ -125,11 +125,16 @@ if [ ! -f "${CLOUDCLI_DB}" ]; then
     ADMIN_USER="${CLOUDCLI_ADMIN_USER:-admin}"
     ADMIN_PASS="${CLOUDCLI_ADMIN_PASS:-moss2026}"
     # Hash the password using Node.js bcrypt (from CloudCLI's node_modules)
-    PASS_HASH=$(NODE_PATH=/app/cloudcli/node_modules node -e "const bcrypt=require('bcrypt');bcrypt.hash('${ADMIN_PASS}',12).then(h=>console.log(h))")
+    # Pass password via env var to avoid shell injection when ADMIN_PASS contains quotes or special chars
+    PASS_HASH=$(NODE_PATH=/app/cloudcli/node_modules \
+        _MOSS_ADMIN_PASS="${ADMIN_PASS}" \
+        node -e "const b=require('bcrypt');b.hash(process.env._MOSS_ADMIN_PASS,12).then(h=>process.stdout.write(h))")
     # Initialize DB schema
     sqlite3 "${CLOUDCLI_DB}" < /app/cloudcli/server/database/init.sql
+    # Escape single quotes in username for SQL string literal (SQLite uses '' to escape ')
+    SAFE_USER="${ADMIN_USER//\'/\'\'}"
     # Insert admin user with onboarding completed
-    sqlite3 "${CLOUDCLI_DB}" "INSERT INTO users (username, password_hash, git_name, git_email, has_completed_onboarding) VALUES ('${ADMIN_USER}', '${PASS_HASH}', 'Moss Admin', 'admin@moss.local', 1);"
+    sqlite3 "${CLOUDCLI_DB}" "INSERT INTO users (username, password_hash, git_name, git_email, has_completed_onboarding) VALUES ('${SAFE_USER}', '${PASS_HASH}', 'Moss Admin', 'admin@moss.local', 1);"
     echo "[init] Admin account created (user: ${ADMIN_USER})"
     echo "[init] Onboarding wizard: skipped"
 else
