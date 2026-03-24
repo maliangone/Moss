@@ -16,7 +16,7 @@ import { useSettingsController } from '../hooks/useSettingsController';
 import { useWebPush } from '../../../hooks/useWebPush';
 import type { SettingsProps } from '../types/types';
 
-function Settings({ isOpen, onClose, projects = [], initialTab = 'agents' }: SettingsProps) {
+function Settings({ isOpen, onClose, projects = [], initialTab = 'appearance' }: SettingsProps) {
   const { t } = useTranslation('settings');
   const {
     activeTab,
