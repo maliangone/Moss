@@ -69,3 +69,9 @@ Append-only log of discoveries from autonomous task runs. Read this before start
 - **[i18n]**: When adding new i18n keys to `en/chat.json`, always update `zh-CN/chat.json` in the same commit — the `claudeStatus.*` section was left in English in zh-CN while EN was complete
 - **[testing]**: Browser localStorage persists language preference across container restarts — a previous Thai locale test will show Thai on next page load; test in EN first, then switch to verify zh-CN strings
 - **[chat-flow]**: Claude provider auto-selection in `ProviderSelectionEmptyState.tsx` calls `selectProvider("claude")` on render if `provider !== 'claude'` — this is a render-time side-effect that may trigger a re-render; no bug found but worth noting
+
+### Task 3 — 2026-03-24
+- **[ui-hide]**: `SidebarCollapsed.tsx` has its own Discord link — task-12 removed it from `SidebarFooter.tsx` (expanded sidebar) but missed `SidebarCollapsed.tsx` (icon-only collapsed view); always check both sidebar states when removing links
+- **[plugin-system]**: Plugin `entry` in `manifest.json` points to `src/index.jsx` (raw JSX); CloudCLI fetches it and `import()`s it as an ES module — browsers cannot parse JSX, causing `SyntaxError: Unexpected token '<'`. Plugins need a Vite build step producing a compiled `dist/index.js`
+- **[plugin-system]**: CloudCLI plugin API expects `export function mount(container, api)` from plugin modules, NOT a React default export — plugins must wrap their React component in a `mount()` function that calls `ReactDOM.createRoot(container).render(<Component />)`
+- **[plugin-system]**: Plugin `icon` field in manifest.json should NOT use emoji (e.g. `"icon": "🧰"`) — CloudCLI tries to fetch the emoji as a static asset file, causing 404s; use a named Lucide icon string instead
