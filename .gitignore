@@ -1,0 +1,39 @@
+# Environment & secrets
+.env
+nginx/certs/
+nginx/htpasswd
+
+# Node
+node_modules/
+dist/
+*.tgz
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+
+# Playwright MCP logs
+.playwright-mcp/
+
+# Task Master (temp/merged artifacts)
+.taskmaster/tasks/tasks-temp.json
+.taskmaster/tasks/tasks-temp.merged.json
+
+# Ralph runtime artifacts
+scripts/ralph/progress.txt
+
+# Claude Code task artifacts (ephemeral per-task work)
+.claude/tasks/
+
+# OS
+Thumbs.db
+Desktop.ini
+.DS_Store
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo

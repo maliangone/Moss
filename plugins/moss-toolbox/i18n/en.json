@@ -1,0 +1,69 @@
+{
+  "loading": "Loading toolbox...",
+  "share_submitted": "Skill submitted for review. Once approved by admin, it will be available company-wide.",
+  "panel": {
+    "header": "🧰 Toolbox",
+    "refresh": "Refresh",
+    "search_placeholder": "🔍 Search tools...",
+    "my_skills": "⭐ My Skills ({{count}})",
+    "create_btn": "+ Create",
+    "create_title": "Create new skill",
+    "use_skill": "Use my \"{{name}}\" skill to process",
+    "share_title": "Share with team",
+    "delete_title": "Delete",
+    "empty_personal": "💡 Tell AI \"Help me turn this analysis workflow into a reusable tool\" to create your own skills",
+    "auto_trigger": "Can be auto-triggered"
+  },
+  "suggestion": {
+    "label": "💡 You might want:"
+  },
+  "welcome": {
+    "hero_title": "🤖 Hello! I'm your AI Analysis Assistant",
+    "hero_subtitle": "Tell me what you want to do, or choose a quick task:",
+    "my_skills": "⭐ My Skills ({{count}})",
+    "use_skill": "Use my \"{{name}}\" skill",
+    "hint": "🛠 Tell me about your repetitive workflows, I'll turn them into one-click personal tools",
+    "example_intro": "💡 Or just tell me:",
+    "example_prompt": "Help me analyze last month's sales data and find the product lines with the biggest decline"
+  },
+  "dialog": {
+    "title": "🛠 Create New Skill",
+    "close": "✕",
+    "subtitle": "Choose a creation method:",
+    "hint": "💡 Created skills will appear under \"⭐ My Skills\" in the toolbox and can be used anytime",
+    "describe": {
+      "title": "Describe my needs",
+      "description": "Tell AI about your repetitive workflow and AI will turn it into a skill",
+      "prompt": "I want to create a new skill. Please use /skill-creator to guide me through the creation process. I'll describe my repetitive workflow and you'll help me turn it into a reusable skill."
+    },
+    "community": {
+      "title": "Install community skill",
+      "description": "Search and install ready-made skills from the community library",
+      "prompt": "Please help me search and install community skills. I want to browse available skill lists, please list some recommended data analysis related skills."
+    },
+    "from_chat": {
+      "title": "Create from current conversation",
+      "description": "Save the recent analysis workflow as a reusable skill",
+      "prompt": "Please save the analysis workflow from our conversation as a reusable skill. Use /skill-creator to create it. Save to my personal skill library (~/.claude/skills/) so I can use it in future conversations."
+    }
+  },
+  "save": {
+    "success": "✅ Skill created: 「{{skillName}}」",
+    "save_as": "Save as:",
+    "permanent": "⭐ Frequent Skill (Recommended)",
+    "permanent_desc": "Available anytime, persisted across sessions",
+    "temp": "📂 This task only",
+    "temp_desc": "Only for this analysis, cleared when session ends"
+  },
+  "share_btn": {
+    "submitted": "✅ Submitted",
+    "share_title": "Share with team",
+    "share": "📤 Share"
+  },
+  "progress": {
+    "running_default": "Running",
+    "skills_used": "⚙ Skills used this time ({{count}})",
+    "auto_triggered": "— Auto triggered",
+    "user_selected": "— User selected"
+  }
+}

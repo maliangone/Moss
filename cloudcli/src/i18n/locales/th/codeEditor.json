@@ -1,0 +1,36 @@
+{
+  "toolbar": {
+    "changes": "การเปลี่ยนแปลง",
+    "previousChange": "การเปลี่ยนแปลงก่อนหน้า",
+    "nextChange": "การเปลี่ยนแปลงถัดไป",
+    "hideDiff": "ซ่อนการไฮไลต์ความแตกต่าง",
+    "showDiff": "แสดงการไฮไลต์ความแตกต่าง",
+    "settings": "การตั้งค่าโปรแกรมแก้ไข",
+    "collapse": "ยุบโปรแกรมแก้ไข",
+    "expand": "ขยายโปรแกรมแก้ไขเต็มความกว้าง"
+  },
+  "loading": "กำลังโหลด {{fileName}}...",
+  "header": {
+    "showingChanges": "แสดงการเปลี่ยนแปลง"
+  },
+  "actions": {
+    "download": "ดาวน์โหลดไฟล์",
+    "save": "บันทึก",
+    "saving": "กำลังบันทึก...",
+    "saved": "บันทึกแล้ว!",
+    "exitFullscreen": "ออกจากโหมดเต็มหน้าจอ",
+    "fullscreen": "เต็มหน้าจอ",
+    "close": "ปิด",
+    "previewMarkdown": "ดูตัวอย่าง Markdown",
+    "editMarkdown": "แก้ไข Markdown"
+  },
+  "footer": {
+    "lines": "บรรทัด:",
+    "characters": "ตัวอักษร:",
+    "shortcuts": "กด Ctrl+S เพื่อบันทึก • Esc เพื่อปิด"
+  },
+  "binaryFile": {
+    "title": "ไฟล์ไบนารี",
+    "message": "ไฟล์ \"{{fileName}}\" ไม่สามารถแสดงในโปรแกรมแก้ไขข้อความได้เนื่องจากเป็นไฟล์ไบนารี"
+  }
+}

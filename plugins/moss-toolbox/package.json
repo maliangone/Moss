@@ -1,0 +1,20 @@
+{
+  "name": "moss-toolbox",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Moss AI Agent Platform — Toolbox, Smart Suggestions, Welcome Page plugin for CloudCLI",
+  "main": "src/server.js",
+  "scripts": {
+    "build": "vite build"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "js-yaml": "^4.1.0"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^4.3.1",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "vite": "^5.4.0"
+  }
+}

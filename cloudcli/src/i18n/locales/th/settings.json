@@ -1,0 +1,494 @@
+{
+  "title": "การตั้งค่า",
+  "tabs": {
+    "account": "บัญชี",
+    "permissions": "สิทธิ์",
+    "mcpServers": "เซิร์ฟเวอร์ MCP",
+    "appearance": "รูปลักษณ์"
+  },
+  "account": {
+    "title": "บัญชี",
+    "language": "ภาษา",
+    "languageLabel": "ภาษาที่แสดง",
+    "languageDescription": "เลือกภาษาที่คุณต้องการสำหรับอินเทอร์เฟซ",
+    "username": "ชื่อผู้ใช้",
+    "email": "อีเมล",
+    "profile": "โปรไฟล์",
+    "changePassword": "เปลี่ยนรหัสผ่าน"
+  },
+  "mcp": {
+    "title": "เซิร์ฟเวอร์ MCP",
+    "addServer": "เพิ่มเซิร์ฟเวอร์",
+    "editServer": "แก้ไขเซิร์ฟเวอร์",
+    "deleteServer": "ลบเซิร์ฟเวอร์",
+    "serverName": "ชื่อเซิร์ฟเวอร์",
+    "serverType": "ประเภทเซิร์ฟเวอร์",
+    "config": "การกำหนดค่า",
+    "testConnection": "ทดสอบการเชื่อมต่อ",
+    "status": "สถานะ",
+    "connected": "เชื่อมต่อแล้ว",
+    "disconnected": "ตัดการเชื่อมต่อแล้ว",
+    "scope": {
+      "label": "ขอบเขต",
+      "user": "ผู้ใช้",
+      "project": "โปรเจกต์"
+    }
+  },
+  "appearance": {
+    "title": "รูปลักษณ์",
+    "theme": "ธีม",
+    "codeEditor": "โปรแกรมแก้ไขโค้ด",
+    "editorTheme": "ธีมโปรแกรมแก้ไข",
+    "wordWrap": "ตัดคำ",
+    "showMinimap": "แสดงแผนที่ย่อ",
+    "lineNumbers": "เลขบรรทัด",
+    "fontSize": "ขนาดตัวอักษร"
+  },
+  "actions": {
+    "saveChanges": "บันทึกการเปลี่ยนแปลง",
+    "resetToDefaults": "รีเซ็ตเป็นค่าเริ่มต้น",
+    "cancelChanges": "ยกเลิกการเปลี่ยนแปลง"
+  },
+  "quickSettings": {
+    "title": "การตั้งค่าด่วน",
+    "sections": {
+      "appearance": "รูปลักษณ์",
+      "toolDisplay": "การแสดงเครื่องมือ",
+      "viewOptions": "ตัวเลือกมุมมอง",
+      "inputSettings": "การตั้งค่าอินพุต",
+      "whisperDictation": "การบอกเสียง Whisper"
+    },
+    "darkMode": "โหมดมืด",
+    "autoExpandTools": "ขยายเครื่องมืออัตโนมัติ",
+    "showRawParameters": "แสดงพารามิเตอร์ดิบ",
+    "showThinking": "แสดงการคิด",
+    "autoScrollToBottom": "เลื่อนลงอัตโนมัติ",
+    "sendByCtrlEnter": "ส่งด้วย Ctrl+Enter",
+    "sendByCtrlEnterDescription": "เมื่อเปิดใช้งาน การกด Ctrl+Enter จะส่งข้อความแทน Enter สิ่งนี้มีประโยชน์สำหรับผู้ใช้ IME เพื่อหลีกเลี่ยงการส่งโดยไม่ตั้งใจ",
+    "dragHandle": {
+      "dragging": "กำลังลาก",
+      "closePanel": "ปิดแผงการตั้งค่า",
+      "openPanel": "เปิดแผงการตั้งค่า",
+      "draggingStatus": "กำลังลาก...",
+      "toggleAndMove": "คลิกเพื่อสลับ ลากเพื่อย้าย"
+    },
+    "whisper": {
+      "modes": {
+        "default": "โหมดเริ่มต้น",
+        "defaultDescription": "การถอดเสียงตรงของคำพูดของคุณ",
+        "prompt": "การปรับปรุงพรอมต์",
+        "promptDescription": "แปลงความคิดคร่าวๆ เป็นพรอมต์ AI ที่ชัดเจนและละเอียด",
+        "vibe": "โหมด Vibe",
+        "vibeDescription": "จัดรูปแบบความคิดเป็นคำสั่ง Agent ที่ชัดเจนพร้อมรายละเอียด"
+      }
+    }
+  },
+  "terminalShortcuts": {
+    "title": "ทางลัดเทอร์มินัล",
+    "sectionKeys": "คีย์",
+    "sectionNavigation": "การนำทาง",
+    "escape": "Escape",
+    "tab": "Tab",
+    "shiftTab": "Shift+Tab",
+    "arrowUp": "ลูกศรขึ้น",
+    "arrowDown": "ลูกศรลง",
+    "scrollDown": "เลื่อนลง",
+    "handle": {
+      "closePanel": "ปิดแผงทางลัด",
+      "openPanel": "เปิดแผงทางลัด"
+    }
+  },
+  "mainTabs": {
+    "label": "การตั้งค่า",
+    "agents": "Agents",
+    "appearance": "รูปลักษณ์",
+    "git": "Git",
+    "apiTokens": "API และโทเค็น",
+    "tasks": "งาน",
+    "notifications": "การแจ้งเตือน",
+    "plugins": "ปลั๊กอิน"
+  },
+  "notifications": {
+    "title": "การแจ้งเตือน",
+    "description": "ควบคุมเหตุการณ์การแจ้งเตือนที่คุณได้รับ",
+    "webPush": {
+      "title": "การแจ้งเตือนแบบ Push ทางเว็บ",
+      "enable": "เปิดใช้การแจ้งเตือน Push",
+      "disable": "ปิดใช้การแจ้งเตือน Push",
+      "enabled": "เปิดใช้การแจ้งเตือน Push แล้ว",
+      "loading": "กำลังอัปเดต...",
+      "unsupported": "เบราว์เซอร์นี้ไม่รองรับการแจ้งเตือน Push",
+      "denied": "การแจ้งเตือน Push ถูกบล็อก กรุณาอนุญาตในการตั้งค่าเบราว์เซอร์"
+    },
+    "events": {
+      "title": "ประเภทเหตุการณ์",
+      "actionRequired": "ต้องดำเนินการ",
+      "stop": "หยุดการทำงาน",
+      "error": "การทำงานล้มเหลว"
+    }
+  },
+  "appearanceSettings": {
+    "darkMode": {
+      "label": "โหมดมืด",
+      "description": "สลับระหว่างธีมสว่างและมืด"
+    },
+    "projectSorting": {
+      "label": "การเรียงลำดับโปรเจกต์",
+      "description": "วิธีการเรียงลำดับโปรเจกต์ในแถบด้านข้าง",
+      "alphabetical": "เรียงตามตัวอักษร",
+      "recentActivity": "กิจกรรมล่าสุด"
+    },
+    "codeEditor": {
+      "title": "โปรแกรมแก้ไขโค้ด",
+      "theme": {
+        "label": "ธีมโปรแกรมแก้ไข",
+        "description": "ธีมเริ่มต้นสำหรับโปรแกรมแก้ไขโค้ด"
+      },
+      "wordWrap": {
+        "label": "ตัดคำ",
+        "description": "เปิดใช้การตัดคำเป็นค่าเริ่มต้นในโปรแกรมแก้ไข"
+      },
+      "showMinimap": {
+        "label": "แสดงแผนที่ย่อ",
+        "description": "แสดงแผนที่ย่อเพื่อการนำทางที่ง่ายขึ้นในมุมมองความแตกต่าง"
+      },
+      "lineNumbers": {
+        "label": "แสดงเลขบรรทัด",
+        "description": "แสดงเลขบรรทัดในโปรแกรมแก้ไข"
+      },
+      "fontSize": {
+        "label": "ขนาดตัวอักษร",
+        "description": "ขนาดตัวอักษรของโปรแกรมแก้ไขในหน่วยพิกเซล"
+      }
+    }
+  },
+  "mcpForm": {
+    "title": {
+      "add": "เพิ่มเซิร์ฟเวอร์ MCP",
+      "edit": "แก้ไขเซิร์ฟเวอร์ MCP"
+    },
+    "importMode": {
+      "form": "อินพุตแบบฟอร์ม",
+      "json": "นำเข้า JSON"
+    },
+    "scope": {
+      "label": "ขอบเขต",
+      "userGlobal": "ผู้ใช้ (ทั่วโลก)",
+      "projectLocal": "โปรเจกต์ (ท้องถิ่น)",
+      "userDescription": "ขอบเขตผู้ใช้: ใช้งานได้ในทุกโปรเจกต์บนเครื่องของคุณ",
+      "projectDescription": "ขอบเขตท้องถิ่น: ใช้งานได้เฉพาะในโปรเจกต์ที่เลือก",
+      "cannotChange": "ไม่สามารถเปลี่ยนขอบเขตเมื่อแก้ไขเซิร์ฟเวอร์ที่มีอยู่"
+    },
+    "fields": {
+      "serverName": "ชื่อเซิร์ฟเวอร์",
+      "transportType": "ประเภทการส่ง",
+      "command": "คำสั่ง",
+      "arguments": "อาร์กิวเมนต์ (หนึ่งต่อบรรทัด)",
+      "jsonConfig": "การกำหนดค่า JSON",
+      "url": "URL",
+      "envVars": "ตัวแปรสภาพแวดล้อม (KEY=value หนึ่งต่อบรรทัด)",
+      "headers": "ส่วนหัว (KEY=value หนึ่งต่อบรรทัด)",
+      "selectProject": "เลือกโปรเจกต์..."
+    },
+    "placeholders": {
+      "serverName": "my-server"
+    },
+    "validation": {
+      "missingType": "ขาดฟิลด์ที่จำเป็น: type",
+      "stdioRequiresCommand": "ประเภท stdio ต้องการฟิลด์ command",
+      "httpRequiresUrl": "ประเภท {{type}} ต้องการฟิลด์ url",
+      "invalidJson": "รูปแบบ JSON ไม่ถูกต้อง",
+      "jsonHelp": "วางการกำหนดค่าเซิร์ฟเวอร์ MCP ในรูปแบบ JSON ตัวอย่างรูปแบบ:",
+      "jsonExampleStdio": "• stdio: {\"type\":\"stdio\",\"command\":\"npx\",\"args\":[\"@upstash/context7-mcp\"]}",
+      "jsonExampleHttp": "• http/sse: {\"type\":\"http\",\"url\":\"https://api.example.com/mcp\"}"
+    },
+    "configDetails": "รายละเอียดการกำหนดค่า (จาก {{configFile}})",
+    "projectPath": "พาธ: {{path}}",
+    "actions": {
+      "cancel": "ยกเลิก",
+      "saving": "กำลังบันทึก...",
+      "addServer": "เพิ่มเซิร์ฟเวอร์",
+      "updateServer": "อัปเดตเซิร์ฟเวอร์"
+    }
+  },
+  "saveStatus": {
+    "success": "บันทึกการตั้งค่าสำเร็จ!",
+    "error": "บันทึกการตั้งค่าล้มเหลว",
+    "saving": "กำลังบันทึก..."
+  },
+  "footerActions": {
+    "save": "บันทึกการตั้งค่า",
+    "cancel": "ยกเลิก"
+  },
+  "git": {
+    "title": "การกำหนดค่า Git",
+    "description": "กำหนดค่าตัวตน git ของคุณสำหรับการคอมมิต การตั้งค่าเหล่านี้จะถูกนำไปใช้ทั่วโลกผ่าน git config --global",
+    "name": {
+      "label": "ชื่อ Git",
+      "help": "ชื่อของคุณสำหรับ git commits"
+    },
+    "email": {
+      "label": "อีเมล Git",
+      "help": "อีเมลของคุณสำหรับ git commits"
+    },
+    "actions": {
+      "save": "บันทึกการกำหนดค่า",
+      "saving": "กำลังบันทึก..."
+    },
+    "status": {
+      "success": "บันทึกสำเร็จ"
+    }
+  },
+  "apiKeys": {
+    "title": "API Keys",
+    "description": "สร้าง API keys เพื่อเข้าถึง API ภายนอกจากแอปพลิเคชันอื่น",
+    "newKey": {
+      "alertTitle": "⚠️ บันทึก API Key ของคุณ",
+      "alertMessage": "นี่เป็นครั้งเดียวที่คุณจะเห็น key นี้ เก็บไว้อย่างปลอดภัย",
+      "iveSavedIt": "ฉันบันทึกแล้ว"
+    },
+    "form": {
+      "placeholder": "ชื่อ API Key (เช่น Production Server)",
+      "createButton": "สร้าง",
+      "cancelButton": "ยกเลิก"
+    },
+    "newButton": "API Key ใหม่",
+    "empty": "ยังไม่มี API keys",
+    "list": {
+      "created": "สร้างเมื่อ:",
+      "lastUsed": "ใช้ล่าสุด:"
+    },
+    "confirmDelete": "คุณแน่ใจว่าต้องการลบ API key นี้?",
+    "status": {
+      "active": "ใช้งานอยู่",
+      "inactive": "ไม่ได้ใช้งาน"
+    },
+    "github": {
+      "title": "GitHub Tokens",
+      "description": "เพิ่ม GitHub Personal Access Tokens เพื่อโคลน private repositories ผ่าน API ภายนอก",
+      "descriptionAlt": "เพิ่ม GitHub Personal Access Tokens เพื่อโคลน private repositories คุณยังสามารถส่ง tokens ตรงในคำขอ API โดยไม่ต้องบันทึกได้",
+      "addButton": "เพิ่ม Token",
+      "form": {
+        "namePlaceholder": "ชื่อ Token (เช่น Personal Repos)",
+        "tokenPlaceholder": "GitHub Personal Access Token (ghp_...)",
+        "descriptionPlaceholder": "คำอธิบาย (ไม่บังคับ)",
+        "addButton": "เพิ่ม Token",
+        "cancelButton": "ยกเลิก",
+        "howToCreate": "วิธีสร้าง GitHub Personal Access Token →"
+      },
+      "empty": "ยังไม่มี GitHub tokens",
+      "added": "เพิ่มเมื่อ:",
+      "confirmDelete": "คุณแน่ใจว่าต้องการลบ GitHub token นี้?"
+    },
+    "apiDocsLink": "เอกสาร API",
+    "documentation": {
+      "title": "เอกสาร API ภายนอก",
+      "description": "เรียนรู้วิธีใช้ API ภายนอกเพื่อเรียกใช้เซสชัน Claude/Cursor จากแอปพลิเคชันของคุณ",
+      "viewLink": "ดูเอกสาร API →"
+    },
+    "loading": "กำลังโหลด...",
+    "version": {
+      "updateAvailable": "มีอัปเดต: v{{version}}"
+    }
+  },
+  "tasks": {
+    "checking": "กำลังตรวจสอบการติดตั้ง TaskMaster...",
+    "notInstalled": {
+      "title": "ยังไม่ได้ติดตั้ง TaskMaster AI CLI",
+      "description": "ต้องการ TaskMaster CLI เพื่อใช้ฟีเจอร์การจัดการงาน ติดตั้งเพื่อเริ่มต้น:",
+      "installCommand": "npm install -g task-master-ai",
+      "viewOnGitHub": "ดูบน GitHub",
+      "afterInstallation": "หลังการติดตั้ง:",
+      "steps": {
+        "restart": "รีสตาร์ทแอปพลิเคชันนี้",
+        "autoAvailable": "ฟีเจอร์ TaskMaster จะพร้อมใช้งานโดยอัตโนมัติ",
+        "initCommand": "ใช้ task-master init ในไดเรกทอรีโปรเจกต์ของคุณ"
+      }
+    },
+    "settings": {
+      "enableLabel": "เปิดใช้การผสานรวม TaskMaster",
+      "enableDescription": "แสดงงาน แบนเนอร์ และตัวบ่งชี้แถบด้านข้างของ TaskMaster ทั่วอินเทอร์เฟซ"
+    }
+  },
+  "agents": {
+    "authStatus": {
+      "checking": "กำลังตรวจสอบ...",
+      "connected": "เชื่อมต่อแล้ว",
+      "notConnected": "ยังไม่ได้เชื่อมต่อ",
+      "disconnected": "ตัดการเชื่อมต่อแล้ว",
+      "checkingAuth": "กำลังตรวจสอบสถานะการยืนยันตัวตน...",
+      "loggedInAs": "เข้าสู่ระบบในฐานะ {{email}}",
+      "authenticatedUser": "ผู้ใช้ที่ยืนยันตัวตนแล้ว"
+    },
+    "account": {
+      "claude": {
+        "description": "ผู้ช่วย AI Anthropic Claude"
+      },
+      "cursor": {
+        "description": "โปรแกรมแก้ไขโค้ด AI Cursor"
+      },
+      "codex": {
+        "description": "ผู้ช่วย AI OpenAI Codex"
+      },
+      "gemini": {
+        "description": "ผู้ช่วย AI Google Gemini"
+      }
+    },
+    "connectionStatus": "สถานะการเชื่อมต่อ",
+    "login": {
+      "title": "เข้าสู่ระบบ",
+      "reAuthenticate": "ยืนยันตัวตนใหม่",
+      "description": "เข้าสู่ระบบบัญชี {{agent}} ของคุณเพื่อเปิดใช้ฟีเจอร์ AI",
+      "reAuthDescription": "เข้าสู่ระบบด้วยบัญชีอื่นหรือรีเฟรชข้อมูลประจำตัว",
+      "button": "เข้าสู่ระบบ",
+      "reLoginButton": "เข้าสู่ระบบใหม่"
+    },
+    "error": "ข้อผิดพลาด: {{error}}"
+  },
+  "permissions": {
+    "title": "การตั้งค่าสิทธิ์",
+    "skipPermissions": {
+      "label": "ข้ามพรอมต์สิทธิ์ (ใช้ด้วยความระมัดระวัง)",
+      "claudeDescription": "เทียบเท่ากับ flag --dangerously-skip-permissions",
+      "cursorDescription": "เทียบเท่ากับ flag -f ใน Cursor CLI"
+    },
+    "allowedTools": {
+      "title": "เครื่องมือที่อนุญาต",
+      "description": "เครื่องมือที่ได้รับอนุญาตโดยอัตโนมัติโดยไม่ต้องขอสิทธิ์",
+      "placeholder": "เช่น \"Bash(git log:*)\" หรือ \"Write\"",
+      "quickAdd": "เพิ่มเครื่องมือทั่วไปอย่างรวดเร็ว:",
+      "empty": "ไม่มีการกำหนดค่าเครื่องมือที่อนุญาต"
+    },
+    "blockedTools": {
+      "title": "เครื่องมือที่บล็อก",
+      "description": "เครื่องมือที่ถูกบล็อกโดยอัตโนมัติโดยไม่ต้องขอสิทธิ์",
+      "placeholder": "เช่น \"Bash(rm:*)\"",
+      "empty": "ไม่มีการกำหนดค่าเครื่องมือที่บล็อก"
+    },
+    "allowedCommands": {
+      "title": "คำสั่ง Shell ที่อนุญาต",
+      "description": "คำสั่ง shell ที่ได้รับอนุญาตโดยอัตโนมัติโดยไม่ต้องขอสิทธิ์",
+      "placeholder": "เช่น \"Shell(ls)\" หรือ \"Shell(git status)\"",
+      "quickAdd": "เพิ่มคำสั่งทั่วไปอย่างรวดเร็ว:",
+      "empty": "ไม่มีการกำหนดค่าคำสั่งที่อนุญาต"
+    },
+    "blockedCommands": {
+      "title": "คำสั่ง Shell ที่บล็อก",
+      "description": "คำสั่ง shell ที่ถูกบล็อกโดยอัตโนมัติ",
+      "placeholder": "เช่น \"Shell(rm -rf)\" หรือ \"Shell(sudo)\"",
+      "empty": "ไม่มีการกำหนดค่าคำสั่งที่บล็อก"
+    },
+    "toolExamples": {
+      "title": "ตัวอย่างรูปแบบเครื่องมือ:",
+      "bashGitLog": "- อนุญาตคำสั่ง git log ทั้งหมด",
+      "bashGitDiff": "- อนุญาตคำสั่ง git diff ทั้งหมด",
+      "write": "- อนุญาตการใช้เครื่องมือ Write ทั้งหมด",
+      "bashRm": "- บล็อกคำสั่ง rm ทั้งหมด (อันตราย)"
+    },
+    "shellExamples": {
+      "title": "ตัวอย่างคำสั่ง Shell:",
+      "ls": "- อนุญาตคำสั่ง ls",
+      "gitStatus": "- อนุญาต git status",
+      "npmInstall": "- อนุญาต npm install",
+      "rmRf": "- บล็อกการลบแบบเรียกซ้ำ"
+    },
+    "codex": {
+      "permissionMode": "โหมดสิทธิ์",
+      "description": "ควบคุมวิธีที่ Codex จัดการการแก้ไขไฟล์และการรันคำสั่ง",
+      "modes": {
+        "default": {
+          "title": "เริ่มต้น",
+          "description": "เฉพาะคำสั่งที่เชื่อถือได้เท่านั้นที่ทำงานอัตโนมัติ คำสั่งอื่นจะถูกข้าม สามารถเขียนลงในพื้นที่ทำงานได้"
+        },
+        "acceptEdits": {
+          "title": "ยอมรับการแก้ไข",
+          "description": "คำสั่งทั้งหมดทำงานอัตโนมัติภายในพื้นที่ทำงาน โหมดอัตโนมัติเต็มรูปแบบพร้อมการทำงานในแซนด์บอกซ์"
+        },
+        "bypassPermissions": {
+          "title": "ข้ามสิทธิ์",
+          "description": "การเข้าถึงระบบทั้งหมดโดยไม่มีข้อจำกัด คำสั่งทั้งหมดทำงานอัตโนมัติพร้อมการเข้าถึงดิสก์และเครือข่ายเต็มรูปแบบ ใช้ด้วยความระมัดระวัง"
+        }
+      },
+      "technicalDetails": "รายละเอียดทางเทคนิค",
+      "technicalInfo": {
+        "default": "sandboxMode=workspace-write, approvalPolicy=untrusted คำสั่งที่เชื่อถือได้: cat, cd, grep, head, ls, pwd, tail, git status/log/diff/show, find (ไม่มี -exec) ฯลฯ",
+        "acceptEdits": "sandboxMode=workspace-write, approvalPolicy=never คำสั่งทั้งหมดรันอัตโนมัติภายในไดเรกทอรีโปรเจกต์",
+        "bypassPermissions": "sandboxMode=danger-full-access, approvalPolicy=never การเข้าถึงระบบทั้งหมด ใช้เฉพาะในสภาพแวดล้อมที่เชื่อถือได้",
+        "overrideNote": "คุณสามารถแทนที่ค่านี้ต่อเซสชันได้โดยใช้ปุ่มโหมดในอินเทอร์เฟซแชท"
+      }
+    },
+    "actions": {
+      "add": "เพิ่ม"
+    }
+  },
+  "mcpServers": {
+    "title": "เซิร์ฟเวอร์ MCP",
+    "description": {
+      "claude": "เซิร์ฟเวอร์ Model Context Protocol ให้เครื่องมือและแหล่งข้อมูลเพิ่มเติมแก่ Claude",
+      "cursor": "เซิร์ฟเวอร์ Model Context Protocol ให้เครื่องมือและแหล่งข้อมูลเพิ่มเติมแก่ Cursor",
+      "codex": "เซิร์ฟเวอร์ Model Context Protocol ให้เครื่องมือและแหล่งข้อมูลเพิ่มเติมแก่ Codex"
+    },
+    "addButton": "เพิ่มเซิร์ฟเวอร์ MCP",
+    "empty": "ยังไม่มีการกำหนดค่าเซิร์ฟเวอร์ MCP",
+    "serverType": "ประเภท",
+    "scope": {
+      "local": "ท้องถิ่น",
+      "user": "ผู้ใช้"
+    },
+    "config": {
+      "command": "คำสั่ง",
+      "url": "URL",
+      "args": "อาร์กิวเมนต์",
+      "environment": "สภาพแวดล้อม"
+    },
+    "tools": {
+      "title": "เครื่องมือ",
+      "count": "({{count}}):",
+      "more": "+{{count}} เพิ่มเติม"
+    },
+    "actions": {
+      "edit": "แก้ไขเซิร์ฟเวอร์",
+      "delete": "ลบเซิร์ฟเวอร์"
+    },
+    "help": {
+      "title": "เกี่ยวกับ Codex MCP",
+      "description": "Codex รองรับเซิร์ฟเวอร์ MCP แบบ stdio คุณสามารถเพิ่มเซิร์ฟเวอร์ที่ขยายความสามารถของ Codex ด้วยเครื่องมือและทรัพยากรเพิ่มเติม"
+    }
+  },
+  "pluginSettings": {
+    "title": "ปลั๊กอิน",
+    "description": "ขยายอินเทอร์เฟซด้วยปลั๊กอินที่กำหนดเอง ติดตั้งจาก git หรือวางโฟลเดอร์ใน ~/.claude-code-ui/plugins/",
+    "installPlaceholder": "https://github.com/user/my-plugin",
+    "installButton": "ติดตั้ง",
+    "installing": "กำลังติดตั้ง…",
+    "securityWarning": "ติดตั้งเฉพาะปลั๊กอินที่คุณได้ตรวจสอบซอร์สโค้ดหรือจากผู้เขียนที่คุณไว้วางใจ",
+    "scanningPlugins": "กำลังสแกนปลั๊กอิน…",
+    "noPluginsInstalled": "ยังไม่มีปลั๊กอินที่ติดตั้ง",
+    "pullLatest": "ดึงเวอร์ชันล่าสุดจาก git",
+    "noGitRemote": "ไม่มี git remote — ไม่สามารถอัปเดตได้",
+    "uninstallPlugin": "ถอนการติดตั้งปลั๊กอิน",
+    "confirmUninstall": "คลิกอีกครั้งเพื่อยืนยัน",
+    "confirmUninstallMessage": "ลบ {{name}}? การดำเนินการนี้ไม่สามารถยกเลิกได้",
+    "cancel": "ยกเลิก",
+    "remove": "ลบ",
+    "updateFailed": "การอัปเดตล้มเหลว",
+    "installFailed": "การติดตั้งล้มเหลว",
+    "uninstallFailed": "การถอนการติดตั้งล้มเหลว",
+    "toggleFailed": "การสลับล้มเหลว",
+    "buildYourOwn": "สร้างปลั๊กอินของตัวเอง",
+    "starter": "เริ่มต้น",
+    "docs": "เอกสาร",
+    "starterPlugin": {
+      "name": "สถิติโปรเจกต์",
+      "badge": "เริ่มต้น",
+      "description": "จำนวนไฟล์ บรรทัดของโค้ด การแจกแจงประเภทไฟล์ และกิจกรรมล่าสุดสำหรับโปรเจกต์ของคุณ",
+      "install": "ติดตั้ง"
+    },
+    "morePlugins": "เพิ่มเติม",
+    "enable": "เปิดใช้",
+    "disable": "ปิดใช้",
+    "installAriaLabel": "URL git repository ของปลั๊กอิน",
+    "tab": "แท็บ",
+    "runningStatus": "กำลังทำงาน"
+  }
+}

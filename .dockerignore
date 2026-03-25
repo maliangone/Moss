@@ -1,0 +1,9 @@
+.git
+.env
+*.zip
+nginx/certs/
+nginx/htpasswd
+README.md
+docs/
+LICENSE
+cloudcli/node_modules

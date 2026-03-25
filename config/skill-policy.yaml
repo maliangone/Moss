@@ -1,0 +1,45 @@
+# =============================================================================
+# Moss AI Agent Platform — Skill Creation Policy
+#
+# Controls what users can do with skills.
+# Managed by admin via the Admin Panel or by editing this file directly.
+# =============================================================================
+
+user_skill_creation:
+  enabled: true                      # Allow users to create personal skills
+
+  # Skill content restrictions
+  allowed_patterns:
+    - "*.md"                         # Pure Markdown skills (safest)
+    - "scripts/*.py"                 # Allow Python scripts
+
+  blocked_patterns:
+    - "scripts/*.sh"                 # No shell scripts (higher risk)
+    - "**/*curl*"                    # No network request scripts
+
+  # Tools allowed within user-created skills
+  allowed_tools_in_skills:
+    - "Read"
+    - "Write(*.py)"
+    - "Write(*.csv)"
+    - "Write(*.xlsx)"
+    - "Write(*.png)"
+    - "Bash(python *)"
+
+  blocked_tools_in_skills:
+    - "Bash(curl *)"
+    - "Bash(wget *)"
+    - "mcp__*"                       # Personal skills cannot invoke MCP
+
+# Community skill installation
+community_install:
+  enabled: true
+  allowed_sources:                   # Only install from vetted sources
+    - "anthropics/skills"            # Anthropic official
+    - "K-Dense-AI/*"                 # Vetted scientific computing skills
+  require_admin_approval: false      # Whitelisted sources don't need approval
+
+# Sharing user skills to team
+share_to_team:
+  enabled: true
+  require_admin_review: true         # Admin must approve before sharing

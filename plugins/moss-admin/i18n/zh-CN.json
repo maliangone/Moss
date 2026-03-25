@@ -1,0 +1,81 @@
+{
+  "tabs": {
+    "dashboard": "概览",
+    "users": "用户",
+    "skills": "技能",
+    "review": "审核",
+    "policy": "策略",
+    "health": "系统"
+  },
+  "refresh": "刷新",
+  "loading": "加载中...",
+  "dashboard": {
+    "header": "📊 平台概览",
+    "active_users": "活跃用户",
+    "shared_skills": "共享技能",
+    "pending_review": "待审核"
+  },
+  "users": {
+    "header": "👥 用户管理",
+    "username_placeholder": "用户名",
+    "dept_general": "通用",
+    "dept_it": "IT",
+    "dept_marketing": "市场",
+    "dept_finance": "财务",
+    "dept_legal": "法务",
+    "dept_operations": "运营",
+    "dept_production": "生产",
+    "create_btn": "+ 创建用户",
+    "col_username": "用户名",
+    "col_department": "部门",
+    "col_skills": "个人技能",
+    "col_last_active": "最后活跃",
+    "col_actions": "操作",
+    "archive_btn": "归档",
+    "confirm_archive": "确定要归档用户 \"{{username}}\" 的工作区吗？",
+    "error_create": "创建失败",
+    "error_create_msg": "创建用户失败: {{message}}",
+    "error_action": "操作失败: {{message}}"
+  },
+  "skills": {
+    "header": "🧰 技能管理",
+    "col_id": "技能ID",
+    "col_name": "名称",
+    "col_description": "描述",
+    "col_actions": "操作",
+    "delete_btn": "删除",
+    "confirm_delete": "确定要删除共享技能 \"{{skillId}}\" 吗？",
+    "error_delete": "删除失败: {{message}}",
+    "empty": "暂无共享技能"
+  },
+  "review": {
+    "header": "📋 技能审核队列 ({{count}} 待审核)",
+    "empty": "暂无待审核技能",
+    "submitted_by": "提交者: {{username}}",
+    "approve_btn": "✅ 批准",
+    "reject_btn": "❌ 拒绝",
+    "reject_reason": "拒绝原因（可选）:",
+    "error_action": "操作失败: {{message}}"
+  },
+  "policy": {
+    "header": "🔒 技能策略设置",
+    "group_user_creation": "用户自创技能",
+    "allow_user_creation": "允许用户创建个人技能",
+    "group_community": "社区安装",
+    "allow_community": "允许从社区安装技能",
+    "group_sharing": "分享机制",
+    "allow_sharing": "允许用户分享技能给团队",
+    "require_review": "分享前需要管理员审核",
+    "save_btn": "保存策略",
+    "saved": "策略已保存",
+    "error_save": "保存失败: {{message}}"
+  },
+  "health": {
+    "header": "💚 系统状态",
+    "label_status": "状态",
+    "status_ok": "✅ 正常",
+    "status_error": "❌ 异常",
+    "label_disk": "磁盘使用",
+    "label_time": "时间"
+  }
+}

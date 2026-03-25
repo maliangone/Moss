@@ -1,0 +1,13 @@
+{
+  "name": "moss-toolbox",
+  "displayName": "Moss 工具箱",
+  "version": "1.0.0",
+  "description": "Enterprise AI Agent Platform — Toolbox, Smart Suggestions, Welcome Page, and Skill Management for non-technical users",
+  "author": "Moss AI Platform",
+  "icon": "src/toolbox.svg",
+  "type": "react",
+  "slot": "tab",
+  "entry": "dist/index.mjs",
+  "server": "src/server.js",
+  "permissions": ["read", "write"]
+}

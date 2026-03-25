@@ -1,0 +1,128 @@
+{
+  "projects": {
+    "title": "โปรเจกต์",
+    "newProject": "โปรเจกต์ใหม่",
+    "deleteProject": "ลบโปรเจกต์",
+    "renameProject": "เปลี่ยนชื่อโปรเจกต์",
+    "noProjects": "ไม่พบโปรเจกต์",
+    "loadingProjects": "กำลังโหลดโปรเจกต์...",
+    "searchPlaceholder": "ค้นหาโปรเจกต์...",
+    "projectNamePlaceholder": "ชื่อโปรเจกต์",
+    "starred": "ที่ติดดาว",
+    "all": "ทั้งหมด",
+    "untitledSession": "เซสชันไม่มีชื่อ",
+    "newSession": "เซสชันใหม่",
+    "codexSession": "เซสชัน AI",
+    "fetchingProjects": "กำลังดึงข้อมูลพื้นที่ทำงานของคุณ",
+    "projects": "โปรเจกต์",
+    "noMatchingProjects": "ไม่พบโปรเจกต์ที่ตรงกัน",
+    "tryDifferentSearch": "ลองปรับคำค้นหาของคุณ",
+    "runClaudeCli": "สร้างพื้นที่ทำงานเพื่อเริ่มต้น"
+  },
+  "app": {
+    "title": "Moss AI",
+    "subtitle": "ผู้ช่วย AI สำหรับองค์กร"
+  },
+  "sessions": {
+    "title": "เซสชัน",
+    "newSession": "เซสชันใหม่",
+    "deleteSession": "ลบเซสชัน",
+    "renameSession": "เปลี่ยนชื่อเซสชัน",
+    "noSessions": "ยังไม่มีเซสชัน",
+    "loadingSessions": "กำลังโหลดเซสชัน...",
+    "unnamed": "ไม่มีชื่อ",
+    "loading": "กำลังโหลด...",
+    "showMore": "แสดงเซสชันเพิ่มเติม"
+  },
+  "tooltips": {
+    "viewEnvironments": "ดูสภาพแวดล้อม",
+    "hideSidebar": "ซ่อนแถบด้านข้าง",
+    "createProject": "สร้างโปรเจกต์ใหม่",
+    "refresh": "รีเฟรชโปรเจกต์และเซสชัน (Ctrl+R)",
+    "renameProject": "เปลี่ยนชื่อโปรเจกต์ (F2)",
+    "deleteProject": "ลบโปรเจกต์ที่ว่างเปล่า (Delete)",
+    "addToFavorites": "เพิ่มในรายการโปรด",
+    "removeFromFavorites": "ลบออกจากรายการโปรด",
+    "editSessionName": "แก้ไขชื่อเซสชันด้วยตนเอง",
+    "deleteSession": "ลบเซสชันนี้อย่างถาวร",
+    "save": "บันทึก",
+    "cancel": "ยกเลิก",
+    "clearSearch": "ล้างการค้นหา"
+  },
+  "navigation": {
+    "chat": "แชท",
+    "files": "ไฟล์",
+    "git": "Git",
+    "terminal": "เทอร์มินัล",
+    "tasks": "งาน"
+  },
+  "actions": {
+    "refresh": "รีเฟรช",
+    "settings": "การตั้งค่า",
+    "collapseAll": "ยุบทั้งหมด",
+    "expandAll": "ขยายทั้งหมด",
+    "cancel": "ยกเลิก",
+    "save": "บันทึก",
+    "delete": "ลบ",
+    "rename": "เปลี่ยนชื่อ",
+    "joinCommunity": "เข้าร่วมชุมชน"
+  },
+  "status": {
+    "active": "ใช้งานอยู่",
+    "inactive": "ไม่ได้ใช้งาน",
+    "thinking": "กำลังคิด...",
+    "error": "ข้อผิดพลาด",
+    "aborted": "ยกเลิกแล้ว",
+    "unknown": "ไม่ทราบ"
+  },
+  "time": {
+    "justNow": "เมื่อสักครู่",
+    "oneMinuteAgo": "1 นาทีที่แล้ว",
+    "minutesAgo": "{{count}} นาทีที่แล้ว",
+    "oneHourAgo": "1 ชั่วโมงที่แล้ว",
+    "hoursAgo": "{{count}} ชั่วโมงที่แล้ว",
+    "oneDayAgo": "1 วันที่แล้ว",
+    "daysAgo": "{{count}} วันที่แล้ว"
+  },
+  "messages": {
+    "deleteConfirm": "คุณแน่ใจว่าต้องการลบรายการนี้?",
+    "renameSuccess": "เปลี่ยนชื่อสำเร็จ",
+    "deleteSuccess": "ลบสำเร็จ",
+    "errorOccurred": "เกิดข้อผิดพลาด",
+    "deleteSessionConfirm": "คุณแน่ใจว่าต้องการลบเซสชันนี้? การดำเนินการนี้ไม่สามารถยกเลิกได้",
+    "deleteProjectConfirm": "คุณแน่ใจว่าต้องการลบโปรเจกต์ที่ว่างเปล่านี้? การดำเนินการนี้ไม่สามารถยกเลิกได้",
+    "enterProjectPath": "กรุณาใส่พาธโปรเจกต์",
+    "deleteSessionFailed": "ลบเซสชันล้มเหลว กรุณาลองใหม่อีกครั้ง",
+    "deleteSessionError": "เกิดข้อผิดพลาดในการลบเซสชัน กรุณาลองใหม่อีกครั้ง",
+    "renameSessionFailed": "เปลี่ยนชื่อเซสชันล้มเหลว กรุณาลองใหม่อีกครั้ง",
+    "renameSessionError": "เกิดข้อผิดพลาดในการเปลี่ยนชื่อเซสชัน กรุณาลองใหม่อีกครั้ง",
+    "deleteProjectFailed": "ลบโปรเจกต์ล้มเหลว กรุณาลองใหม่อีกครั้ง",
+    "deleteProjectError": "เกิดข้อผิดพลาดในการลบโปรเจกต์ กรุณาลองใหม่อีกครั้ง",
+    "createProjectFailed": "สร้างโปรเจกต์ล้มเหลว กรุณาลองใหม่อีกครั้ง",
+    "createProjectError": "เกิดข้อผิดพลาดในการสร้างโปรเจกต์ กรุณาลองใหม่อีกครั้ง"
+  },
+  "version": {
+    "updateAvailable": "มีอัปเดตใหม่"
+  },
+  "search": {
+    "modeProjects": "โปรเจกต์",
+    "modeConversations": "การสนทนา",
+    "conversationsPlaceholder": "ค้นหาในการสนทนา...",
+    "searching": "กำลังค้นหา...",
+    "noResults": "ไม่พบผลลัพธ์",
+    "tryDifferentQuery": "ลองค้นหาด้วยคำอื่น",
+    "matches_one": "{{count}} รายการที่ตรงกัน",
+    "matches_other": "{{count}} รายการที่ตรงกัน",
+    "projectsScanned_one": "สแกน {{count}} โปรเจกต์แล้ว",
+    "projectsScanned_other": "สแกน {{count}} โปรเจกต์แล้ว"
+  },
+  "deleteConfirmation": {
+    "deleteProject": "ลบโปรเจกต์",
+    "deleteSession": "ลบเซสชัน",
+    "confirmDelete": "คุณแน่ใจว่าต้องการลบ",
+    "sessionCount_one": "โปรเจกต์นี้มี {{count}} การสนทนา",
+    "sessionCount_other": "โปรเจกต์นี้มี {{count}} การสนทนา",
+    "allConversationsDeleted": "การสนทนาทั้งหมดจะถูกลบอย่างถาวร",
+    "cannotUndo": "การดำเนินการนี้ไม่สามารถยกเลิกได้"
+  }
+}
